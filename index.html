@@ -1,0 +1,515 @@
+
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+<style>
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #243247;
+    background: #f5f7fa;
+    line-height: 1.6;
+  }
+
+  header {
+    background: #142b46;
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    border-bottom: 3px solid #5bc4ae;
+  }
+
+  .logo {
+    font-size: 23px;
+    font-weight: bold;
+    letter-spacing: -0.5px;
+  }
+
+  .logo span {
+    color: #70d5bd;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+  }
+
+  nav a {
+    color: #e3eaf2;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.2s;
+  }
+
+  nav a:hover {
+    color: #70d5bd;
+  }
+
+  .hero {
+    background: #142b46;
+    color: white;
+    padding: 65px 9% 75px;
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+  }
+
+  .hero p:first-child {
+    color: #70d5bd;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+
+  .hero h1 {
+    max-width: 700px;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.2;
+    margin: 18px 0;
+    letter-spacing: -1px;
+  }
+
+  .hero p {
+    max-width: 620px;
+    color: #d4deea;
+    font-size: 16px;
+  }
+
+  .btn {
+    display: inline-block;
+    background: #70d5bd;
+    color: #142b46;
+    padding: 12px 22px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .btn:hover {
+    background: #91e3d0;
+  }
+
+  main {
+    max-width: 1120px;
+    margin: auto;
+    padding: 30px 24px 55px;
+  }
+
+  section {
+    margin: 38px 0 48px;
+    scroll-margin-top: 20px;
+  }
+
+  .section-title {
+    margin-bottom: 5px;
+    color: #142b46;
+    font-size: 25px;
+    letter-spacing: -0.4px;
+  }
+
+  .muted {
+    color: #68778a;
+    font-size: 14px;
+  }
+
+  .card {
+    background: #ffffff;
+    padding: 28px;
+    margin-top: 20px;
+    border: 1px solid #e0e6ed;
+    border-radius: 10px;
+    box-shadow: 0 5px 18px rgba(20, 43, 70, 0.04);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .field {
+    margin-bottom: 12px;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 7px;
+    color: #35465c;
+    font-size: 14px;
+    font-weight: bold;
+  }
+
+  input,
+  select {
+    width: 100%;
+    padding: 12px 13px;
+    color: #243247;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font: inherit;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+
+  input:focus,
+  select:focus {
+    border-color: #258b7a;
+    box-shadow: 0 0 0 3px rgba(37, 139, 122, 0.12);
+  }
+
+  .results {
+    background: #f0f8f6;
+    border: 1px solid #d4e9e3;
+    border-radius: 8px;
+    padding: 22px;
+    margin-top: 25px;
+  }
+
+  .amount {
+    color: #187c6c;
+    font-size: clamp(27px, 4vw, 35px);
+    font-weight: bold;
+    margin: 4px 0 12px;
+  }
+
+  .result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 11px 0;
+    border-bottom: 1px solid #dce9e5;
+    font-size: 14px;
+  }
+
+  .result-row:last-child {
+    border-bottom: none;
+  }
+
+  .result-row strong {
+    text-align: right;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: 15px 13px;
+    border-bottom: 1px solid #e5eaf0;
+    font-size: 14px;
+    white-space: normal;
+  }
+
+  th {
+    background: #edf2f7;
+    color: #263d58;
+    font-weight: bold;
+  }
+
+  tbody tr:hover {
+    background: #f7fafc;
+  }
+
+  .best {
+    display: inline-block;
+    margin-left: 4px;
+    color: #187c6c;
+    font-size: 12px;
+  }
+
+  #cadangan {
+    font-size: 14px;
+    color: #35465c;
+  }
+
+  .note {
+    background: #fff8e9;
+    color: #765a28;
+    padding: 14px 16px;
+    border-left: 4px solid #d9ad53;
+    border-radius: 4px;
+    font-size: 13px;
+  }
+
+  footer {
+    background: #142b46;
+    color: #d4deea;
+    text-align: center;
+    padding: 28px 18px;
+    font-size: 13px;
+  }
+
+  @media (max-width: 650px) {
+    header {
+      padding: 17px 20px;
+    }
+
+    nav {
+      gap: 15px;
+    }
+
+    .hero {
+      padding: 40px 22px 48px;
+      border-bottom-left-radius: 14px;
+      border-bottom-right-radius: 14px;
+    }
+
+    main {
+      padding: 15px 14px 35px;
+    }
+
+    .grid {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .card {
+      padding: 18px;
+    }
+
+    .result-row {
+      font-size: 13px;
+    }
+  }
+</style>
+
+</head>
+<body>
+  <header>
+    <div class="logo">BizHire <span>Smart+</span></div>
+    <nav>
+      <a href="#utama">Utama</a>
+      <a href="#kalkulator">Kalkulator</a>
+      <a href="#perbandingan">Perbandingan</a>
+    </nav>
+  </header>
+
+  <div class="hero" id="utama">
+    <p>PLATFORM PERBANDINGAN PEMBIAYAAN KENDERAAN</p>
+    <h1>Pilih pembiayaan kenderaan dengan lebih bijak.</h1>
+    <p>Hitung anggaran ansuran bulanan dan bandingkan kos pembiayaan untuk membantu anda membuat keputusan kewangan.</p>
+    <a class="btn" href="#kalkulator">Mula Pengiraan →</a>
+  </div>
+
+  <main>
+    <section id="kalkulator">
+      <h2 class="section-title">Kalkulator Sewa Beli</h2>
+      <p class="muted">Masukkan maklumat kenderaan untuk mengira anggaran kos pembiayaan.</p>
+
+      <div class="card">
+        <div class="grid">
+          <div class="field">
+            <label for="harga">Harga kenderaan (RM)</label>
+            <input id="harga" type="number" min="1" value="80000">
+          </div>
+          <div class="field">
+            <label for="deposit">Deposit (RM)</label>
+            <input id="deposit" type="number" min="0" value="8000">
+          </div>
+          <div class="field">
+            <label for="tempoh">Tempoh pembiayaan</label>
+            <select id="tempoh">
+              <option value="5">5 tahun</option>
+              <option value="7" selected>7 tahun</option>
+              <option value="9">9 tahun</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="kadar">Kadar faedah tahunan (%)</label>
+            <input id="kadar" type="number" min="0" max="100" step="0.01" value="3">
+          </div>
+        </div>
+
+        <button class="btn" id="kira" type="button">Kira Ansuran</button>
+
+        <div class="results" aria-live="polite">
+          <div>Anggaran ansuran bulanan</div>
+          <div class="amount" id="ansuran">RM 0.00</div>
+          <div class="result-row">
+            <span>Jumlah pembiayaan</span>
+            <strong id="pembiayaan">RM 0.00</strong>
+          </div>
+          <div class="result-row">
+            <span>Jumlah faedah</span>
+            <strong id="faedah">RM 0.00</strong>
+          </div>
+          <div class="result-row">
+            <span>Jumlah bayaran ansuran</span>
+            <strong id="jumlah">RM 0.00</strong>
+          </div>
+          <div class="result-row">
+            <span>Jumlah kos termasuk deposit</span>
+            <strong id="kos">RM 0.00</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="perbandingan">
+      <h2 class="section-title">Perbandingan Institusi Kewangan</h2>
+      <p class="muted">Bandingkan anggaran kos menggunakan kadar contoh yang boleh dikemas kini selepas disahkan.</p>
+
+      <div class="card">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Institusi kewangan</th>
+                <th>Kadar contoh</th>
+                <th>Ansuran bulanan</th>
+                <th>Jumlah faedah</th>
+                <th>Jumlah kos termasuk deposit</th>
+              </tr>
+            </thead>
+            <tbody id="jadual"></tbody>
+          </table>
+        </div>
+        <p id="cadangan" aria-live="polite"></p>
+        <p class="note">
+          Penting: Kadar dalam jadual ini ialah data demonstrasi rekaan, bukan kadar sebenar atau tawaran rasmi mana-mana bank. Gantikan dengan kadar yang disahkan daripada sumber rasmi sebelum digunakan dalam kajian PTA.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="section-title">Tentang BizHire Smart+</h2>
+      <div class="card">
+        <p>BizHire Smart+ dibangunkan sebagai inovasi digital untuk memudahkan penyediaan jadual sewa beli kenderaan, pengiraan ansuran bulanan dan perbandingan kos pembiayaan daripada institusi kewangan terpilih.</p>
+        <p class="muted">Sistem ini bertujuan membantu pengguna menilai pilihan pembiayaan berdasarkan maklumat dan kemampuan kewangan mereka.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    BizHire Smart+ · Projek Tahun Akhir<br>
+    Anggaran pengiraan untuk tujuan pendidikan dan perbandingan.
+  </footer>
+
+  <script>
+    const wang = nilai => nilai.toLocaleString("en-MY", {
+      style: "currency",
+      currency: "MYR"
+    });
+
+    // Kadar berikut ialah data contoh, bukan kadar sebenar bank.
+    const institusi = [
+  { nama: "Maybank", kadar: 3.00 },
+  { nama: "CIMB Bank", kadar: 3.00 },
+  { nama: "Public Bank", kadar: 3.00 },
+  { nama: "RHB Bank", kadar: 3.00 },
+  { nama: "Hong Leong Bank", kadar: 3.00 },
+  { nama: "AmBank", kadar: 3.00 }
+];
+
+    function kiraKos(harga, deposit, tahun, kadar) {
+      const prinsipal = harga - deposit;
+      const faedah = prinsipal * (kadar / 100) * tahun;
+      const jumlahAnsuran = prinsipal + faedah;
+      const bulan = tahun * 12;
+
+      return {
+        prinsipal,
+        faedah,
+        jumlahAnsuran,
+        bulanan: jumlahAnsuran / bulan,
+        kosKeseluruhan: deposit + jumlahAnsuran
+      };
+    }
+
+    function kemasKini() {
+      const harga = Number(document.getElementById("harga").value);
+      const deposit = Number(document.getElementById("deposit").value);
+      const tahun = Number(document.getElementById("tempoh").value);
+      const kadar = Number(document.getElementById("kadar").value);
+
+      if (
+        !Number.isFinite(harga) ||
+        !Number.isFinite(deposit) ||
+        !Number.isFinite(kadar) ||
+        harga <= 0 || deposit < 0 || deposit >= harga ||
+        kadar < 0 || kadar > 100
+      ) {
+        document.getElementById("ansuran").textContent =
+          "Sila semak input";
+        document.getElementById("pembiayaan").textContent = "—";
+        document.getElementById("faedah").textContent = "—";
+        document.getElementById("jumlah").textContent = "—";
+        document.getElementById("kos").textContent = "—";
+        document.getElementById("jadual").innerHTML = "";
+        document.getElementById("cadangan").textContent =
+          "Harga mesti melebihi sifar, deposit mesti lebih rendah daripada harga, dan kadar mestilah antara 0% hingga 100%.";
+        return;
+      }
+
+      const hasil = kiraKos(harga, deposit, tahun, kadar);
+      document.getElementById("ansuran").textContent = wang(hasil.bulanan);
+      document.getElementById("pembiayaan").textContent = wang(hasil.prinsipal);
+      document.getElementById("faedah").textContent = wang(hasil.faedah);
+      document.getElementById("jumlah").textContent = wang(hasil.jumlahAnsuran);
+      document.getElementById("kos").textContent = wang(hasil.kosKeseluruhan);
+
+      const perbandingan = institusi.map(bank => ({
+        ...bank,
+        hasil: kiraKos(harga, deposit, tahun, bank.kadar)
+      })).sort((a, b) => a.hasil.kosKeseluruhan - b.hasil.kosKeseluruhan);
+
+      document.getElementById("jadual").innerHTML = perbandingan.map(
+        (bank, indeks) => `
+          <tr>
+            <td>${bank.nama}${indeks === 0 ? ' <span class="best">★ Kos terendah*</span>' : ''}</td>
+            <td>${bank.kadar.toFixed(2)}%</td>
+            <td>${wang(bank.hasil.bulanan)}</td>
+            <td>${wang(bank.hasil.faedah)}</td>
+            <td>${wang(bank.hasil.kosKeseluruhan)}</td>
+          </tr>
+        `
+      ).join("");
+
+      document.getElementById("cadangan").textContent =
+        "Berdasarkan kadar contoh yang dimasukkan, " +
+        perbandingan[0].nama +
+        " menunjukkan jumlah kos terendah dalam simulasi ini. " +
+        "Ini bukan cadangan atau tawaran rasmi institusi kewangan.";
+    }
+
+    document.getElementById("kira").addEventListener("click", kemasKini);
+
+    ["harga", "deposit", "tempoh", "kadar"].forEach(id => {
+      document.getElementById(id).addEventListener("input", kemasKini);
+      document.getElementById(id).addEventListener("change", kemasKini);
+    });
+
+    kemasKini();
+  </script>
+</body>
+</html>
