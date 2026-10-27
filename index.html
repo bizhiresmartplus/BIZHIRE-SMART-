@@ -326,10 +326,16 @@
       <h2 class="section-title">Kalkulator Sewa Beli</h2>
       <p class="muted">Masukkan maklumat kenderaan untuk mengira anggaran kos pembiayaan.</p>
 
-      <div class="card">
-        <div class="grid">
-          <div class="field">
-            <label for="harga">Harga kenderaan (RM)</label>
+    <div class="field">
+      <label for="gaji">Gaji bersih bulanan (RM)</label>
+      <input id="gaji" type="number" min="1" placeholder="Contoh: 2500">
+    </div>
+
+    <div class="field">
+      <label for="komitmen">Komitmen bulanan sedia ada (RM)</label>
+      <input id="komitmen" type="number" min="0" value="0">
+    </div>
+
             <input id="harga" type="number" min="1" value="80000">
           </div>
           <div class="field">
