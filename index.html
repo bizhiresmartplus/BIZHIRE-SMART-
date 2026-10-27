@@ -1,241 +1,687 @@
-
 <!DOCTYPE html>
 <html lang="ms">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
-  
+  <title>BizHire Smart+ | Pembiayaan Kenderaan</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #243247;
+      background: #f5f7fa;
+      line-height: 1.6;
+    }
+    .language-bar {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 7%;
+      background: #eef4f7;
+    }
+    .language-bar label {
+      margin: 0;
+      font-size: 13px;
+      color: #35465c;
+    }
+    .language-bar select {
+      width: auto;
+      min-width: 155px;
+      padding: 8px 10px;
+    }
+    header {
+      background: #142b46;
+      color: white;
+      padding: 18px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      border-bottom: 3px solid #5bc4ae;
+    }
+    .logo {
+      font-size: 23px;
+      font-weight: bold;
+      letter-spacing: -.5px;
+    }
+    .logo span { color: #70d5bd; }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+    }
+    nav a {
+      color: #e3eaf2;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    nav a:hover { color: #70d5bd; }
+    .hero {
+      background: linear-gradient(135deg, #142b46, #1c4960);
+      color: white;
+      padding: 65px 9% 75px;
+      border-bottom-left-radius: 24px;
+      border-bottom-right-radius: 24px;
+    }
+    .hero .eyebrow {
+      color: #70d5bd;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+    .hero h1 {
+      max-width: 700px;
+      font-size: clamp(32px, 5vw, 48px);
+      line-height: 1.2;
+      margin: 18px 0;
+      letter-spacing: -1px;
+    }
+    .hero p {
+      max-width: 620px;
+      color: #d4deea;
+      font-size: 16px;
+    }
+    .btn {
+      display: inline-block;
+      background: #70d5bd;
+      color: #142b46;
+      padding: 12px 22px;
+      margin-top: 12px;
+      border: none;
+      border-radius: 7px;
+      font-size: 14px;
+      font-weight: bold;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .btn:hover { background: #91e3d0; }
+    main {
+      max-width: 1120px;
+      margin: auto;
+      padding: 30px 24px 55px;
+    }
+    section {
+      margin: 38px 0 48px;
+      scroll-margin-top: 20px;
+    }
+    .section-title {
+      margin-bottom: 5px;
+      color: #142b46;
+      font-size: 25px;
+      letter-spacing: -.4px;
+    }
+    .muted {
+      color: #68778a;
+      font-size: 14px;
+    }
+    .card {
+      background: #fff;
+      padding: 28px;
+      margin-top: 20px;
+      border: 1px solid #e0e6ed;
+      border-radius: 12px;
+      box-shadow: 0 5px 18px rgba(20,43,70,.05);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .field {
+      margin-bottom: 12px;
+      min-width: 0;
+    }
+    label {
+      display: block;
+      margin-bottom: 7px;
+      color: #35465c;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    input, select {
+      width: 100%;
+      padding: 12px 13px;
+      color: #243247;
+      background: #fff;
+      border: 1px solid #cbd5e1;
+      border-radius: 7px;
+      font: inherit;
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    input:focus, select:focus {
+      border-color: #258b7a;
+      box-shadow: 0 0 0 3px rgba(37,139,122,.12);
+    }
+    .salary-highlight {
+      background: #e0f7f1;
+      border: 2px solid #5bc4ae;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 14px;
+    }
+    .salary-highlight label { color: #142b46; }
+    .salary-highlight input { border: 1.5px solid #258b7a; }
+    .results {
+      background: #f0f8f6;
+      border: 1px solid #d4e9e3;
+      border-radius: 9px;
+      padding: 22px;
+      margin-top: 25px;
+    }
+    .amount {
+      color: #187c6c;
+      font-size: clamp(27px, 4vw, 35px);
+      font-weight: bold;
+      margin: 4px 0 12px;
+    }
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 15px;
+      padding: 11px 0;
+      border-bottom: 1px solid #dce9e5;
+      font-size: 14px;
+    }
+    .result-row:last-child { border-bottom: none; }
+    .result-row strong {
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+    .table-wrap { overflow-x: auto; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 650px;
+    }
+    th, td {
+      text-align: left;
+      padding: 14px 12px;
+      border-bottom: 1px solid #e5eaf0;
+      font-size: 14px;
+    }
+    th {
+      background: #edf2f7;
+      color: #263d58;
+      font-weight: bold;
+    }
+    tbody tr:hover { background: #f7fafc; }
+    .best {
+      display: inline-block;
+      margin-left: 4px;
+      color: #187c6c;
+      font-size: 12px;
+    }
+    #cadangan {
+      font-size: 14px;
+      color: #35465c;
+    }
+    .dsr-panel {
+      margin-top: 24px;
+      padding: 22px;
+      background: #fff;
+      border: 1px solid #dce5ec;
+      border-radius: 12px;
+    }
+    .dsr-panel h3 {
+      margin: 0 0 5px;
+      color: #142b46;
+    }
+    .dsr-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 9px 14px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .dsr-light {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+    .dsr-green { color: #166534; background: #dcfce7; }
+    .dsr-yellow { color: #92400e; background: #fef3c7; }
+    .dsr-red { color: #991b1b; background: #fee2e2; }
+    .dsr-track {
+      height: 9px;
+      margin: 12px 0 18px;
+      background: #e5e7eb;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    #dsrMeter {
+      width: 0;
+      height: 100%;
+      background: #15803d;
+      transition: width .3s, background .3s;
+    }
+    .safe-car {
+      margin-top: 22px;
+      padding: 18px;
+      border-radius: 10px;
+      background: #eff9f6;
+      border: 1px solid #cce9df;
+    }
+    .safe-car h4 {
+      margin: 0 0 8px;
+      color: #142b46;
+      font-size: 17px;
+    }
+    .safe-price {
+      margin: 10px 0;
+      color: #087f8c;
+      font-size: clamp(21px, 4vw, 28px);
+      font-weight: bold;
+      overflow-wrap: anywhere;
+    }
+    footer {
+      background: #142b46;
+      color: #d4deea;
+      text-align: center;
+      padding: 28px 18px;
+      font-size: 13px;
+    }
+    .note {
+      background: #fff8e9;
+      color: #765a28;
+      padding: 14px 16px;
+      border-left: 4px solid #d9ad53;
+      border-radius: 4px;
+      font-size: 13px;
+    }
+    @media (max-width: 650px) {
+      .language-bar { padding: 10px 20px; }
+      header { padding: 17px 20px; }
+      nav { gap: 14px; }
+      .hero {
+        padding: 40px 22px 48px;
+        border-bottom-left-radius: 14px;
+        border-bottom-right-radius: 14px;
+      }
+      main { padding: 15px 14px 35px; }
+      .grid { grid-template-columns: 1fr; gap: 8px; }
+      .card { padding: 18px; }
+      .dsr-panel { padding: 17px; }
+      .result-row { font-size: 13px; }
+    }
+  </style>
 </head>
 <body>
+
+  <div class="language-bar">
+    <label for="languageSelect"
+      data-ms="Bahasa laman"
+      data-en="Website language">Bahasa laman</label>
+    <select id="languageSelect" aria-label="Website language">
+      <option value="ms">Bahasa Melayu</option>
+      <option value="en">English</option>
+    </select>
+  </div>
+
   <header>
     <div class="logo">BizHire <span>Smart+</span></div>
     <nav>
-      <a href="#utama">Utama</a>
-      <a href="#kalkulator">Kalkulator</a>
-      <a href="#perbandingan">Perbandingan</a>
+      <a href="#utama" data-ms="Utama" data-en="Home">Utama</a>
+      <a href="#kalkulator" data-ms="Kalkulator" data-en="Calculator">Kalkulator</a>
+      <a href="#perbandingan" data-ms="Perbandingan" data-en="Comparison">Perbandingan</a>
     </nav>
   </header>
 
   <div class="hero" id="utama">
-    <p>PLATFORM PERBANDINGAN PEMBIAYAAN KENDERAAN</p>
-    <h1>Pilih pembiayaan kenderaan dengan lebih bijak.</h1>
-    <p>Hitung anggaran ansuran bulanan dan bandingkan kos pembiayaan untuk membantu anda membuat keputusan kewangan.</p>
-    <a class="btn" href="#kalkulator">Mula Pengiraan →</a>
+    <p class="eyebrow"
+      data-ms="PLATFORM PERBANDINGAN PEMBIAYAAN KENDERAAN"
+      data-en="VEHICLE FINANCING COMPARISON PLATFORM">
+      PLATFORM PERBANDINGAN PEMBIAYAAN KENDERAAN
+    </p>
+
+    <h1
+      data-ms="Pilih pembiayaan kenderaan dengan lebih bijak."
+      data-en="Choose vehicle financing more wisely.">
+      Pilih pembiayaan kenderaan dengan lebih bijak.
+    </h1>
+
+    <p
+      data-ms="Hitung anggaran ansuran bulanan, semak kemampuan kewangan dan bandingkan kos pembiayaan untuk membantu anda membuat keputusan."
+      data-en="Estimate monthly instalments, check your financial affordability and compare financing costs to help you make a decision.">
+      Hitung anggaran ansuran bulanan, semak kemampuan kewangan dan bandingkan kos pembiayaan untuk membantu anda membuat keputusan.
+    </p>
+
+    <a class="btn" href="#kalkulator"
+      data-ms="Mula Pengiraan →"
+      data-en="Start Calculation →">Mula Pengiraan →</a>
   </div>
 
   <main>
     <section id="kalkulator">
-      <h2 class="section-title">Kalkulator Sewa Beli</h2>
-      <p class="muted">Masukkan maklumat kenderaan untuk mengira anggaran kos pembiayaan.</p>
+      <h2 class="section-title"
+        data-ms="Kalkulator Sewa Beli"
+        data-en="Hire Purchase Calculator">Kalkulator Sewa Beli</h2>
 
-    
-<div class="field">
-  <label for="gaji">Gaji bersih bulanan (RM)</label>
-  <input id="gaji" type="number" min="1"
-         placeholder="Contoh: 2500">
-</div>
+      <p class="muted"
+        data-ms="Masukkan maklumat kewangan dan kenderaan untuk melihat anggaran ansuran serta kemampuan anda."
+        data-en="Enter your financial and vehicle details to estimate instalments and affordability.">
+        Masukkan maklumat kewangan dan kenderaan untuk melihat anggaran ansuran serta kemampuan anda.
+      </p>
 
-<div class="field">
-  <label for="komitmen">Komitmen bulanan sedia ada (RM)</label>
-  <input id="komitmen" type="number" min="0" value="0">
-</div>
-<div class="result-row">
-  <span>Jumlah kos termasuk deposit</span>
-  <strong id="kos">RM 0.00</strong>
-</div>
-</div>
-
-<div class="dsr-panel" id="dsrPanel" aria-live="polite">
-  <h3>🚦 Petunjuk Kemampuan Kewangan</h3>
-  <p class="muted">Berdasarkan gaji, komitmen dan ansuran kereta.</p>
-
-  <div id="dsrStatus" class="dsr-status dsr-yellow">
-    <span class="dsr-light"></span>
-    <span id="dsrLabel">Masukkan maklumat kewangan</span>
-  </div>
-
-  <div class="dsr-track">
-    <div id="dsrMeter"></div>
-  </div>
-
-  <div class="result-row">
-    <span>Nisbah Khidmat Hutang (DSR)</span>
-    <strong id="dsrValue">—</strong>
-  </div>
-
-  <div class="result-row">
-    <span>Jumlah komitmen termasuk ansuran kereta</span>
-    <strong id="dsrTotal">—</strong>
-  </div>
-
-  <div class="result-row">
-    <span>Baki gaji selepas komitmen</span>
-    <strong id="dsrBalance">—</strong>
-  </div>
-
-  <div class="safe-car">
-    <h4>Cadangan Harga Kereta Lebih Selamat</h4>
-    <p id="safeMessage">
-      Masukkan maklumat kewangan untuk mendapatkan cadangan.
-    </p>
-    <div class="safe-price" id="safePrice">—</div>
-    <p class="muted" id="safeNote">
-      Anggaran berdasarkan sasaran DSR maksimum 30%.
-    </p>
-  </div>
-</div>
-
-
-
-            <input id="harga" type="number" min="1" value="80000">
-                      </div>
-          <div class="field">
-            <label for="harga kenderaan">Harga kenderaan (RM)</label>
-            <input id="harga kenderaan" type="number" min="0" value="8000">
+      <div class="card">
+        <div class="grid">
+          <div class="field salary-highlight">
+            <label for="gaji"
+              data-ms="💰 Gaji bersih bulanan (RM)"
+              data-en="💰 Monthly net salary (RM)">
+              💰 Gaji bersih bulanan (RM)
+            </label>
+            <input id="gaji" type="number" min="1" step="0.01"
+              placeholder="2500"
+              data-ms-placeholder="Contoh: 2500"
+              data-en-placeholder="e.g. 2500">
           </div>
+
           <div class="field">
-            <label for="deposit">Deposit (RM)</label>
-            <input id="deposit" type="number" min="0" value="8000">
-          </div>
-          <div class="field">
-            <label for="tempoh">Tempoh pembiayaan</label>
-            <select id="tempoh">
-              <option value="5">5 tahun</option>
-              <option value="7" selected>7 tahun</option>
-              <option value="9">9 tahun</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="kadar">Kadar faedah tahunan (%)</label>
-            <input id="kadar" type="number" min="0" max="100" step="0.01" value="3">
+            <label for="komitmen"
+              data-ms="Komitmen sedia ada (RM)"
+              data-en="Existing commitments (RM)">
+              Komitmen sedia ada (RM)
+            </label>
+            <input id="komitmen" type="number" min="0" step="0.01" value="0">
           </div>
         </div>
 
-        <button class="btn" id="kira" type="button">Kira Ansuran</button>
+        <div class="dsr-panel" id="dsrPanel" aria-live="polite">
+          <h3
+            data-ms="🚦 Petunjuk Kemampuan Kewangan"
+            data-en="🚦 Financial Affordability Indicator">
+            🚦 Petunjuk Kemampuan Kewangan
+          </h3>
+
+          <p class="muted"
+            data-ms="Nisbah dikira menggunakan komitmen sedia ada bersama ansuran kereta yang dikira, berbanding gaji bersih bulanan."
+            data-en="The ratio uses existing commitments plus the calculated car instalment, compared with monthly net salary.">
+            Nisbah dikira menggunakan komitmen sedia ada bersama ansuran kereta yang dikira, berbanding gaji bersih bulanan.
+          </p>
+
+          <div id="dsrStatus" class="dsr-status dsr-yellow">
+            <span class="dsr-light"></span>
+            <span id="dsrLabel">Masukkan gaji bersih untuk semakan</span>
+          </div>
+
+          <div class="dsr-track">
+            <div id="dsrMeter"></div>
+          </div>
+
+          <div class="result-row">
+            <span data-ms="Nisbah Khidmat Hutang (DSR)"
+              data-en="Debt Service Ratio (DSR)">Nisbah Khidmat Hutang (DSR)</span>
+            <strong id="dsrValue">—</strong>
+          </div>
+
+          <div class="result-row">
+            <span data-ms="Jumlah komitmen termasuk ansuran kereta"
+              data-en="Total commitments including car instalment">
+              Jumlah komitmen termasuk ansuran kereta
+            </span>
+            <strong id="dsrTotal">—</strong>
+          </div>
+
+          <div class="result-row">
+            <span data-ms="Baki gaji selepas komitmen"
+              data-en="Salary balance after commitments">
+              Baki gaji selepas komitmen
+            </span>
+            <strong id="dsrBalance">—</strong>
+          </div>
+        </div>
+
+        <h3 class="section-title" style="font-size:19px;margin-top:28px"
+          data-ms="Maklumat Pembiayaan Kenderaan"
+          data-en="Vehicle Financing Details">
+          Maklumat Pembiayaan Kenderaan
+        </h3>
+
+        <div class="grid">
+          <div class="field">
+            <label for="harga"
+              data-ms="Harga kenderaan (RM)"
+              data-en="Vehicle price (RM)">Harga kenderaan (RM)</label>
+            <input id="harga" type="number" min="1" step="100" value="80000">
+          </div>
+
+          <div class="field">
+            <label for="deposit"
+              data-ms="Deposit (RM)"
+              data-en="Deposit (RM)">Deposit (RM)</label>
+            <input id="deposit" type="number" min="0" step="100" value="8000">
+          </div>
+
+          <div class="field">
+            <label for="tempoh"
+              data-ms="Tempoh pembiayaan"
+              data-en="Financing tenure">Tempoh pembiayaan</label>
+            <select id="tempoh">
+              <option value="5" data-ms="5 tahun" data-en="5 years">5 tahun</option>
+              <option value="7" selected data-ms="7 tahun" data-en="7 years">7 tahun</option>
+              <option value="9" data-ms="9 tahun" data-en="9 years">9 tahun</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="kadar"
+              data-ms="Kadar faedah tahunan (%)"
+              data-en="Annual interest rate (%)">
+              Kadar faedah tahunan (%)
+            </label>
+            <input id="kadar" type="number" min="0" max="100"
+              step="0.01" value="3.18">
+          </div>
+        </div>
+
+        <button class="btn" id="kira" type="button"
+          data-ms="Kira Ansuran"
+          data-en="Calculate Instalment">Kira Ansuran</button>
 
         <div class="results" aria-live="polite">
-          <div>Anggaran ansuran bulanan</div>
+          <div data-ms="Anggaran ansuran bulanan"
+            data-en="Estimated monthly instalment">
+            Anggaran ansuran bulanan
+          </div>
           <div class="amount" id="ansuran">RM 0.00</div>
+
           <div class="result-row">
-            <span>Jumlah pembiayaan</span>
+            <span data-ms="Jumlah pembiayaan"
+              data-en="Financing amount">Jumlah pembiayaan</span>
             <strong id="pembiayaan">RM 0.00</strong>
           </div>
+
           <div class="result-row">
-            <span>Jumlah faedah</span>
+            <span data-ms="Jumlah faedah"
+              data-en="Total interest">Jumlah faedah</span>
             <strong id="faedah">RM 0.00</strong>
           </div>
+
           <div class="result-row">
-            <span>Jumlah bayaran ansuran</span>
+            <span data-ms="Jumlah bayaran ansuran"
+              data-en="Total instalment payments">Jumlah bayaran ansuran</span>
             <strong id="jumlah">RM 0.00</strong>
           </div>
+
           <div class="result-row">
-            <span>Jumlah kos termasuk deposit</span>
+            <span data-ms="Jumlah kos termasuk deposit"
+              data-en="Total cost including deposit">Jumlah kos termasuk deposit</span>
             <strong id="kos">RM 0.00</strong>
           </div>
-        
-<div class="dsr-panel" id="dsrPanel" aria-live="polite">
-  <div class="dsr-heading">Petunjuk Kemampuan Kewangan</div>
-  <p class="muted">
-    Penilaian berdasarkan gaji bersih, komitmen sedia ada
-    dan anggaran ansuran kereta.
-  </p>
+        </div>
 
-  <div id="dsrStatus" class="dsr-status dsr-yellow">
-    <span class="dsr-dot"></span>
-    <span>Menunggu maklumat gaji</span>
-  </div>
+        <div class="safe-car" style="margin-top:22px">
+          <h4 data-ms="Cadangan Harga Kereta Lebih Selamat"
+            data-en="Safer Car Price Recommendation">
+            Cadangan Harga Kereta Lebih Selamat
+          </h4>
 
-  <div class="dsr-meter">
-    <div class="dsr-meter-fill" id="dsrMeter"></div>
-  </div>
+          <p id="safeMessage">
+            Masukkan gaji bersih dan komitmen untuk mendapatkan cadangan.
+          </p>
 
-  <div class="result-row">
-    <span>Nisbah khidmat hutang (DSR)</span>
-    <strong id="dsrValue">—</strong>
-  </div>
+          <div class="safe-price" id="safePrice">—</div>
 
-  <div class="result-row">
-    <span>Jumlah komitmen termasuk kereta</span>
-    <strong id="dsrTotal">—</strong>
-  </div>
-
-  <div class="result-row">
-    <span>Baki gaji selepas komitmen</span>
-    <strong id="dsrBalance">—</strong>
-  </div>
-
-  <div class="safe-car">
-    <h3>Cadangan Harga Kereta</h3>
-    <p id="safeMessage">
-      Masukkan gaji dan komitmen untuk mendapatkan cadangan.
-    </p>
-    <div class="safe-price" id="safePrice">—</div>
-    <p class="muted" id="safeNote">
-      Anggaran berdasarkan sasaran DSR 30% dan maklumat pembiayaan
-      yang dimasukkan.
-    </p>
-  </div>
-</div>
-
+          <p class="muted" id="safeNote"
+            data-ms="Anggaran berdasarkan sasaran DSR maksimum 30%, kadar dan tempoh yang dipilih."
+            data-en="Estimate based on a maximum target DSR of 30%, the selected rate and tenure.">
+            Anggaran berdasarkan sasaran DSR maksimum 30%, kadar dan tempoh yang dipilih.
+          </p>
+        </div>
+      </div>
     </section>
 
     <section id="perbandingan">
-      <h2 class="section-title">Perbandingan Institusi Kewangan</h2>
-      <p class="muted">Bandingkan anggaran kos menggunakan kadar contoh yang boleh dikemas kini selepas disahkan.</p>
+      <h2 class="section-title"
+        data-ms="Perbandingan Institusi Kewangan"
+        data-en="Financial Institution Comparison">
+        Perbandingan Institusi Kewangan
+      </h2>
+
+      <p class="muted"
+        data-ms="Kadar faedah berdasarkan rujukan pasaran tahun 2026. Pengiraan ansuran dalam laman ini menggunakan kaedah kadar rata untuk simulasi; kadar dan kaedah sebenar mungkin berbeza mengikut produk, jenis kenderaan, tempoh dan kelayakan pemohon. Sahkan maklumat terkini dengan institusi kewangan sebelum membuat keputusan."
+        data-en="Interest rates based on 2026 market references. Instalments on this website use a flat-rate method for simulation; actual rates and methods may vary by product, vehicle type, tenure and applicant eligibility. Confirm the latest details with the financial institution before making a decision.">
+        Kadar faedah berdasarkan rujukan pasaran tahun 2026. Pengiraan ansuran dalam laman ini menggunakan kaedah kadar rata untuk simulasi; kadar dan kaedah sebenar mungkin berbeza mengikut produk, jenis kenderaan, tempoh dan kelayakan pemohon. Sahkan maklumat terkini dengan institusi kewangan sebelum membuat keputusan.
+      </p>
 
       <div class="card">
         <div class="table-wrap">
           <table>
             <thead>
               <tr>
-                <th>Institusi kewangan</th>
-                <th>Kadar contoh</th>
-                <th>Ansuran bulanan</th>
-                <th>Jumlah faedah</th>
-                <th>Jumlah kos termasuk deposit</th>
+                <th data-ms="Institusi kewangan"
+                  data-en="Financial institution">Institusi kewangan</th>
+                <th data-ms="Kadar faedah 2026"
+                  data-en="2026 interest rate">Kadar faedah 2026</th>
+                <th data-ms="Ansuran bulanan"
+                  data-en="Monthly instalment">Ansuran bulanan</th>
+                <th data-ms="Jumlah faedah"
+                  data-en="Total interest">Jumlah faedah</th>
+                <th data-ms="Jumlah kos termasuk deposit"
+                  data-en="Total cost including deposit">
+                  Jumlah kos termasuk deposit
+                </th>
               </tr>
             </thead>
             <tbody id="jadual"></tbody>
           </table>
         </div>
         <p id="cadangan" aria-live="polite"></p>
-       
-          
-      </div>
-    </section>
-
-    <section>
-      <h2 class="section-title">Tentang BizHire Smart+</h2>
-      <div class="card">
-        <p>BizHire Smart+ dibangunkan sebagai inovasi digital untuk memudahkan penyediaan jadual sewa beli kenderaan, pengiraan ansuran bulanan dan perbandingan kos pembiayaan daripada institusi kewangan terpilih.</p>
-        <p class="muted">Sistem ini bertujuan membantu pengguna menilai pilihan pembiayaan berdasarkan maklumat dan kemampuan kewangan mereka.</p>
       </div>
     </section>
   </main>
 
   <footer>
-  BizHire Smart+ · Platform Perbandingan Pembiayaan Kenderaan
-  <br>
-  Maklumat untuk rujukan umum. Tertakluk pada terma dan kelulusan institusi kewangan.
-</footer>
+    <span
+      data-ms="BizHire Smart+ · Platform Perbandingan Pembiayaan Kenderaan"
+      data-en="BizHire Smart+ · Vehicle Financing Comparison Platform">
+      BizHire Smart+ · Platform Perbandingan Pembiayaan Kenderaan
+    </span>
+    <br>
+    <span
+      data-ms="Maklumat untuk rujukan umum. Tertakluk pada terma dan kelulusan institusi kewangan."
+      data-en="For general reference only. Subject to financial institution terms and approval.">
+      Maklumat untuk rujukan umum. Tertakluk pada terma dan kelulusan institusi kewangan.
+    </span>
+  </footer>
 
   <script>
+    let bahasa = "ms";
+
     const wang = nilai => nilai.toLocaleString("en-MY", {
       style: "currency",
-      currency: "MYR"
+      currency: "MYR",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
     });
 
-    // Kadar berikut ialah data contoh, bukan kadar sebenar bank.
+    // Kadar rujukan yang digunakan dalam simulasi laman web.
+    // Sahkan kadar sebenar dengan institusi kewangan berkaitan.
     const institusi = [
-  { nama: "Ambank", kadar: 3.05 },
-  { nama: "Maybank", kadar: 3.30 },
-  { nama: "CIMB Bank", kadar: 3.50},
-  { nama: "Public Bank", kadar: 3.20 },
-  { nama: "RHB Bank", kadar: 3.40 },
-  { nama: "Hong Leong Bank", kadar: 3.00 },
-  
-];
+      { nama: "AmBank", kadar: 3.05 },
+      { nama: "Maybank", kadar: 3.40 },
+      { nama: "CIMB Bank", kadar: 2.85 },
+      { nama: "Public Bank", kadar: 3.31 },
+      { nama: "RHB Bank", kadar: 3.18 },
+      { nama: "Hong Leong Bank", kadar: 3.24 }
+    ];
+
+    const teks = {
+      ms: {
+        needSalary: "Masukkan gaji bersih untuk semakan",
+        needBoth: "Masukkan gaji bersih dan komitmen",
+        checkVehicle: "Semak maklumat kenderaan",
+        green: "HIJAU — Mampu",
+        yellow: "KUNING — Sederhana",
+        red: "MERAH — Komitmen tinggi",
+        noRange: "Tiada julat sesuai dikenal pasti",
+        lowerCommit: "Komitmen sedia ada telah mencapai atau melebihi sasaran DSR 30%. Pertimbangkan untuk mengurangkan komitmen dahulu.",
+        currentHigh: "Ansuran kenderaan semasa menjadikan DSR tinggi. Pertimbangkan julat harga lebih rendah ini.",
+        currentMid: "Ansuran semasa melebihi sasaran DSR 30%. Julat ini boleh dijadikan panduan untuk mengurangkan ansuran.",
+        priceHigh: "Harga kenderaan semasa melebihi anggaran had kemampuan. Pertimbangkan julat harga yang dicadangkan.",
+        priceOk: "Ini ialah anggaran julat harga berdasarkan sasaran DSR 30% atau kurang, mengikut kadar, tempoh dan deposit yang dimasukkan.",
+        safeStart: "Masukkan gaji bersih dan komitmen sedia ada untuk mendapatkan cadangan.",
+        fixVehicle: "Betulkan maklumat kenderaan untuk mengira cadangan harga.",
+        invalid: "Harga mesti melebihi sifar, deposit mesti lebih rendah daripada harga dan kadar mestilah antara 0% hingga 100%.",
+        best: "★ Kos terendah*",
+        recommendation: "Berdasarkan kadar rujukan 2026 yang dipaparkan, ",
+        recommendationEnd: " menunjukkan jumlah kos terendah dalam pengiraan ini. Kadar dan kaedah pengiraan sebenar mungkin berbeza; sila sahkan dengan institusi kewangan.",
+        calculateError: "Semak input"
+      },
+      en: {
+        needSalary: "Enter your net salary to check affordability",
+        needBoth: "Enter your net salary and commitments",
+        checkVehicle: "Check vehicle details",
+        green: "GREEN — Affordable",
+        yellow: "YELLOW — Moderate",
+        red: "RED — High commitments",
+        noRange: "No suitable range identified",
+        lowerCommit: "Your existing commitments have reached or exceeded the 30% DSR target. Consider reducing commitments first.",
+        currentHigh: "Your current vehicle instalment results in a high DSR. Consider this lower price range.",
+        currentMid: "Your current instalment exceeds the 30% DSR target. Use this range as a guide to reduce the instalment.",
+        priceHigh: "The current vehicle price exceeds the estimated affordability limit. Consider the recommended price range.",
+        priceOk: "This estimated price range is based on a target DSR of 30% or less, using the entered rate, tenure and deposit.",
+        safeStart: "Enter your net salary and existing commitments to get a recommendation.",
+        fixVehicle: "Correct the vehicle details to calculate a price recommendation.",
+        invalid: "The price must be above zero, the deposit must be lower than the price, and the rate must be between 0% and 100%.",
+        best: "★ Lowest cost*",
+        recommendation: "Based on the displayed 2026 reference rates, ",
+        recommendationEnd: " has the lowest total cost in this calculation. Actual rates and calculation methods may vary; please confirm with the financial institution.",
+        calculateError: "Check inputs"
+      }
+    };
+
+    function setLanguage(lang) {
+      bahasa = lang;
+      document.documentElement.lang = lang === "ms" ? "ms" : "en";
+
+      document.title = lang === "ms"
+        ? "BizHire Smart+ | Pembiayaan Kenderaan"
+        : "BizHire Smart+ | Vehicle Financing";
+
+      document.querySelectorAll("[data-ms][data-en]").forEach(el => {
+        el.textContent = el.dataset[lang];
+      });
+
+      document.querySelectorAll(
+        "[data-ms-placeholder][data-en-placeholder]"
+      ).forEach(el => {
+        el.placeholder = el.dataset[lang + "Placeholder"];
+      });
+
+      kemasKini();
+    }
 
     function kiraKos(harga, deposit, tahun, kadar) {
       const prinsipal = harga - deposit;
@@ -253,143 +699,191 @@
     }
 
     function kemasKini() {
+      const t = teks[bahasa];
+
       const harga = Number(document.getElementById("harga").value);
       const deposit = Number(document.getElementById("deposit").value);
       const tahun = Number(document.getElementById("tempoh").value);
       const kadar = Number(document.getElementById("kadar").value);
+      const gajiText = document.getElementById("gaji").value;
+      const komitmenText = document.getElementById("komitmen").value;
 
-      if (
-        !Number.isFinite(harga) ||
-        !Number.isFinite(deposit) ||
-        !Number.isFinite(kadar) ||
-        harga <= 0 || deposit < 0 || deposit >= harga ||
-        kadar < 0 || kadar > 100
-      ) {
-        document.getElementById("ansuran").textContent =
-          "Sila semak input";
-        document.getElementById("pembiayaan").textContent = "—";
-        document.getElementById("faedah").textContent = "—";
-        document.getElementById("jumlah").textContent = "—";
-        document.getElementById("kos").textContent = "—";
+      const statusBox = document.getElementById("dsrStatus");
+      const statusLabel = document.getElementById("dsrLabel");
+      const meter = document.getElementById("dsrMeter");
+      const safePrice = document.getElementById("safePrice");
+      const safeMessage = document.getElementById("safeMessage");
+
+      const inputSah =
+        Number.isFinite(harga) &&
+        Number.isFinite(deposit) &&
+        Number.isFinite(kadar) &&
+        harga > 0 &&
+        deposit >= 0 &&
+        deposit < harga &&
+        kadar >= 0 &&
+        kadar <= 100;
+
+      if (!inputSah) {
+        document.getElementById("ansuran").textContent = t.calculateError;
+
+        ["pembiayaan", "faedah", "jumlah", "kos"].forEach(id => {
+          document.getElementById(id).textContent = "—";
+        });
+
         document.getElementById("jadual").innerHTML = "";
-        document.getElementById("cadangan").textContent =
-          "Harga mesti melebihi sifar, deposit mesti lebih rendah daripada harga, dan kadar mestilah antara 0% hingga 100%.";
+        document.getElementById("cadangan").textContent = t.invalid;
+
+        statusBox.className = "dsr-status dsr-yellow";
+        statusLabel.textContent = t.checkVehicle;
+
+        ["dsrValue", "dsrTotal", "dsrBalance"].forEach(id => {
+          document.getElementById(id).textContent = "—";
+        });
+
+        meter.style.width = "0";
+        safePrice.textContent = "—";
+        safeMessage.textContent = t.fixVehicle;
         return;
       }
 
       const hasil = kiraKos(harga, deposit, tahun, kadar);
+
       document.getElementById("ansuran").textContent = wang(hasil.bulanan);
       document.getElementById("pembiayaan").textContent = wang(hasil.prinsipal);
       document.getElementById("faedah").textContent = wang(hasil.faedah);
       document.getElementById("jumlah").textContent = wang(hasil.jumlahAnsuran);
-      
-const gajiInput = document.getElementById("gaji").value;
-const komitmenInput = document.getElementById("komitmen").value;
-const panelStatus = document.getElementById("dsrStatus");
-const meter = document.getElementById("dsrMeter");
+      document.getElementById("kos").textContent = wang(hasil.kosKeseluruhan);
 
-if (gajiInput === "" || komitmenInput === "" ||
-    Number(gajiInput) <= 0 || Number(komitmenInput) < 0) {
-  panelStatus.className = "dsr-status dsr-yellow";
-  panelStatus.innerHTML =
-    '<span class="dsr-dot"></span><span>Masukkan maklumat gaji</span>';
-  document.getElementById("dsrValue").textContent = "—";
-  document.getElementById("dsrTotal").textContent = "—";
-  document.getElementById("dsrBalance").textContent = "—";
-  meter.style.width = "0";
-  document.getElementById("safePrice").textContent = "—";
-  document.getElementById("safeMessage").textContent =
-    "Masukkan gaji bersih dan komitmen bulanan untuk melihat cadangan.";
-} else {
-  const gaji = Number(gajiInput);
-  const komitmen = Number(komitmenInput);
-  const jumlahKomitmen = komitmen + hasil.bulanan;
-  const dsr = (jumlahKomitmen / gaji) * 100;
-  const baki = gaji - jumlahKomitmen;
+      if (
+        gajiText === "" ||
+        komitmenText === "" ||
+        !Number.isFinite(Number(gajiText)) ||
+        !Number.isFinite(Number(komitmenText)) ||
+        Number(gajiText) <= 0 ||
+        Number(komitmenText) < 0
+      ) {
+        statusBox.className = "dsr-status dsr-yellow";
+        statusLabel.textContent = t.needBoth;
 
-  document.getElementById("dsrValue").textContent =
-    dsr.toFixed(2) + "%";
-  document.getElementById("dsrTotal").textContent =
-    wang(jumlahKomitmen);
-  document.getElementById("dsrBalance").textContent = wang(baki);
+        ["dsrValue", "dsrTotal", "dsrBalance"].forEach(id => {
+          document.getElementById(id).textContent = "—";
+        });
 
-  if (dsr <= 30) {
-    panelStatus.className = "dsr-status dsr-green";
-    panelStatus.innerHTML =
-      '<span class="dsr-dot"></span><span>Hijau — Komitmen rendah</span>';
-    meter.style.background = "#15803d";
-  } else if (dsr <= 40) {
-    panelStatus.className = "dsr-status dsr-yellow";
-    panelStatus.innerHTML =
-      '<span class="dsr-dot"></span><span>Kuning — Komitmen sederhana</span>';
-    meter.style.background = "#d97706";
-  } else {
-    panelStatus.className = "dsr-status dsr-red";
-    panelStatus.innerHTML =
-      '<span class="dsr-dot"></span><span>Merah — Komitmen tinggi</span>';
-    meter.style.background = "#dc2626";
-  }
+        meter.style.width = "0";
+        safePrice.textContent = "—";
+        safeMessage.textContent = t.safeStart;
+      } else {
+        const gaji = Number(gajiText);
+        const komitmen = Number(komitmenText);
 
-  meter.style.width = Math.min(dsr, 100) + "%";
+        const jumlahKomitmen = komitmen + hasil.bulanan;
+        const dsr = jumlahKomitmen / gaji * 100;
+        const baki = gaji - jumlahKomitmen;
 
-  // Sasaran simulasi: DSR tidak melebihi 30%.
-  const ansuranSelamat = Math.max(0, gaji * 0.30 - komitmen);
-  const bulan = tahun * 12;
-  const faktorFaedah = 1 + (kadar / 100) * tahun;
+        document.getElementById("dsrValue").textContent =
+          dsr.toFixed(2) + "%";
 
-  // Anggaran harga maksimum termasuk deposit.
-  const hargaMaksimum =
-    deposit + (ansuranSelamat * bulan / faktorFaedah);
+        document.getElementById("dsrTotal").textContent =
+          wang(jumlahKomitmen);
 
-  const hargaBulat = Math.floor(hargaMaksimum / 1000) * 1000;
-  const hargaBawah = Math.floor((hargaMaksimum * 0.8) / 1000) * 1000;
+        document.getElementById("dsrBalance").textContent =
+          wang(baki);
 
-  if (ansuranSelamat <= 0 || hargaBulat <= 0) {
-    document.getElementById("safePrice").textContent =
-      "Belum dapat dicadangkan";
-    document.getElementById("safeMessage").textContent =
-      "Komitmen sedia ada telah mencapai atau melebihi sasaran 30% gaji. Semak bajet dan komitmen dahulu.";
-  } else {
-    document.getElementById("safePrice").textContent =
-      wang(hargaBawah) + " – " + wang(hargaBulat);
-    document.getElementById("safeMessage").textContent =
-      harga > hargaMaksimum
-        ? "Harga kenderaan semasa melebihi anggaran had kemampuan. Pertimbangkan julat harga di bawah."
-        : "Ini ialah julat harga anggaran yang boleh dipertimbangkan berdasarkan sasaran kemampuan.";
-  }
-}
+        if (dsr <= 30) {
+          statusBox.className = "dsr-status dsr-green";
+          statusLabel.textContent = t.green;
+          meter.style.background = "#15803d";
+        } else if (dsr <= 40) {
+          statusBox.className = "dsr-status dsr-yellow";
+          statusLabel.textContent = t.yellow;
+          meter.style.background = "#d97706";
+        } else {
+          statusBox.className = "dsr-status dsr-red";
+          statusLabel.textContent = t.red;
+          meter.style.background = "#dc2626";
+        }
 
+        meter.style.width = Math.min(dsr, 100) + "%";
 
-      const perbandingan = institusi.map(bank => ({
-        ...bank,
-      ["harga", "deposit", "tempoh", "kadar", "gaji", "komitmen"].forEach(id => {
-      })).sort((a, b) => a.hasil.kosKeseluruhan - b.hasil.kosKeseluruhan);
+        const ansuranMaksimum = Math.max(0, gaji * 0.30 - komitmen);
+        const bulan = tahun * 12;
+        const faktorFaedah = 1 + (kadar / 100) * tahun;
 
-      document.getElementById("jadual").innerHTML = perbandingan.map(
-        (bank, indeks) => `
+        const hargaMaksimum =
+          deposit + ansuranMaksimum * bulan / faktorFaedah;
+
+        const hargaAtas =
+          Math.floor(Math.max(0, hargaMaksimum) / 1000) * 1000;
+
+        const hargaBawah =
+          Math.floor(Math.max(0, hargaMaksimum) * 0.8 / 1000) * 1000;
+
+        if (ansuranMaksimum <= 0 || hargaAtas <= 0) {
+          safePrice.textContent = t.noRange;
+          safeMessage.textContent = t.lowerCommit;
+        } else {
+          safePrice.textContent =
+            wang(hargaBawah) + " – " + wang(hargaAtas);
+
+          if (dsr > 40) {
+            safeMessage.textContent = t.currentHigh;
+          } else if (dsr > 30) {
+            safeMessage.textContent = t.currentMid;
+          } else if (harga > hargaMaksimum) {
+            safeMessage.textContent = t.priceHigh;
+          } else {
+            safeMessage.textContent = t.priceOk;
+          }
+        }
+      }
+
+      const perbandingan = institusi
+        .map(bank => ({
+          ...bank,
+          hasil: kiraKos(harga, deposit, tahun, bank.kadar)
+        }))
+        .sort((a, b) =>
+          a.hasil.kosKeseluruhan - b.hasil.kosKeseluruhan
+        );
+
+      document.getElementById("jadual").innerHTML =
+        perbandingan.map((bank, indeks) => `
           <tr>
-            <td>${bank.nama}${indeks === 0 ? ' <span class="best">★ Kos terendah*</span>' : ''}</td>
+            <td>
+              ${bank.nama}
+              ${indeks === 0
+                ? ` <span class="best">${t.best}</span>`
+                : ""}
+            </td>
             <td>${bank.kadar.toFixed(2)}%</td>
             <td>${wang(bank.hasil.bulanan)}</td>
             <td>${wang(bank.hasil.faedah)}</td>
             <td>${wang(bank.hasil.kosKeseluruhan)}</td>
           </tr>
-        `
-      ).join("");
+        `).join("");
 
       document.getElementById("cadangan").textContent =
-        "Berdasarkan kadar contoh yang dimasukkan, " +
+        t.recommendation +
         perbandingan[0].nama +
-        " menunjukkan jumlah kos terendah dalam simulasi ini. " +
-        "Ini bukan cadangan atau tawaran rasmi institusi kewangan.";
+        t.recommendationEnd;
     }
 
-    document.getElementById("kira").addEventListener("click", kemasKini);
+    document.getElementById("languageSelect").addEventListener(
+      "change",
+      e => setLanguage(e.target.value)
+    );
 
-    ["harga", "deposit", "tempoh", "kadar"].forEach(id => {
-      document.getElementById(id).addEventListener("input", kemasKini);
-      document.getElementById(id).addEventListener("change", kemasKini);
-    });
+    document.getElementById("kira").addEventListener(
+      "click",
+      kemasKini
+    );
+
+    ["harga", "deposit", "tempoh", "kadar", "gaji", "komitmen"]
+      .forEach(id => {
+        document.getElementById(id).addEventListener("input", kemasKini);
+        document.getElementById(id).addEventListener("change", kemasKini);
+      });
 
     kemasKini();
   </script>
