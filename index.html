@@ -5,389 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
  
-
-/* Petunjuk kemampuan kewangan */
-.dsr-panel {
-  background: #ffffff;
-  border: 1px solid #e0e6ed;
-  border-radius: 12px;
-  padding: 22px;
-  margin-top: 22px;
-}
-
-.dsr-heading {
-  color: #142b46;
-  font-size: 19px;
-  font-weight: bold;
-  margin-bottom: 6px;
-}
-
-.dsr-status {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 14px;
-  border-radius: 30px;
-  font-weight: bold;
-  font-size: 14px;
-  margin: 12px 0;
-}
-
-.dsr-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: currentColor;
-}
-
-.dsr-green {
-  color: #166534;
-  background: #dcfce7;
-}
-
-.dsr-yellow {
-  color: #92400e;
-  background: #fef3c7;
-}
-
-.dsr-red {
-  color: #991b1b;
-  background: #fee2e2;
-}
-
-.safe-car {
-  background: #f0f8f6;
-  border: 1px solid #d4e9e3;
-  padding: 18px;
-  border-radius: 10px;
-  margin-top: 18px;
-}
-
-.safe-car h3 {
-  color: #142b46;
-  margin: 0 0 8px;
-}
-
-.safe-price {
-  font-size: 25px;
-  font-weight: bold;
-  color: #187c6c;
-  margin: 8px 0;
-}
-
-.dsr-meter {
-  width: 100%;
-  height: 10px;
-  background: #e5e7eb;
-  border-radius: 10px;
-  overflow: hidden;
-  margin: 12px 0;
-}
-
-.dsr-meter-fill {
-  height: 100%;
-  width: 0;
-  background: #15803d;
-  transition: width 0.3s, background 0.3s;
-}
-
-  * {
-    box-sizing: border-box;
-  }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: #243247;
-    background: #f5f7fa;
-    line-height: 1.6;
-  }
-
-  header {
-    background: #142b46;
-    color: white;
-    padding: 18px 7%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    border-bottom: 3px solid #5bc4ae;
-  }
-
-  .logo {
-    font-size: 23px;
-    font-weight: bold;
-    letter-spacing: -0.5px;
-  }
-
-  .logo span {
-    color: #70d5bd;
-  }
-
-  nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 25px;
-  }
-
-  nav a {
-    color: #e3eaf2;
-    text-decoration: none;
-    font-size: 14px;
-    transition: color 0.2s;
-  }
-
-  nav a:hover {
-    color: #70d5bd;
-  }
-
-  .hero {
-    background: #142b46;
-    color: white;
-    padding: 65px 9% 75px;
-    border-bottom-left-radius: 24px;
-    border-bottom-right-radius: 24px;
-  }
-
-  .hero p:first-child {
-    color: #70d5bd;
-    font-size: 12px;
-    font-weight: bold;
-    letter-spacing: 2px;
-  }
-
-  .hero h1 {
-    max-width: 700px;
-    font-size: clamp(32px, 5vw, 48px);
-    line-height: 1.2;
-    margin: 18px 0;
-    letter-spacing: -1px;
-  }
-
-  .hero p {
-    max-width: 620px;
-    color: #d4deea;
-    font-size: 16px;
-  }
-
-  .btn {
-    display: inline-block;
-    background: #70d5bd;
-    color: #142b46;
-    padding: 12px 22px;
-    margin-top: 12px;
-    border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: bold;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-
-  .btn:hover {
-    background: #91e3d0;
-  }
-
-  main {
-    max-width: 1120px;
-    margin: auto;
-    padding: 30px 24px 55px;
-  }
-
-  section {
-    margin: 38px 0 48px;
-    scroll-margin-top: 20px;
-  }
-
-  .section-title {
-    margin-bottom: 5px;
-    color: #142b46;
-    font-size: 25px;
-    letter-spacing: -0.4px;
-  }
-
-  .muted {
-    color: #68778a;
-    font-size: 14px;
-  }
-
-  .card {
-    background: #ffffff;
-    padding: 28px;
-    margin-top: 20px;
-    border: 1px solid #e0e6ed;
-    border-radius: 10px;
-    box-shadow: 0 5px 18px rgba(20, 43, 70, 0.04);
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 20px;
-  }
-
-  .field {
-    margin-bottom: 12px;
-  }
-
-  label {
-    display: block;
-    margin-bottom: 7px;
-    color: #35465c;
-    font-size: 14px;
-    font-weight: bold;
-  }
-
-  input,
-  select {
-    width: 100%;
-    padding: 12px 13px;
-    color: #243247;
-    background: #ffffff;
-    border: 1px solid #cbd5e1;
-    border-radius: 6px;
-    font: inherit;
-    outline: none;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-
-  input:focus,
-  select:focus {
-    border-color: #258b7a;
-    box-shadow: 0 0 0 3px rgba(37, 139, 122, 0.12);
-  }
-
-  .results {
-    background: #f0f8f6;
-    border: 1px solid #d4e9e3;
-    border-radius: 8px;
-    padding: 22px;
-    margin-top: 25px;
-  }
-
-  .amount {
-    color: #187c6c;
-    font-size: clamp(27px, 4vw, 35px);
-    font-weight: bold;
-    margin: 4px 0 12px;
-  }
-
-  .result-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 15px;
-    padding: 11px 0;
-    border-bottom: 1px solid #dce9e5;
-    font-size: 14px;
-  }
-
-  .result-row:last-child {
-    border-bottom: none;
-  }
-
-  .result-row strong {
-    text-align: right;
-  }
-
-  .table-wrap {
-    overflow-x: auto;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 650px;
-  }
-
-  th,
-  td {
-    text-align: left;
-    padding: 15px 13px;
-    border-bottom: 1px solid #e5eaf0;
-    font-size: 14px;
-    white-space: normal;
-  }
-
-  th {
-    background: #edf2f7;
-    color: #263d58;
-    font-weight: bold;
-  }
-
-  tbody tr:hover {
-    background: #f7fafc;
-  }
-
-  .best {
-    display: inline-block;
-    margin-left: 4px;
-    color: #187c6c;
-    font-size: 12px;
-  }
-
-  #cadangan {
-    font-size: 14px;
-    color: #35465c;
-  }
-
-  .note {
-    background: #fff8e9;
-    color: #765a28;
-    padding: 14px 16px;
-    border-left: 4px solid #d9ad53;
-    border-radius: 4px;
-    font-size: 13px;
-  }
-
-  footer {
-    background: #142b46;
-    color: #d4deea;
-    text-align: center;
-    padding: 28px 18px;
-    font-size: 13px;
-  }
-
-  @media (max-width: 650px) {
-    header {
-      padding: 17px 20px;
-    }
-
-    nav {
-      gap: 15px;
-    }
-
-    .hero {
-      padding: 40px 22px 48px;
-      border-bottom-left-radius: 14px;
-      border-bottom-right-radius: 14px;
-    }
-
-    main {
-      padding: 15px 14px 35px;
-    }
-
-    .grid {
-      grid-template-columns: 1fr;
-      gap: 8px;
-    }
-
-    .card {
-      padding: 18px;
-    }
-
-    .result-row {
-      font-size: 13px;
-    }
-  }
-</style>
-
+  
 </head>
 <body>
   <header>
@@ -422,9 +40,59 @@
   <label for="komitmen">Komitmen bulanan sedia ada (RM)</label>
   <input id="komitmen" type="number" min="0" value="0">
 </div>
+<div class="result-row">
+  <span>Jumlah kos termasuk deposit</span>
+  <strong id="kos">RM 0.00</strong>
+</div>
+</div>
+
+<div class="dsr-panel" id="dsrPanel" aria-live="polite">
+  <h3>🚦 Petunjuk Kemampuan Kewangan</h3>
+  <p class="muted">Berdasarkan gaji, komitmen dan ansuran kereta.</p>
+
+  <div id="dsrStatus" class="dsr-status dsr-yellow">
+    <span class="dsr-light"></span>
+    <span id="dsrLabel">Masukkan maklumat kewangan</span>
+  </div>
+
+  <div class="dsr-track">
+    <div id="dsrMeter"></div>
+  </div>
+
+  <div class="result-row">
+    <span>Nisbah Khidmat Hutang (DSR)</span>
+    <strong id="dsrValue">—</strong>
+  </div>
+
+  <div class="result-row">
+    <span>Jumlah komitmen termasuk ansuran kereta</span>
+    <strong id="dsrTotal">—</strong>
+  </div>
+
+  <div class="result-row">
+    <span>Baki gaji selepas komitmen</span>
+    <strong id="dsrBalance">—</strong>
+  </div>
+
+  <div class="safe-car">
+    <h4>Cadangan Harga Kereta Lebih Selamat</h4>
+    <p id="safeMessage">
+      Masukkan maklumat kewangan untuk mendapatkan cadangan.
+    </p>
+    <div class="safe-price" id="safePrice">—</div>
+    <p class="muted" id="safeNote">
+      Anggaran berdasarkan sasaran DSR maksimum 30%.
+    </p>
+  </div>
+</div>
+
 
 
             <input id="harga" type="number" min="1" value="80000">
+                      </div>
+          <div class="field">
+            <label for="harga kenderaan">Harga kenderaan (RM)</label>
+            <input id="harga kenderaan" type="number" min="0" value="8000">
           </div>
           <div class="field">
             <label for="deposit">Deposit (RM)</label>
