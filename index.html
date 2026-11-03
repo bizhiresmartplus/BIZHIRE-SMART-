@@ -1,3 +1,692 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BizHire Smart+</title>
+<style>
+:root{--n:#091d4b;--n2:#17366d;--c:#65d2e9;--bg:#f8f7f2;--ink:#243149;--mut:#69758a;--line:#e4e8f0}
+*{box-sizing:border-box}
+body{margin:0;font:15px Arial,sans-serif;background:var(--bg);color:var(--ink)}
+button,input,select{font:inherit}button{cursor:pointer}
+.hide{display:none!important}
+.brand{font-size:23px;font-weight:800;color:var(--n)}
+.brand b{color:#39a9c4}
+.auth{min-height:100vh;display:grid;grid-template-columns:1fr 1fr}
+.hero{background:linear-gradient(145deg,var(--n),var(--n2));color:white;padding:9%;display:flex;flex-direction:column;justify-content:center}
+.hero h1{font-size:clamp(34px,4vw,54px);line-height:1.1}
+.hero p{color:#d5def0;line-height:1.7;max-width:470px}
+.panel{display:grid;place-items:center;padding:25px}
+.box{background:white;border:1px solid var(--line);border-radius:20px;padding:32px;width:min(440px,100%);box-shadow:0 12px 40px #0b24500d}
+.box h2{color:var(--n);margin:25px 0 7px}
+.muted,.hint{color:var(--mut);font-size:13px;line-height:1.55}
+.field{margin:15px 0}
+.field label,.fg label{display:block;font-size:13px;font-weight:bold;margin-bottom:7px}
+.field input,.fg input,.fg select{width:100%;padding:12px;border:1px solid #dce2ec;border-radius:9px;background:white}
+.field input:focus,.fg input:focus,.fg select:focus{outline:2px solid #65d2e933;border-color:#55a9c3}
+.btn{border:0;border-radius:9px;background:var(--n);color:white;padding:12px 16px;font-weight:bold}
+.btn:hover{background:var(--n2)}
+.light{background:#edf2f8;color:var(--n)}
+.danger{background:#fff0f1;color:#a52d3b}
+.full{width:100%}
+.link{border:0;background:none;color:#176e9a;font-weight:bold}
+.switch{text-align:center;font-size:13px;color:var(--mut);margin-top:18px}
+.err{color:#b52e42;font-size:13px;min-height:16px}
+.app{min-height:100vh}
+.top{height:68px;background:white;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 22px;position:sticky;top:0;z-index:4}
+.topright{display:flex;align-items:center;gap:9px}
+.chip{background:#f0f3f8;border-radius:20px;padding:9px 12px;color:var(--mut);font-size:13px}
+.layout{display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 68px)}
+aside{background:var(--n);padding:18px 12px}
+.nav{display:block;width:100%;text-align:left;padding:12px;border:0;border-radius:9px;background:none;color:#dbe4f4;margin:3px 0}
+.nav.active,.nav:hover{background:#ffffff20;color:white}
+.main{padding:27px;max-width:1450px;width:100%;margin:auto}
+.page{display:none}.page.active{display:block}
+.head{margin-bottom:22px}
+.head h1{color:var(--n);margin:0 0 7px;font-size:27px}
+.head p{color:var(--mut);font-size:14px;margin:0}
+.card,.metric{background:white;border:1px solid var(--line);border-radius:14px;padding:19px;margin-bottom:16px}
+.card h3{margin:0 0 16px;color:var(--n);font-size:16px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.fg input[readonly]{background:#f1f4f8}
+.metric small{color:var(--mut)}
+.metric strong{display:block;font-size:24px;color:var(--n);margin-top:8px}
+.status{padding:12px;border-radius:9px;font-weight:bold;font-size:13px;margin-top:12px}
+.green{background:#e8f7ef;color:#14734d}
+.yellow{background:#fff5df;color:#946313}
+.red{background:#fff0f1;color:#a52d3b}
+.bar{height:8px;background:#edf0f5;border-radius:20px;margin-top:10px;overflow:hidden}
+.bar span{display:block;height:100%;background:var(--c)}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin:14px 0}
+.pill{display:inline-block;background:#edf4fb;border:1px solid #dce7f2;border-radius:20px;padding:8px 11px;margin:5px 5px 0 0;font-size:12px}
+.tablewrap{overflow:auto}
+table{border-collapse:collapse;width:100%;min-width:580px;font-size:13px}
+th,td{text-align:left;padding:11px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{background:#f3f6fa;color:#536078}
+.note{font-size:12px;color:var(--mut);line-height:1.55;margin-top:14px}
+.toast{position:fixed;bottom:18px;right:18px;background:var(--n);color:white;padding:13px 17px;border-radius:10px;z-index:9}
+@media(max-width:800px){
+.auth{grid-template-columns:1fr}.hero{display:none}
+.layout{grid-template-columns:1fr}
+aside{display:flex;overflow:auto;padding:8px;gap:4px}
+.nav{white-space:nowrap;width:auto;margin:0}
+.main{padding:16px}
+}
+@media(max-width:550px){
+.grid,.three{grid-template-columns:1fr}
+.main{padding:12px}.box{padding:24px}
+.chip{display:none}.top{padding:0 12px}
+.top .brand{font-size:19px}
+}
+@media print{
+.top,aside,.actions{display:none!important}
+.layout{display:block}.main{padding:0}
+.page{display:none!important}
+#compare.page{display:block!important}
+body{background:white}
+}
+</style>
+</head>
+<body>
+
+<!-- SIGN UP -->
+<section id="signup" class="auth">
+<div class="hero">
+<div class="brand" style="color:white">BizHire <b>Smart+</b></div>
+<h1>Rancang pembiayaan kenderaan dengan lebih bijak.</h1>
+<p>Platform simulasi untuk menilai kemampuan kewangan dan membandingkan anggaran pembiayaan kenderaan.</p>
+<p>✓ Semakan kemampuan kewangan<br>
+✓ Kadar rujukan bank tersedia<br>
+✓ Perbandingan ansuran dan kos</p>
+</div>
+
+<div class="panel">
+<div class="box">
+<div class="brand">BizHire <b>Smart+</b></div>
+<h2>Cipta akaun</h2>
+<p class="muted">Daftar untuk mula menggunakan BizHire Smart+.</p>
+
+<form id="signupForm">
+<div class="field">
+<label>Nama penuh</label>
+<input id="suName" required autocomplete="name">
+</div>
+
+<div class="field">
+<label>Alamat e-mel</label>
+<input id="suEmail" type="email" required autocomplete="email">
+</div>
+
+<div class="field">
+<label>Kata laluan</label>
+<input id="suPass" type="password" minlength="6" required autocomplete="new-password">
+</div>
+
+<div class="field">
+<label>Sahkan kata laluan</label>
+<input id="suConfirm" type="password" minlength="6" required>
+</div>
+
+<button class="btn full">Daftar Akaun</button>
+<div id="suErr" class="err"></div>
+</form>
+
+<p class="switch">Sudah mempunyai akaun?
+<button class="link" onclick="authView('login')">Log masuk</button>
+</p>
+
+<p class="note">Prototaip ini menyimpan akaun pada pelayar/peranti ini sahaja. Jangan gunakan kata laluan sebenar atau maklumat sulit.</p>
+</div>
+</div>
+</section>
+
+<!-- LOG IN -->
+<section id="login" class="auth hide">
+<div class="hero">
+<div class="brand" style="color:white">BizHire <b>Smart+</b></div>
+<h1>Selamat kembali.</h1>
+<p>Teruskan perancangan pembiayaan kenderaan anda.</p>
+</div>
+
+<div class="panel">
+<div class="box">
+<div class="brand">BizHire <b>Smart+</b></div>
+<h2>Log masuk</h2>
+<p class="muted">Masukkan e-mel dan kata laluan anda.</p>
+
+<form id="loginForm">
+<div class="field">
+<label>Alamat e-mel</label>
+<input id="liEmail" type="email" required>
+</div>
+
+<div class="field">
+<label>Kata laluan</label>
+<input id="liPass" type="password" required>
+</div>
+
+<button class="btn full">Log Masuk</button>
+<div id="liErr" class="err"></div>
+</form>
+
+<p class="switch">Belum mempunyai akaun?
+<button class="link" onclick="authView('signup')">Daftar sekarang</button>
+</p>
+</div>
+</div>
+</section>
+
+<!-- MAIN APP -->
+<div id="app" class="app hide">
+<header class="top">
+<div class="brand">BizHire <b>Smart+</b></div>
+<div class="topright">
+<button class="btn light" onclick="toggleLang()" id="langBtn">English</button>
+<span class="chip" id="greet"></span>
+<button class="btn danger" onclick="logout()">Log Keluar</button>
+</div>
+</header>
+
+<div class="layout">
+<aside>
+<button class="nav active" onclick="page('dashboard',this)">▦ Dashboard</button>
+<button class="nav" onclick="page('finance',this)">▤ Maklumat Kewangan</button>
+<button class="nav" onclick="page('vehicle',this)">▣ Maklumat Kenderaan</button>
+<button class="nav" onclick="page('banks',this)">▥ Institusi Kewangan</button>
+<button class="nav" onclick="page('compare',this)">⇄ Perbandingan</button>
+<button class="nav" onclick="page('schedule',this)">▤ Jadual Bayaran</button>
+</aside>
+
+<main class="main">
+
+<!-- DASHBOARD -->
+<section id="dashboard" class="page active">
+<div class="head">
+<h1>Dashboard</h1>
+<p>Ringkasan maklumat dan simulasi pembiayaan anda.</p>
+</div>
+
+<div class="grid three">
+<div class="metric">
+<small>Gaji Bersih Bulanan</small>
+<strong id="dSalary">RM0.00</strong>
+</div>
+<div class="metric">
+<small>Harga Kenderaan</small>
+<strong id="dPrice">RM0.00</strong>
+</div>
+<div class="metric">
+<small>Institusi Dipilih</small>
+<strong id="dBanks">3</strong>
+</div>
+</div>
+
+<div class="card">
+<h3>Petunjuk Kemampuan Kewangan (DSR)</h3>
+<div class="grid">
+<div>
+<strong id="dDsr" style="font-size:26px;color:var(--n)">—</strong>
+<p id="dDsrText" class="muted">Masukkan maklumat kewangan.</p>
+<div class="bar"><span id="dBar"></span></div>
+</div>
+<div>
+<small>Anggaran ansuran bulanan terendah</small>
+<strong id="dMonthly" style="font-size:24px;color:var(--n)">RM0.00</strong>
+</div>
+</div>
+</div>
+
+<div class="card">
+<h3>Cara menggunakan BizHire Smart+</h3>
+<p class="note">1. Lengkapkan gaji dan komitmen. 2. Masukkan harga serta tempoh pembiayaan kenderaan. 3. Pilih institusi kewangan. 4. Semak perbandingan dan jadual bayaran.</p>
+</div>
+</section>
+
+<!-- FINANCIAL DETAILS -->
+<section id="finance" class="page">
+<div class="head">
+<h1>Maklumat Kewangan</h1>
+<p>Masukkan pendapatan dan komitmen bulanan.</p>
+</div>
+
+<div class="card">
+<h3>Pendapatan dan Komitmen</h3>
+<div class="grid">
+<div class="fg">
+<label>Gaji kasar bulanan (RM)</label>
+<input id="gross" type="number" min="0" value="3000" oninput="finance()">
+</div>
+<div class="fg">
+<label>Jumlah potongan bulanan (RM)</label>
+<input id="deduct" type="number" min="0" value="300" oninput="finance()">
+</div>
+<div class="fg">
+<label>Gaji bersih bulanan (RM)</label>
+<input id="net" readonly>
+</div>
+<div class="fg">
+<label>Komitmen sedia ada sebulan (RM)</label>
+<input id="commit" type="number" min="0" value="100" oninput="calc()">
+</div>
+</div>
+
+<div id="dsrStatus" class="status green">Lengkapkan maklumat.</div>
+<p class="note">DSR = (komitmen sedia ada + anggaran ansuran kenderaan) ÷ gaji bersih × 100%. Had 40% dan 60% ialah panduan simulasi, bukan syarat kelulusan rasmi bank.</p>
+</div>
+</section>
+
+<!-- VEHICLE DETAILS -->
+<section id="vehicle" class="page">
+<div class="head">
+<h1>Maklumat Kenderaan</h1>
+<p>Masukkan butiran kenderaan untuk mengira anggaran pembiayaan.</p>
+</div>
+
+<div class="card">
+<h3>Butiran Pembelian Kenderaan</h3>
+<div class="grid">
+<div class="fg">
+<label>Model / Jenis Kenderaan</label>
+<input id="model" value="Ford Ranger">
+</div>
+<div class="fg">
+<label>Tujuan Penggunaan</label>
+<select id="purpose">
+<option>Kegunaan perniagaan</option>
+<option>Kegunaan peribadi</option>
+</select>
+</div>
+<div class="fg">
+<label>Harga Kenderaan (RM)</label>
+<input id="price" type="number" min="1" value="120000" oninput="calc()">
+</div>
+<div class="fg">
+<label>Bayaran Pendahuluan (RM)</label>
+<input id="deposit" type="number" min="0" value="12000" oninput="calc()">
+</div>
+<div class="fg">
+<label>Tempoh Pembiayaan</label>
+<select id="years" onchange="calc()">
+<option>3</option><option>4</option><option>5</option>
+<option>6</option><option selected>7</option><option>8</option><option>9</option>
+</select>
+</div>
+<div class="fg">
+<label>Kaedah Pengiraan</label>
+<select id="method" onchange="calc()">
+<option value="flat">Kadar rata (Flat rate)</option>
+<option value="reducing">Baki berkurangan (Reducing balance)</option>
+</select>
+</div>
+</div>
+
+<p class="note">Pengiraan merupakan simulasi anggaran. Kaedah sebenar tertakluk kepada terma institusi kewangan.</p>
+<div class="actions">
+<button class="btn" onclick="calc()">Kira Pembiayaan</button>
+</div>
+</div>
+</section>
+<!-- BANKS -->
+<section id="banks" class="page">
+<div class="head">
+<h1>Institusi Kewangan</h1>
+<p>Pilih bank dan kadar rujukan akan dipaparkan secara automatik.</p>
+</div>
+
+<div class="card">
+<h3>Tambah Institusi untuk Perbandingan</h3>
+<div class="grid">
+<div class="fg">
+<label>Institusi Kewangan</label>
+<select id="bankSelect" onchange="previewRate()"></select>
+</div>
+<div class="fg">
+<label>Kadar Faedah Setahun (Rujukan 2026)</label>
+<input id="rateDisplay" readonly value="Pilih institusi kewangan">
+</div>
+</div>
+
+<div class="actions">
+<button class="btn" onclick="addBank()">Tambah Bank</button>
+</div>
+
+<div id="bankList"></div>
+
+<p class="note">Kadar ini ialah kadar rujukan simulasi BizHire Smart+ bagi tahun 2026, bukan tawaran rasmi atau kadar semasa yang disahkan oleh bank. Kadar sebenar boleh berubah mengikut jenis kenderaan, profil pemohon, deposit, tempoh dan promosi.</p>
+</div>
+</section>
+
+<!-- COMPARISON -->
+<section id="compare" class="page">
+<div class="head">
+<h1>Perbandingan Pembiayaan</h1>
+<p>Bandingkan anggaran ansuran dan jumlah kos.</p>
+<div class="actions">
+<button class="btn light" onclick="csv()">Eksport CSV</button>
+<button class="btn light" onclick="print()">Cetak / PDF</button>
+</div>
+</div>
+
+<div class="grid three">
+<div class="metric">
+<small>Jumlah Pembiayaan</small>
+<strong id="principalSum">RM0.00</strong>
+</div>
+<div class="metric">
+<small>Ansuran Terendah</small>
+<strong id="lowestSum">RM0.00</strong>
+</div>
+<div class="metric">
+<small>Jumlah Bayaran Terendah</small>
+<strong id="totalSum">RM0.00</strong>
+</div>
+</div>
+
+<div class="card">
+<h3>Jadual Perbandingan Institusi Kewangan</h3>
+<div class="tablewrap">
+<table>
+<thead>
+<tr>
+<th>Institusi</th>
+<th>Kadar setahun</th>
+<th>Ansuran bulanan</th>
+<th>Jumlah faedah</th>
+<th>Jumlah bayaran</th>
+</tr>
+</thead>
+<tbody id="compareBody"></tbody>
+</table>
+</div>
+</div>
+</section>
+
+<!-- PAYMENT SCHEDULE -->
+<section id="schedule" class="page">
+<div class="head">
+<h1>Jadual Bayaran</h1>
+<p>Pecahan anggaran bayaran mengikut bulan.</p>
+</div>
+
+<div class="card">
+<div class="fg">
+<label>Pilih Institusi Kewangan</label>
+<select id="scheduleBank" onchange="schedule()"></select>
+</div>
+
+<div class="tablewrap" style="margin-top:18px">
+<table>
+<thead>
+<tr><th>Bulan</th><th>Ansuran</th><th>Anggaran Baki</th></tr>
+</thead>
+<tbody id="scheduleBody"></tbody>
+</table>
+</div>
+<div id="scheduleEmpty" class="note"></div>
+</div>
+</section>
+
+</main>
+</div>
+</div>
+
+<div id="toast" class="toast hide"></div>
+
+<script>
+const RATES={
+"Maybank":3.30,
+"CIMB Bank":3.50,
+"Public Bank":3.20,
+"RHB Bank":3.40,
+"Hong Leong Bank":3.40,
+"Bank Islam":3.50,
+"BSN":3.55
+};
+
+let banks=[
+{name:"Maybank",rate:3.30},
+{name:"CIMB Bank",rate:3.50},
+{name:"Public Bank",rate:3.20}
+];
+
+let results=[],user=null,language="ms";
+
+const $=id=>document.getElementById(id);
+
+const fmt=n=>"RM"+(Number(n)||0).toLocaleString("en-MY",{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+});
+
+function users(){
+try{
+return JSON.parse(localStorage.getItem("bizhire_users")||"[]");
+}catch(e){
+return [];
+}
+}
+
+function authView(v){
+$("signup").classList.toggle("hide",v!=="signup");
+$("login").classList.toggle("hide",v!=="login");
+$("app").classList.add("hide");
+}
+
+$("signupForm").onsubmit=e=>{
+e.preventDefault();
+
+let name=$("suName").value.trim();
+let email=$("suEmail").value.trim().toLowerCase();
+let p=$("suPass").value;
+
+if(p!==$("suConfirm").value){
+$("suErr").textContent="Kata laluan tidak sepadan.";
+return;
+}
+
+let u=users();
+
+if(u.some(x=>x.email===email)){
+$("suErr").textContent="E-mel telah didaftarkan.";
+return;
+}
+
+u.push({name,email,password:p});
+localStorage.setItem("bizhire_users",JSON.stringify(u));
+
+$("liEmail").value=email;
+authView("login");
+toast("Akaun berjaya didaftarkan. Sila log masuk.");
+};
+
+$("loginForm").onsubmit=e=>{
+e.preventDefault();
+
+let email=$("liEmail").value.trim().toLowerCase();
+let p=$("liPass").value;
+
+user=users().find(x=>x.email===email&&x.password===p);
+
+if(!user){
+$("liErr").textContent="E-mel atau kata laluan tidak tepat.";
+return;
+}
+
+sessionStorage.setItem("bizhire_session",email);
+openApp();
+};
+
+function openApp(){
+$("signup").classList.add("hide");
+$("login").classList.add("hide");
+$("app").classList.remove("hide");
+$("greet").textContent="Hai, "+user.name;
+
+renderBanks();
+finance();
+calc();
+page("dashboard",document.querySelector(".nav"));
+applyLanguage();
+}
+
+function logout(){
+sessionStorage.removeItem("bizhire_session");
+user=null;
+authView("login");
+}
+
+function page(id,b){
+document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
+$(id).classList.add("active");
+
+document.querySelectorAll(".nav").forEach(x=>x.classList.remove("active"));
+if(b)b.classList.add("active");
+
+if(id==="schedule")schedule();
+if(id==="compare")calc();
+}
+
+const translations = {
+"Cipta akaun":"Create an Account",
+"Daftar untuk mula menggunakan BizHire Smart+.":"Register to start using BizHire Smart+.",
+"Nama penuh":"Full Name",
+"Alamat e-mel":"Email Address",
+"Kata laluan":"Password",
+"Sahkan kata laluan":"Confirm Password",
+"Daftar Akaun":"Sign Up",
+"Sudah mempunyai akaun?":"Already have an account?",
+"Log masuk":"Log In",
+"Rancang pembiayaan kenderaan dengan lebih bijak.":"Plan your vehicle financing more wisely.",
+"Platform simulasi untuk menilai kemampuan kewangan dan membandingkan anggaran pembiayaan kenderaan.":"A simulation platform to assess financial affordability and compare estimated vehicle financing.",
+"✓ Semakan kemampuan kewangan":"✓ Financial affordability assessment",
+"✓ Kadar rujukan bank tersedia":"✓ Available bank reference rates",
+"✓ Perbandingan ansuran dan kos":"✓ Instalment and cost comparison",
+"Selamat kembali.":"Welcome Back.",
+"Teruskan perancangan pembiayaan kenderaan anda.":"Continue planning your vehicle financing.",
+"Masukkan e-mel dan kata laluan anda.":"Enter your email and password.",
+"Log Masuk":"Log In",
+"Belum mempunyai akaun?":"Don't have an account?",
+"Daftar sekarang":"Sign Up Now",
+"Prototaip ini menyimpan akaun pada pelayar/peranti ini sahaja. Jangan gunakan kata laluan sebenar atau maklumat sulit.":"This prototype stores accounts only in this browser/device. Do not use your real password or confidential information.",
+"Log Keluar":"Log Out",
+"Dashboard":"Dashboard",
+"Maklumat Kewangan":"Financial Information",
+"Maklumat Kenderaan":"Vehicle Information",
+"Institusi Kewangan":"Financial Institutions",
+"Perbandingan":"Comparison",
+"Jadual Bayaran":"Payment Schedule",
+"Ringkasan maklumat dan simulasi pembiayaan anda.":"Summary of your information and financing simulation.",
+"Gaji Bersih Bulanan":"Monthly Net Salary",
+"Harga Kenderaan":"Vehicle Price",
+"Institusi Dipilih":"Selected Institutions",
+"Petunjuk Kemampuan Kewangan (DSR)":"Financial Affordability Indicator (DSR)",
+"Masukkan maklumat kewangan.":"Enter your financial information.",
+"Anggaran ansuran bulanan terendah":"Lowest Estimated Monthly Instalment",
+"Cara menggunakan BizHire Smart+":"How to Use BizHire Smart+",
+"1. Lengkapkan gaji dan komitmen. 2. Masukkan harga serta tempoh pembiayaan kenderaan. 3. Pilih institusi kewangan. 4. Semak perbandingan dan jadual bayaran.":"1. Enter your salary and commitments. 2. Enter the vehicle price and financing period. 3. Select financial institutions. 4. Review the comparison and payment schedule.",
+"Masukkan pendapatan dan komitmen bulanan.":"Enter your monthly income and commitments.",
+"Pendapatan dan Komitmen":"Income and Commitments",
+"Gaji kasar bulanan (RM)":"Monthly Gross Salary (RM)",
+"Jumlah potongan bulanan (RM)":"Total Monthly Deductions (RM)",
+"Gaji bersih bulanan (RM)":"Monthly Net Salary (RM)",
+"Komitmen sedia ada sebulan (RM)":"Existing Monthly Commitments (RM)",
+"Lengkapkan maklumat.":"Complete the information.",
+"DSR = (komitmen sedia ada + anggaran ansuran kenderaan) ÷ gaji bersih × 100%. Had 40% dan 60% ialah panduan simulasi, bukan syarat kelulusan rasmi bank.":"DSR = (existing commitments + estimated vehicle instalment) ÷ net salary × 100%. The 40% and 60% thresholds are simulation guidelines, not official bank approval requirements.",
+"Masukkan butiran kenderaan untuk mengira anggaran pembiayaan.":"Enter vehicle details to calculate estimated financing.",
+"Butiran Pembelian Kenderaan":"Vehicle Purchase Details",
+"Model / Jenis Kenderaan":"Vehicle Model / Type",
+"Tujuan Penggunaan":"Purpose of Use",
+"Kegunaan perniagaan":"Business use",
+"Kegunaan peribadi":"Personal use",
+"Harga Kenderaan (RM)":"Vehicle Price (RM)",
+"Bayaran Pendahuluan (RM)":"Down Payment (RM)",
+"Tempoh Pembiayaan":"Financing Period",
+"Kaedah Pengiraan":"Calculation Method",
+"Kadar rata (Flat rate)":"Flat Rate",
+"Baki berkurangan (Reducing balance)":"Reducing Balance",
+"Pengiraan merupakan simulasi anggaran. Kaedah sebenar tertakluk kepada terma institusi kewangan.":"This calculation is an estimate. The actual method is subject to the financial institution's terms.",
+"Kira Pembiayaan":"Calculate Financing",
+"Pilih bank dan kadar rujukan akan dipaparkan secara automatik.":"Select a bank and its reference rate will be displayed automatically.",
+"Tambah Institusi untuk Perbandingan":"Add Institutions for Comparison",
+"Kadar Faedah Setahun (Rujukan 2026)":"Annual Interest Rate (2026 Reference)",
+"Pilih institusi kewangan":"Select a financial institution",
+"Tambah Bank":"Add Bank",
+"Kadar ini ialah kadar rujukan simulasi BizHire Smart+ bagi tahun 2026, bukan tawaran rasmi atau kadar semasa yang disahkan oleh bank. Kadar sebenar boleh berubah mengikut jenis kenderaan, profil pemohon, deposit, tempoh dan promosi.":"These are BizHire Smart+ simulation reference rates for 2026, not official offers or bank-verified current rates. Actual rates may vary according to vehicle type, applicant profile, down payment, financing period and promotions.",
+"Perbandingan Pembiayaan":"Financing Comparison",
+"Bandingkan anggaran ansuran dan jumlah kos.":"Compare estimated instalments and total costs.",
+"Eksport CSV":"Export CSV",
+"Cetak / PDF":"Print / PDF",
+"Jumlah Pembiayaan":"Financing Amount",
+"Ansuran Terendah":"Lowest Instalment",
+"Jumlah Bayaran Terendah":"Lowest Total Payment",
+"Jadual Perbandingan Institusi Kewangan":"Financial Institution Comparison Table",
+"Institusi":"Institution",
+"Kadar setahun":"Annual Rate",
+"Ansuran bulanan":"Monthly Instalment",
+"Jumlah faedah":"Total Interest",
+"Jumlah bayaran":"Total Payment",
+"Pecahan anggaran bayaran mengikut bulan.":"Estimated payment breakdown by month.",
+"Pilih Institusi Kewangan":"Select Financial Institution",
+"Bulan":"Month",
+"Ansuran":"Instalment",
+"Anggaran Baki":"Estimated Balance",
+"Pilih institusi dan lengkapkan maklumat kenderaan.":"Select an institution and complete the vehicle information.",
+"Masukkan gaji bersih.":"Enter your net salary.",
+"Petunjuk: Mampu":"Indicator: Affordable",
+"Petunjuk: Sederhana":"Indicator: Moderate",
+"Petunjuk: Risiko komitmen tinggi":"Indicator: High Commitment Risk",
+"Sila masukkan gaji bersih melebihi RM0.":"Please enter a net salary greater than RM0.",
+"Mampu":"Affordable",
+"Sederhana":"Moderate",
+"Risiko komitmen tinggi":"High Commitment Risk",
+"-- Pilih Bank --":"-- Select Bank --",
+"Kata laluan tidak sepadan.":"Passwords do not match.",
+"E-mel telah didaftarkan.":"This email is already registered.",
+"Akaun berjaya didaftarkan. Sila log masuk.":"Account registered successfully. Please log in.",
+"E-mel atau kata laluan tidak tepat.":"Incorrect email or password.",
+"Sila pilih institusi kewangan.":"Please select a financial institution.",
+"berjaya ditambah.":"has been added successfully.",
+"Sekurang-kurangnya satu bank perlu dipilih.":"At least one bank must remain selected."
+};
+
+const reverseTranslations=Object.fromEntries(
+Object.entries(translations).map(([ms,en])=>[en,ms])
+);
+
+function applyLanguage(){
+const dict=language==="en"?translations:reverseTranslations;
+const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+let node;
+
+while(node=walker.nextNode()){
+const value=node.nodeValue.trim();
+
+if(dict[value]){
+const lead=node.nodeValue.match(/^\s*/)[0];
+const tail=node.nodeValue.match(/\s*$/)[0];
+node.nodeValue=lead+dict[value]+tail;
+}
+}
+
+document.querySelectorAll("label").forEach(el=>{
+const v=el.textContent.trim();
+if(dict[v])el.textContent=dict[v];
+});
+
+document.querySelectorAll("#purpose option").forEach(el=>{
+const v=el.textContent.trim();
+if(dict[v])el.textContent=dict[v];
+});
+
+$("langBtn").textContent=language==="ms"?"English":"Bahasa Melayu";
+document.documentElement.lang=language;
+}
+
+function toggleLang(){
+language=language==="ms"?"en":"ms";
+applyLanguage();
+}
 function toast(s){
 $("toast").textContent=s;
 $("toast").classList.remove("hide");
