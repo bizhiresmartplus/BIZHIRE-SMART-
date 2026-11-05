@@ -1868,67 +1868,45 @@ function compute(bank,data) {
 }
 
 
+
 /* 9. DSR AND COMPARISON */
 
 function calc() {
 
-    if(!$("price")) return;
+    if (!$("price")) return;
 
     let data = inputData();
 
-    results = banks.map(bank => compute(bank,data));
+    // Kira pembiayaan bagi setiap institusi yang dipilih
+    results = banks.map(bank => compute(bank, data));
 
-    let gross = Math.max(0,Number($("gross").value)||0);
-    let deduct = Math.max(0,Number($("deduct").value)||0);
+    let gross = Math.max(0, Number($("gross").value) || 0);
+    let deduct = Math.max(0, Number($("deduct").value) || 0);
+    let net = Math.max(0, gross - deduct);
 
-    let net = Math.max(0,gross-deduct);
+    let commit = Math.max(0, Number($("commit").value) || 0);
 
-    let commit = Math.max(0,Number($("commit").value)||0);
-
+    // Dapatkan ansuran dan jumlah bayaran terendah
     let lowest = results.length
-        ? Math.min(...results.map(r=>r.monthly))
+        ? Math.min(...results.map(r => r.monthly))
         : 0;
 
     let cheapest = results.length
-        ? Math.min(...results.map(r=>r.total))
+        ? Math.min(...results.map(r => r.total))
         : 0;
 
-    let best = results.find(r=>r.total===cheapest);
+    let best = results.length
+        ? results.reduce((a, b) => a.total <= b.total ? a : b)
+        : null;
 
+    // Pengiraan DSR
     let dsr = net > 0
-        ? (commit+lowest)/net*100
+        ? ((commit + lowest) / net) * 100
         : 0;
 
-    /* Dashboard DSR */
-
-    $("dSalary").textContent = fmt(net);
-    $("dPrice").textContent = fmt(data.price);
-    $("dBanks").textContent = banks.length;
-
-    $("dDsr").textContent = net ? dsr.toFixed(1)+"%" : "—";
-
-    $("dDsrText").textContent = !net
-        ? tr("Masukkan gaji bersih.","Enter your net salary.")
-        : dsr<=40
-        ? tr("Petunjuk: Mampu","Indicator: Affordable")
-        : dsr<=60
-        ? tr("Petunjuk: Sederhana","Indicator: Moderate")
-        : tr("Petunjuk: Risiko Komitmen Tinggi","Indicator: High Commitment Risk");
-
-    $("dBar").style.width = Math.min(100,dsr)+"%";
-
-    $("dBar").style.background = dsr<=40
-        ? "#16865b"
-        : dsr<=60
-        ? "#c18a20"
-        : "#c0394b";
-
-    $("dMonthly").textContent = fmt(lowest);
-
-    /* Financial status */
-
+    // Status kemampuan kewangan
     $("dsrStatus").className = "status " +
-        (!net || dsr>60 ? "red" : dsr<=40 ? "green" : "yellow");
+        (!net || dsr > 60 ? "red" : dsr <= 40 ? "green" : "yellow");
 
     $("dsrStatus").textContent = !net
         ? tr(
@@ -1936,26 +1914,25 @@ function calc() {
             "Please enter a net salary greater than RM0."
         )
         : tr(
-            "Anggaran DSR: "+dsr.toFixed(1)+"% — "+
-            (dsr<=40?"Mampu":dsr<=60?"Sederhana":"Risiko komitmen tinggi")+".",
-            "Estimated DSR: "+dsr.toFixed(1)+"% — "+
-            (dsr<=40?"Affordable":dsr<=60?"Moderate":"High commitment risk")+"."
+            "Anggaran DSR: " + dsr.toFixed(1) + "% — " +
+            (dsr <= 40 ? "Mampu" : dsr <= 60 ? "Sederhana" : "Risiko komitmen tinggi") + ".",
+            "Estimated DSR: " + dsr.toFixed(1) + "% — " +
+            (dsr <= 40 ? "Affordable" : dsr <= 60 ? "Moderate" : "High commitment risk") + "."
         );
 
-    /* Vehicle summary */
-
+    // Ringkasan maklumat kenderaan
     $("vPrice").textContent = fmt(data.price);
     $("vDeposit").textContent = fmt(data.deposit);
     $("vPrincipal").textContent = fmt(data.principal);
 
-    /* Comparison summary */
-
+    // Tiga ringkasan utama halaman perbandingan
     $("principalSum").textContent = fmt(data.principal);
     $("lowestSum").textContent = fmt(lowest);
     $("totalSum").textContent = fmt(cheapest);
 
+    // Paparkan amaun setiap institusi kewangan
     $("compareBody").innerHTML = results.map(r => `
-        <tr class="${best && r.name===best.name ? "best" : ""}">
+        <tr class="${best && r.name === best.name ? "best" : ""}">
             <td>${esc(r.name)}</td>
             <td>${r.rate.toFixed(2)}%</td>
             <td>${fmt(r.monthly)}</td>
@@ -1964,8 +1941,11 @@ function calc() {
         </tr>
     `).join("");
 
+    // Kemas kini rumusan dan jadual bayaran
     renderSummary();
     schedule();
+
+}
 
 }
 
