@@ -7,173 +7,173 @@
 
 <style>
 :root {
-    --navy:#10264f;
-    --blue:#1d477d;
-    --cyan:#58bfd2;
-    --bg:#f4f7fb;
-    --white:#ffffff;
-    --text:#26364d;
-    --muted:#718096;
-    --border:#dce4ef;
-    --green:#168653;
-    --yellow:#d99a16;
-    --red:#d84b4b;
+--navy:#10264f;
+--blue:#1d477d;
+--cyan:#58bfd2;
+--bg:#f4f7fb;
+--white:#ffffff;
+--text:#26364d;
+--muted:#718096;
+--border:#dce4ef;
+--green:#168653;
+--yellow:#d99a16;
+--red:#d84b4b;
 }
 * {box-sizing:border-box}
 body {
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:var(--bg);
-    color:var(--text);
+margin:0;
+font-family:Arial,sans-serif;
+background:var(--bg);
+color:var(--text);
 }
 header {
-    background:var(--navy);
-    color:white;
-    padding:17px 25px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
-    flex-wrap:wrap;
+background:var(--navy);
+color:white;
+padding:17px 25px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+flex-wrap:wrap;
 }
 .brand {
-    font-size:22px;
-    font-weight:bold;
-    letter-spacing:.3px;
+font-size:22px;
+font-weight:bold;
+letter-spacing:.3px;
 }
 .brand span {color:var(--cyan)}
 .header-right {
-    display:flex;
-    align-items:center;
-    gap:10px;
+display:flex;
+align-items:center;
+gap:10px;
 }
 .header-right button {
-    background:var(--cyan);
-    color:var(--navy);
-    border:0;
-    padding:9px 15px;
-    border-radius:8px;
-    font-weight:bold;
-    cursor:pointer;
+background:var(--cyan);
+color:var(--navy);
+border:0;
+padding:9px 15px;
+border-radius:8px;
+font-weight:bold;
+cursor:pointer;
 }
 .layout {
-    display:flex;
-    min-height:calc(100vh - 65px);
+display:flex;
+min-height:calc(100vh - 65px);
 }
 .sidebar {
-    width:245px;
-    background:#fff;
-    padding:22px 14px;
-    border-right:1px solid var(--border);
-    flex-shrink:0;
+width:245px;
+background:#fff;
+padding:22px 14px;
+border-right:1px solid var(--border);
+flex-shrink:0;
 }
 .sidebar h3 {
-    font-size:12px;
-    color:var(--muted);
-    text-transform:uppercase;
-    letter-spacing:1px;
-    padding:0 12px;
+font-size:12px;
+color:var(--muted);
+text-transform:uppercase;
+letter-spacing:1px;
+padding:0 12px;
 }
 .nav-btn {
-    display:block;
-    width:100%;
-    text-align:left;
-    padding:12px 13px;
-    margin:5px 0;
-    background:transparent;
-    border:0;
-    border-radius:9px;
-    color:var(--text);
-    font-size:14px;
-    cursor:pointer;
+display:block;
+width:100%;
+text-align:left;
+padding:12px 13px;
+margin:5px 0;
+background:transparent;
+border:0;
+border-radius:9px;
+color:var(--text);
+font-size:14px;
+cursor:pointer;
 }
 .nav-btn:hover {background:#edf4fb}
 .nav-btn.active {
-    background:#e6f3fa;
-    color:var(--blue);
-    font-weight:bold;
-    border-left:4px solid var(--cyan);
+background:#e6f3fa;
+color:var(--blue);
+font-weight:bold;
+border-left:4px solid var(--cyan);
 }
 main {
-    flex:1;
-    padding:28px;
-    min-width:0;
+flex:1;
+padding:28px;
+min-width:0;
 }
 .page {
-    display:none;
-    max-width:1100px;
-    margin:auto;
+display:none;
+max-width:1100px;
+margin:auto;
 }
 .page.active {display:block}
 .page-heading {margin-bottom:22px}
 .page-heading h1 {
-    color:var(--navy);
-    font-size:25px;
-    margin:0 0 8px;
+color:var(--navy);
+font-size:25px;
+margin:0 0 8px;
 }
 .page-heading p {
-    color:var(--muted);
-    line-height:1.6;
-    margin:0;
+color:var(--muted);
+line-height:1.6;
+margin:0;
 }
 .card {
-    background:white;
-    border:1px solid var(--border);
-    border-radius:14px;
-    padding:23px;
-    margin-bottom:20px;
-    box-shadow:0 3px 12px rgba(16,38,79,.04);
+background:white;
+border:1px solid var(--border);
+border-radius:14px;
+padding:23px;
+margin-bottom:20px;
+box-shadow:0 3px 12px rgba(16,38,79,.04);
 }
 .card h2 {
-    color:var(--navy);
-    font-size:18px;
-    margin:0 0 17px;
+color:var(--navy);
+font-size:18px;
+margin:0 0 17px;
 }
 .grid {
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:17px;
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:17px;
 }
 .field {min-width:0}
 .field.full {grid-column:1/-1}
 label {
-    display:block;
-    font-size:13px;
-    font-weight:bold;
-    margin-bottom:7px;
+display:block;
+font-size:13px;
+font-weight:bold;
+margin-bottom:7px;
 }
 input,select {
-    width:100%;
-    padding:12px;
-    border:1px solid var(--border);
-    border-radius:8px;
-    font-size:14px;
-    color:var(--text);
-    background:#fff;
+width:100%;
+padding:12px;
+border:1px solid var(--border);
+border-radius:8px;
+font-size:14px;
+color:var(--text);
+background:#fff;
 }
 input:focus,select:focus {
-    outline:2px solid #b8e7f0;
-    border-color:var(--cyan);
+outline:2px solid #b8e7f0;
+border-color:var(--cyan);
 }
 small,.hint {
-    color:var(--muted);
-    font-size:12px;
-    line-height:1.5;
+color:var(--muted);
+font-size:12px;
+line-height:1.5;
 }
 .required {color:var(--red)}
 .actions {
-    display:flex;
-    justify-content:space-between;
-    gap:12px;
-    margin-top:22px;
+display:flex;
+justify-content:space-between;
+gap:12px;
+margin-top:22px;
 }
 .btn {
-    border:0;
-    border-radius:8px;
-    padding:12px 22px;
-    font-size:14px;
-    font-weight:bold;
-    cursor:pointer;
+border:0;
+border-radius:8px;
+padding:12px 22px;
+font-size:14px;
+font-weight:bold;
+cursor:pointer;
 }
 .btn-primary {background:var(--navy);color:white}
 .btn-primary:hover {background:var(--blue)}
@@ -181,74 +181,74 @@ small,.hint {
 .btn-cyan {background:var(--cyan);color:var(--navy)}
 .btn:disabled {opacity:.5;cursor:not-allowed}
 .hero {
-    background:linear-gradient(120deg,#10264f,#1d477d);
-    color:white;
-    padding:35px;
-    border-radius:16px;
-    margin-bottom:20px;
+background:linear-gradient(120deg,#10264f,#1d477d);
+color:white;
+padding:35px;
+border-radius:16px;
+margin-bottom:20px;
 }
 .hero h1 {font-size:30px;margin:0 0 12px}
 .hero p {line-height:1.7;color:#e2edf8;max-width:700px}
 .hero .btn {margin-top:10px}
 .info-grid {
-    display:grid;
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:15px;
+display:grid;
+grid-template-columns:repeat(3,minmax(0,1fr));
+gap:15px;
 }
 .info-box {
-    background:white;
-    border:1px solid var(--border);
-    border-radius:12px;
-    padding:19px;
+background:white;
+border:1px solid var(--border);
+border-radius:12px;
+padding:19px;
 }
 .info-box h3 {font-size:15px;color:var(--navy)}
 .info-box p {font-size:13px;line-height:1.6;color:var(--muted)}
 .metric {
-    display:grid;
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:12px;
-    margin-top:15px;
+display:grid;
+grid-template-columns:repeat(3,minmax(0,1fr));
+gap:12px;
+margin-top:15px;
 }
 .metric-box {
-    background:#f5f8fc;
-    padding:16px;
-    border-radius:10px;
+background:#f5f8fc;
+padding:16px;
+border-radius:10px;
 }
 .metric-box span {font-size:12px;color:var(--muted)}
 .metric-box strong {
-    display:block;
-    color:var(--navy);
-    font-size:20px;
-    margin-top:7px;
+display:block;
+color:var(--navy);
+font-size:20px;
+margin-top:7px;
 }
 .dsr-panel {
-    border-radius:12px;
-    padding:18px;
-    background:#f5f8fc;
-    margin-top:17px;
+border-radius:12px;
+padding:18px;
+background:#f5f8fc;
+margin-top:17px;
 }
 .dsr-status {
-    display:inline-block;
-    padding:7px 13px;
-    border-radius:20px;
-    font-size:13px;
-    font-weight:bold;
-    margin-top:8px;
+display:inline-block;
+padding:7px 13px;
+border-radius:20px;
+font-size:13px;
+font-weight:bold;
+margin-top:8px;
 }
 .green {background:#d9f4e6;color:#137347}
 .yellow {background:#fff0c7;color:#91620a}
 .red {background:#ffe0e0;color:#a72c2c}
 table {
-    width:100%;
-    border-collapse:collapse;
-    min-width:650px;
+width:100%;
+border-collapse:collapse;
+min-width:650px;
 }
 .table-wrap {overflow-x:auto}
 th,td {
-    padding:12px;
-    border-bottom:1px solid var(--border);
-    text-align:left;
-    font-size:13px;
+padding:12px;
+border-bottom:1px solid var(--border);
+text-align:left;
+font-size:13px;
 }
 th {background:#edf3f9;color:var(--navy)}
 .best {background:#e5f7ed}
@@ -256,908 +256,1078 @@ th {background:#edf3f9;color:var(--navy)}
 .rate-mid {color:var(--yellow);font-weight:bold}
 .rate-high {color:var(--red);font-weight:bold}
 .summary-grid {
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:12px;
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:12px;
 }
 .summary-item {
-    background:#f5f8fc;
-    padding:14px;
-    border-radius:9px;
+background:#f5f8fc;
+padding:14px;
+border-radius:9px;
 }
 .summary-item span {
-    display:block;
-    color:var(--muted);
-    font-size:12px;
-    margin-bottom:6px;
+display:block;
+color:var(--muted);
+font-size:12px;
+margin-bottom:6px;
 }
 .summary-item strong {color:var(--navy);font-size:15px}
 .notice {
-    background:#fff8e8;
-    border-left:4px solid var(--yellow);
-    padding:13px;
-    border-radius:7px;
-    font-size:12px;
-    line-height:1.6;
-    color:#71551d;
+background:#fff8e8;
+border-left:4px solid var(--yellow);
+padding:13px;
+border-radius:7px;
+font-size:12px;
+line-height:1.6;
+color:#71551d;
 }
 .links a {
-    display:inline-block;
-    color:var(--blue);
-    margin:8px 12px 0 0;
-    font-size:13px;
+display:inline-block;
+color:var(--blue);
+margin:8px 12px 0 0;
+font-size:13px;
 }
 .progress {
-    height:6px;
-    background:#e3eaf2;
-    border-radius:20px;
-    margin-bottom:22px;
-    overflow:hidden;
+height:6px;
+background:#e3eaf2;
+border-radius:20px;
+margin-bottom:22px;
+overflow:hidden;
 }
 .progress-bar {
-    height:100%;
-    background:var(--cyan);
-    width:0%;
-    transition:.2s;
+height:100%;
+background:var(--cyan);
+width:0%;
+transition:.2s;
 }
 footer {
-    text-align:center;
-    color:var(--muted);
-    font-size:12px;
-    padding:20px;
+text-align:center;
+color:var(--muted);
+font-size:12px;
+padding:20px;
 }
 @media(max-width:800px) {
-    .layout {display:block}
-    .sidebar {
-        width:100%;
-        display:flex;
-        overflow-x:auto;
-        padding:10px;
-        border-right:0;
-        border-bottom:1px solid var(--border);
-    }
-    .sidebar h3 {display:none}
-    .nav-btn {
-        min-width:max-content;
-        width:auto;
-        margin:0 4px;
-    }
-    main {padding:17px}
-    .info-grid,.grid,.metric,.summary-grid {
-        grid-template-columns:1fr;
-    }
-    .hero {padding:25px}
-    .hero h1 {font-size:24px}
+.layout {display:block}
+.sidebar {
+width:100%;
+display:flex;
+overflow-x:auto;
+padding:10px;
+border-right:0;
+border-bottom:1px solid var(--border);
+}
+.sidebar h3 {display:none}
+.nav-btn {
+min-width:max-content;
+width:auto;
+margin:0 4px;
+}
+main {padding:17px}
+.info-grid,.grid,.metric,.summary-grid {
+grid-template-columns:1fr;
+}
+.hero {padding:25px}
+.hero h1 {font-size:24px}
 }
 @media print {
-    header,.sidebar,.actions,footer {display:none!important}
-    .layout,main {display:block;padding:0}
-    .page {display:none!important}
-    #page-summary,#page-schedule {display:block!important}
-    body {background:white}
+header,.sidebar,.actions,footer {display:none!important}
+.layout,main {display:block;padding:0}
+.page {display:none!important}
+#page-summary,#page-schedule {display:block!important}
+body {background:white}
 }
-
-/* JADUAL BAYARAN BALIK */
-.repayment-summary {
-    display:grid;
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:12px;
-    margin-top:18px;
-}
-.repayment-summary .summary-item { min-width:0; }
-.repayment-total {
-    display:grid;
-    grid-template-columns:repeat(2,minmax(0,1fr));
-    gap:12px;
-    margin-top:14px;
-}
-.repayment-total .summary-item strong {
-    display:block;
-    color:var(--navy);
-    font-size:19px;
-}
-.repayment-table { min-width:760px; }
-.repayment-table th,
-.repayment-table td { text-align:center; }
-.repayment-note {
-    background:#f5f8fc;
-    border-left:4px solid var(--cyan);
-    border-radius:8px;
-    padding:14px;
-    margin-top:16px;
-    color:var(--muted);
-    font-size:12px;
-    line-height:1.6;
-}
-@media(max-width:800px) {
-    .repayment-summary { grid-template-columns:repeat(2,minmax(0,1fr)); }
-    .repayment-total { grid-template-columns:1fr; }
-}
-@media print {
-    .repayment-actions { display:none!important; }
-    .repayment-table { min-width:100%; font-size:10px; }
-    .repayment-table th,.repayment-table td { padding:6px 4px; }
-}
-
 </style>
 </head>
 
 <body>
 
 <header>
-    <div class="brand">BizHire <span>Smart+</span></div>
-    <div class="header-right">
-        <span id="languageLabel">Bahasa</span>
-        <button type="button" id="languageBtn" onclick="toggleLanguage()">English</button>
-    </div>
+<div class="brand">BizHire <span>Smart+</span></div>
+<div class="header-right">
+<span id="languageLabel">Bahasa</span>
+<button type="button" id="languageBtn" onclick="toggleLanguage()">English</button>
+</div>
 </header>
 
 <div class="layout">
 
 <aside class="sidebar">
-    <div>
-        <h3 data-ms="Menu Utama" data-en="Main Menu">Menu Utama</h3>
-        <button type="button" class="nav-btn active" data-page="dashboard">⌂ <span data-ms="Dashboard" data-en="Dashboard">Dashboard</span></button>
-        <button type="button" class="nav-btn" data-page="finance">01. <span data-ms="Maklumat Kewangan" data-en="Financial Information">Maklumat Kewangan</span></button>
-        <button type="button" class="nav-btn" data-page="vehicle">02. <span data-ms="Maklumat Kenderaan" data-en="Vehicle Information">Maklumat Kenderaan</span></button>
-        <button type="button" class="nav-btn" data-page="banks">03. <span data-ms="Institusi Kewangan" data-en="Financial Institutions">Institusi Kewangan</span></button>
-        <button type="button" class="nav-btn" data-page="comparison">04. <span data-ms="Perbandingan" data-en="Comparison">Perbandingan</span></button>
-        <button type="button" class="nav-btn" data-page="summary">05. <span data-ms="Rumusan" data-en="Summary">Rumusan</span></button>
-        <button type="button" class="nav-btn" data-page="schedule">06. <span data-ms="Jadual Bayaran" data-en="Payment Schedule">Jadual Bayaran</span></button>
-    </div>
+<div>
+<h3 data-ms="Menu Utama" data-en="Main Menu">Menu Utama</h3>
+<button type="button" class="nav-btn active" data-page="dashboard">⌂ <span data-ms="Dashboard" data-en="Dashboard">Dashboard</span></button>
+<button type="button" class="nav-btn" data-page="finance">01. <span data-ms="Maklumat Kewangan" data-en="Financial Information">Maklumat Kewangan</span></button>
+<button type="button" class="nav-btn" data-page="vehicle">02. <span data-ms="Maklumat Kenderaan" data-en="Vehicle Information">Maklumat Kenderaan</span></button>
+<button type="button" class="nav-btn" data-page="banks">03. <span data-ms="Institusi Kewangan" data-en="Financial Institutions">Institusi Kewangan</span></button>
+<button type="button" class="nav-btn" data-page="comparison">04. <span data-ms="Perbandingan" data-en="Comparison">Perbandingan</span></button>
+<button type="button" class="nav-btn" data-page="summary">05. <span data-ms="Rumusan" data-en="Summary">Rumusan</span></button>
+<button type="button" class="nav-btn" data-page="schedule">06. <span data-ms="Jadual Bayaran" data-en="Payment Schedule">Jadual Bayaran</span></button>
+</div>
 </aside>
 
 <main>
 
 <div class="progress">
-    <div class="progress-bar" id="progressBar"></div>
+<div class="progress-bar" id="progressBar"></div>
 </div>
 
 <!-- DASHBOARD -->
 <section class="page active" id="page-dashboard">
-    <div class="hero">
-        <h1 data-ms="Selamat Datang ke BizHire Smart+" data-en="Welcome to BizHire Smart+">Selamat Datang ke BizHire Smart+</h1>
-        <p data-ms="Platform simulasi pembiayaan kenderaan yang membantu pengguna mengira anggaran ansuran bulanan, menilai kemampuan kewangan dan membuat perbandingan pakej pembiayaan daripada institusi kewangan terpilih." data-en="A vehicle financing simulation platform that helps users estimate monthly instalments, assess financial affordability and compare financing packages from selected financial institutions.">
-        Platform simulasi pembiayaan kenderaan yang membantu pengguna mengira anggaran ansuran bulanan, menilai kemampuan kewangan dan membuat perbandingan pakej pembiayaan daripada institusi kewangan terpilih.
-        </p>
-        <button type="button" class="btn btn-cyan" onclick="goTo('finance')" data-ms="Mula Sekarang →" data-en="Get Started →">Mula Sekarang →</button>
-    </div>
+<div class="hero">
+<h1 data-ms="Selamat Datang ke BizHire Smart+" data-en="Welcome to BizHire Smart+">Selamat Datang ke BizHire Smart+</h1>
+<p data-ms="Platform simulasi pembiayaan kenderaan yang membantu pengguna mengira anggaran ansuran bulanan, menilai kemampuan kewangan dan membuat perbandingan pakej pembiayaan daripada institusi kewangan terpilih." data-en="A vehicle financing simulation platform that helps users estimate monthly instalments, assess financial affordability and compare financing packages from selected financial institutions.">
+Platform simulasi pembiayaan kenderaan yang membantu pengguna mengira anggaran ansuran bulanan, menilai kemampuan kewangan dan membuat perbandingan pakej pembiayaan daripada institusi kewangan terpilih.
+</p>
+<button type="button" class="btn btn-cyan" onclick="goTo('finance')" data-ms="Mula Sekarang →" data-en="Get Started →">Mula Sekarang →</button>
+</div>
 
-    <div class="info-grid">
-        <div class="info-box">
-            <h3 data-ms="01. Penilaian Kewangan" data-en="01. Financial Assessment">01. Penilaian Kewangan</h3>
-            <p data-ms="Masukkan maklumat pendapatan dan komitmen untuk melihat tahap kemampuan kewangan." data-en="Enter income and commitments to assess your financial affordability.">Masukkan maklumat pendapatan dan komitmen untuk melihat tahap kemampuan kewangan.</p>
-        </div>
-        <div class="info-box">
-            <h3 data-ms="02. Simulasi Kenderaan" data-en="02. Vehicle Simulation">02. Simulasi Kenderaan</h3>
-            <p data-ms="Pilih jenis kenderaan, tujuan pembelian, harga dan tempoh pembiayaan." data-en="Select vehicle type, purchase purpose, price and financing period.">Pilih jenis kenderaan, tujuan pembelian, harga dan tempoh pembiayaan.</p>
-        </div>
-        <div class="info-box">
-            <h3 data-ms="03. Perbandingan Bank" data-en="03. Bank Comparison">03. Perbandingan Bank</h3>
-            <p data-ms="Bandingkan kadar faedah, ansuran bulanan dan jumlah bayaran pembiayaan." data-en="Compare interest rates, monthly instalments and total financing payments.">Bandingkan kadar faedah, ansuran bulanan dan jumlah bayaran pembiayaan.</p>
-        </div>
-    </div>
+<div class="info-grid">
+<div class="info-box">
+<h3 data-ms="01. Penilaian Kewangan" data-en="01. Financial Assessment">01. Penilaian Kewangan</h3>
+<p data-ms="Masukkan maklumat pendapatan dan komitmen untuk melihat tahap kemampuan kewangan." data-en="Enter income and commitments to assess your financial affordability.">Masukkan maklumat pendapatan dan komitmen untuk melihat tahap kemampuan kewangan.</p>
+</div>
+<div class="info-box">
+<h3 data-ms="02. Simulasi Kenderaan" data-en="02. Vehicle Simulation">02. Simulasi Kenderaan</h3>
+<p data-ms="Pilih jenis kenderaan, tujuan pembelian, harga dan tempoh pembiayaan." data-en="Select vehicle type, purchase purpose, price and financing period.">Pilih jenis kenderaan, tujuan pembelian, harga dan tempoh pembiayaan.</p>
+</div>
+<div class="info-box">
+<h3 data-ms="03. Perbandingan Bank" data-en="03. Bank Comparison">03. Perbandingan Bank</h3>
+<p data-ms="Bandingkan kadar faedah, ansuran bulanan dan jumlah bayaran pembiayaan." data-en="Compare interest rates, monthly instalments and total financing payments.">Bandingkan kadar faedah, ansuran bulanan dan jumlah bayaran pembiayaan.</p>
+</div>
+</div>
 </section>
 
 <!-- FINANCIAL INFORMATION -->
 <section class="page" id="page-finance">
-    <div class="page-heading">
-        <h1 data-ms="Maklumat Kewangan" data-en="Financial Information">Maklumat Kewangan</h1>
-        <p data-ms="Lengkapkan maklumat pendapatan dan komitmen bulanan bagi menilai kemampuan kewangan." data-en="Complete your income and monthly commitments to assess financial affordability.">Lengkapkan maklumat pendapatan dan komitmen bulanan bagi menilai kemampuan kewangan.</p>
-    </div>
+<div class="page-heading">
+<h1 data-ms="Maklumat Kewangan" data-en="Financial Information">Maklumat Kewangan</h1>
+<p data-ms="Lengkapkan maklumat pendapatan dan komitmen bulanan bagi menilai kemampuan kewangan." data-en="Complete your income and monthly commitments to assess financial affordability.">Lengkapkan maklumat pendapatan dan komitmen bulanan bagi menilai kemampuan kewangan.</p>
+</div>
 
-    <div class="card">
-                <h2 data-ms="Pendapatan dan Komitmen Bulanan" data-en="Monthly Income and Commitments">Pendapatan dan Komitmen Bulanan</h2>
-        <div class="grid">
-            <div class="field">
-                <label for="grossSalary" data-ms="Gaji Kasar Bulanan (RM) *" data-en="Monthly Gross Salary (RM) *">Gaji Kasar Bulanan (RM) <span class="required">*</span></label>
-                <input type="number" id="grossSalary" min="0" step="0.01" placeholder="Contoh: 3000">
-            </div>
-            <div class="field">
-                <label for="netSalary" data-ms="Gaji Bersih Bulanan (RM) *" data-en="Monthly Net Salary (RM) *">Gaji Bersih Bulanan (RM) <span class="required">*</span></label>
-                <input type="number" id="netSalary" min="0" step="0.01" placeholder="Contoh: 2765.19">
-            </div>
-            <div class="field full">
-                <label for="commitments" data-ms="Komitmen Bulanan Sedia Ada (RM) *" data-en="Existing Monthly Commitments (RM) *">Komitmen Bulanan Sedia Ada (RM) <span class="required">*</span></label>
-                <input type="number" id="commitments" min="0" step="0.01" placeholder="Contoh: 100">
-            </div>
-        </div>
+<div class="card">
+<h2 data-ms="Butiran Pendapatan Bulanan" data-en="Monthly Income Details">Butiran Pendapatan Bulanan</h2>
+<div class="grid">
+<div class="field">
+<label data-ms="Gaji Kasar Bulanan (RM) *" data-en="Monthly Gross Salary (RM) *">Gaji Kasar Bulanan (RM) <span class="required">*</span></label>
+<input type="number" id="grossSalary" min="0" step="0.01" placeholder="Contoh: 3000">
+</div>
+<div class="field">
+<label data-ms="Jumlah Potongan Bulanan (RM) *" data-en="Total Monthly Deductions (RM) *">Jumlah Potongan Bulanan (RM) <span class="required">*</span></label>
+<input type="number" id="deductions" min="0" step="0.01" placeholder="Contoh: 234.81">
+</div>
+<div class="field">
+<label data-ms="Gaji Bersih Bulanan (RM)" data-en="Monthly Net Salary (RM)">Gaji Bersih Bulanan (RM)</label>
+<input type="text" id="netSalary" readonly placeholder="Dikira secara automatik">
+</div>
+<div class="field">
+<label data-ms="Komitmen Sedia Ada Bulanan (RM) *" data-en="Existing Monthly Commitments (RM) *">Komitmen Sedia Ada Bulanan (RM) <span class="required">*</span></label>
+<input type="number" id="commitments" min="0" step="0.01" placeholder="Contoh: 100">
+<small data-ms="Masukkan jumlah komitmen bulanan semasa, tidak termasuk pembiayaan kenderaan yang sedang dikira." data-en="Enter current monthly commitments, excluding the vehicle financing being calculated.">Masukkan jumlah komitmen bulanan semasa, tidak termasuk pembiayaan kenderaan yang sedang dikira.</small>
+</div>
+</div>
+</div>
 
-        <div class="dsr-panel" id="financeResult">
-            <strong data-ms="Petunjuk Kemampuan Kewangan" data-en="Financial Affordability Indicator">Petunjuk Kemampuan Kewangan</strong>
-            <p class="hint" data-ms="Lengkapkan maklumat kewangan untuk melihat nisbah komitmen hutang." data-en="Complete your financial information to view your debt service ratio.">Lengkapkan maklumat kewangan untuk melihat nisbah komitmen hutang.</p>
-            <div class="metric">
-                <div class="metric-box">
-                    <span data-ms="Jumlah Pendapatan Bersih" data-en="Net Income">Jumlah Pendapatan Bersih</span>
-                    <strong id="displayNetSalary">RM0.00</strong>
-                </div>
-                <div class="metric-box">
-                    <span data-ms="Jumlah Komitmen" data-en="Total Commitments">Jumlah Komitmen</span>
-                    <strong id="displayCommitments">RM0.00</strong>
-                </div>
-                <div class="metric-box">
-                    <span data-ms="Nisbah Komitmen Hutang" data-en="Debt Service Ratio">Nisbah Komitmen Hutang</span>
-                    <strong id="displayDSR">0%</strong>
-                </div>
-            </div>
-            <div id="dsrStatus" class="dsr-status yellow" data-ms="Belum Dinilai" data-en="Not Assessed">Belum Dinilai</div>
-            <p class="hint" id="dsrDescription" data-ms="Penilaian akan dipaparkan selepas maklumat kewangan dilengkapkan." data-en="The assessment will be displayed after completing the financial information.">Penilaian akan dipaparkan selepas maklumat kewangan dilengkapkan.</p>
-        </div>
+<div class="card">
+<h2 data-ms="Petunjuk Kemampuan Kewangan (DSR)" data-en="Financial Affordability Indicator (DSR)">Petunjuk Kemampuan Kewangan (DSR)</h2>
+<p class="hint" data-ms="Nisbah Khidmat Hutang (DSR) menunjukkan peratus pendapatan bersih yang digunakan untuk membayar komitmen bulanan." data-en="Debt Service Ratio (DSR) indicates the percentage of net income used to pay monthly commitments.">Nisbah Khidmat Hutang (DSR) menunjukkan peratus pendapatan bersih yang digunakan untuk membayar komitmen bulanan.</p>
+<div class="metric">
+<div class="metric-box">
+<span data-ms="Gaji Bersih" data-en="Net Salary">Gaji Bersih</span>
+<strong id="dsrNet">RM0.00</strong>
+</div>
+<div class="metric-box">
+<span data-ms="Komitmen Sedia Ada" data-en="Existing Commitments">Komitmen Sedia Ada</span>
+<strong id="dsrCommit">RM0.00</strong>
+</div>
+<div class="metric-box">
+<span>DSR</span>
+<strong id="dsrValue">0%</strong>
+</div>
+</div>
+<div class="dsr-panel">
+<strong id="dsrTitle" data-ms="Belum dinilai" data-en="Not assessed">Belum dinilai</strong>
+<br>
+<span class="dsr-status yellow" id="dsrStatus" data-ms="Masukkan maklumat kewangan" data-en="Enter financial information">Masukkan maklumat kewangan</span>
+<p class="hint" id="dsrDescription" data-ms="Petunjuk ini merupakan penilaian asas dan bukan keputusan kelulusan pembiayaan bank." data-en="This indicator is a basic assessment and is not a bank financing approval decision.">Petunjuk ini merupakan penilaian asas dan bukan keputusan kelulusan pembiayaan bank.</p>
+</div>
+</div>
 
-        <div class="actions">
-            <button type="button" class="btn btn-secondary" onclick="goTo('dashboard')" data-ms="← Kembali" data-en="← Back">← Kembali</button>
-            <button type="button" class="btn btn-primary" onclick="saveFinanceAndNext()" data-ms="Seterusnya →" data-en="Next →">Seterusnya →</button>
-        </div>
-    </div>
+<div class="actions">
+<button type="button" class="btn btn-secondary" onclick="goTo('dashboard')" data-ms="← Kembali" data-en="← Back">← Kembali</button>
+<button type="button" class="btn btn-primary" onclick="nextFromFinance()" data-ms="Seterusnya →" data-en="Next →">Seterusnya →</button>
+</div>
 </section>
 
 <!-- VEHICLE INFORMATION -->
 <section class="page" id="page-vehicle">
-    <div class="page-heading">
-        <h1 data-ms="Maklumat Kenderaan" data-en="Vehicle Information">Maklumat Kenderaan</h1>
-        <p data-ms="Masukkan maklumat kenderaan yang ingin dibeli bagi membuat simulasi pembiayaan." data-en="Enter the vehicle details to simulate the financing.">Masukkan maklumat kenderaan yang ingin dibeli bagi membuat simulasi pembiayaan.</p>
-    </div>
+<div class="page-heading">
+<h1 data-ms="Maklumat Kenderaan" data-en="Vehicle Information">Maklumat Kenderaan</h1>
+<p data-ms="Masukkan butiran kenderaan yang ingin dibeli untuk tujuan simulasi pembiayaan." data-en="Enter the details of the vehicle you intend to purchase for financing simulation.">Masukkan butiran kenderaan yang ingin dibeli untuk tujuan simulasi pembiayaan.</p>
+</div>
 
-    <div class="card">
-        <h2 data-ms="Butiran Pembelian Kenderaan" data-en="Vehicle Purchase Details">Butiran Pembelian Kenderaan</h2>
-        <div class="grid">
-            <div class="field">
-                <label for="vehicleCategory" data-ms="Kategori Kenderaan *" data-en="Vehicle Category *">Kategori Kenderaan <span class="required">*</span></label>
-                <select id="vehicleCategory">
-                    <option value="">-- Pilih Kategori --</option>
-                    <option value="Sedan">Sedan</option>
-                    <option value="Hatchback">Hatchback</option>
-                    <option value="SUV">SUV</option>
-                    <option value="MPV">MPV</option>
-                    <option value="Pickup Truck">Pickup Truck</option>
-                    <option value="Van">Van</option>
-                    <option value="Electric Vehicle">Kenderaan Elektrik (EV)</option>
-                </select>
-            </div>
-            <div class="field">
-                <label for="vehicleModel" data-ms="Model Kenderaan *" data-en="Vehicle Model *">Model Kenderaan <span class="required">*</span></label>
-                <input type="text" id="vehicleModel" placeholder="Contoh: Perodua Myvi">
-            </div>
-            <div class="field">
-                <label for="purchasePurpose" data-ms="Tujuan Pembelian *" data-en="Purchase Purpose *">Tujuan Pembelian <span class="required">*</span></label>
-                <select id="purchasePurpose">
-                    <option value="">-- Pilih Tujuan --</option>
-                    <option value="Kegunaan Peribadi">Kegunaan Peribadi</option>
-                    <option value="Kegunaan Perniagaan">Kegunaan Perniagaan</option>
-                </select>
-            </div>
-            <div class="field">
-                <label for="vehiclePrice" data-ms="Harga Kenderaan (RM) *" data-en="Vehicle Price (RM) *">Harga Kenderaan (RM) <span class="required">*</span></label>
-                <input type="number" id="vehiclePrice" min="1" step="0.01" placeholder="Contoh: 90000">
-            </div>
-            <div class="field">
-                <label for="downPayment" data-ms="Bayaran Pendahuluan (RM) *" data-en="Down Payment (RM) *">Bayaran Pendahuluan (RM) <span class="required">*</span></label>
-                <input type="number" id="downPayment" min="0" step="0.01" placeholder="Contoh: 9000">
-            </div>
-            <div class="field">
-                <label for="loanYears" data-ms="Tempoh Pembiayaan (Tahun) *" data-en="Financing Period (Years) *">Tempoh Pembiayaan (Tahun) <span class="required">*</span></label>
-                <select id="loanYears">
-                    <option value="">-- Pilih Tempoh --</option>
-                    <option value="5">5 Tahun</option>
-                    <option value="7">7 Tahun</option>
-                    <option value="9">9 Tahun</option>
-                </select>
-            </div>
-        </div>
+<div class="card">
+<h2 data-ms="Butiran Pembelian Kenderaan" data-en="Vehicle Purchase Details">Butiran Pembelian Kenderaan</h2>
+<div class="grid">
+<div class="field">
+<label data-ms="Kategori Kenderaan *" data-en="Vehicle Category *">Kategori Kenderaan <span class="required">*</span></label>
+<select id="category">
+<option value="">-- Pilih Kategori --</option>
+<option>Sedan</option>
+<option>SUV</option>
+<option>MPV</option>
+<option>Pickup Truck / 4x4</option>
+<option>Hatchback</option>
+<option>Coupe</option>
+<option>Wagon</option>
+<option>Electric Vehicle (EV)</option>
+<option>Van</option>
+<option>Lain-lain</option>
+</select>
+</div>
 
-        <div class="links">
-            <strong data-ms="Rujukan Harga Kenderaan:" data-en="Vehicle Price Reference:">Rujukan Harga Kenderaan:</strong>
-            <br>
-            <a href="https://www.mudah.my/" target="_blank" rel="noopener noreferrer">Mudah.my</a>
-            <a href="https://www.carlist.my/" target="_blank" rel="noopener noreferrer">Carlist.my</a>
-            <a href="https://www.perodua.com.my/" target="_blank" rel="noopener noreferrer">Perodua</a>
-            <a href="https://www.proton.com/" target="_blank" rel="noopener noreferrer">Proton</a>
-        </div>
+<div class="field">
+<label data-ms="Model / Jenis Kenderaan *" data-en="Vehicle Model / Name *">Model / Jenis Kenderaan <span class="required">*</span></label>
+<input type="text" id="model" placeholder="Contoh: Ford Ranger 2.0 XLT">
+</div>
 
-        <p class="hint" data-ms="Nota: Harga kenderaan boleh dirujuk melalui laman web yang disediakan. Pastikan harga dan maklumat kenderaan dimasukkan dengan betul." data-en="Note: Vehicle prices can be referred to through the websites provided. Ensure that the vehicle price and details are entered correctly.">Nota: Harga kenderaan boleh dirujuk melalui laman web yang disediakan. Pastikan harga dan maklumat kenderaan dimasukkan dengan betul.</p>
+<div class="field full">
+<label data-ms="Tujuan Pembelian Kenderaan *" data-en="Vehicle Purchase Purpose *">Tujuan Pembelian Kenderaan <span class="required">*</span></label>
+<select id="purpose">
+<option value="">-- Pilih Tujuan Pembelian --</option>
+<option value="personal" data-ms="Kegunaan Peribadi" data-en="Personal Use">Kegunaan Peribadi</option>
+<option value="business" data-ms="Kegunaan Perniagaan" data-en="Business Use">Kegunaan Perniagaan</option>
+</select>
+<small data-ms="Pilih tujuan pembelian yang bersesuaian dengan penggunaan kenderaan." data-en="Select the purpose that matches how the vehicle will be used.">Pilih tujuan pembelian yang bersesuaian dengan penggunaan kenderaan.</small>
+</div>
 
-        <div class="actions">
-            <button type="button" class="btn btn-secondary" onclick="goTo('finance')" data-ms="← Kembali" data-en="← Back">← Kembali</button>
-            <button type="button" class="btn btn-primary" onclick="saveVehicleAndNext()" data-ms="Seterusnya →" data-en="Next →">Seterusnya →</button>
-        </div>
-    </div>
+<div class="field">
+<label data-ms="Harga Kenderaan (RM) *" data-en="Vehicle Price (RM) *">Harga Kenderaan (RM) <span class="required">*</span></label>
+<input type="number" id="price" min="1" step="0.01" placeholder="Contoh: 120000">
+</div>
+
+<div class="field">
+<label data-ms="Bayaran Pendahuluan (RM) *" data-en="Down Payment (RM) *">Bayaran Pendahuluan (RM) <span class="required">*</span></label>
+<input type="number" id="deposit" min="0" step="0.01" placeholder="Contoh: 12000">
+</div>
+
+<div class="field">
+<label data-ms="Tempoh Pembiayaan *" data-en="Financing Period *">Tempoh Pembiayaan <span class="required">*</span></label>
+<select id="years">
+<option value="">-- Pilih Tempoh --</option>
+<option value="3">3 Tahun</option>
+<option value="4">4 Tahun</option>
+<option value="5">5 Tahun</option>
+<option value="6">6 Tahun</option>
+<option value="7">7 Tahun</option>
+<option value="8">8 Tahun</option>
+<option value="9">9 Tahun</option>
+</select>
+</div>
+
+<div class="field">
+<label data-ms="Kaedah Pengiraan Pembiayaan *" data-en="Financing Calculation Method *">Kaedah Pengiraan Pembiayaan <span class="required">*</span></label>
+<select id="method">
+<option value="flat" data-ms="Kadar Faedah Rata (Flat Rate)" data-en="Flat Interest Rate">Kadar Faedah Rata (Flat Rate)</option>
+<option value="reducing" data-ms="Baki Berkurangan (Reducing Balance)" data-en="Reducing Balance">Baki Berkurangan (Reducing Balance)</option>
+</select>
+</div>
+</div>
+
+<div class="links">
+<strong data-ms="Rujukan harga kenderaan:" data-en="Vehicle price references:">Rujukan harga kenderaan:</strong><br>
+<a href="https://www.carlist.my/" target="_blank" rel="noopener">Carlist.my ↗</a>
+<a href="https://paultan.org/" target="_blank" rel="noopener">Paultan.org ↗</a>
+<a href="https://www.ford.com.my/" target="_blank" rel="noopener">Ford Malaysia ↗</a>
+</div>
+</div>
+
+<div class="actions">
+<button type="button" class="btn btn-secondary" onclick="goTo('finance')" data-ms="← Kembali" data-en="← Back">← Kembali</button>
+<button type="button" class="btn btn-primary" onclick="nextFromVehicle()" data-ms="Seterusnya →" data-en="Next →">Seterusnya →</button>
+</div>
 </section>
 
-<!-- FINANCIAL INSTITUTIONS -->
+<!-- BANKS -->
 <section class="page" id="page-banks">
-    <div class="page-heading">
-        <h1 data-ms="Institusi Kewangan" data-en="Financial Institutions">Institusi Kewangan</h1>
-        <p data-ms="Pilih institusi kewangan untuk membuat perbandingan kadar faedah dan anggaran bayaran pembiayaan." data-en="Select financial institutions to compare interest rates and estimated financing payments.">Pilih institusi kewangan untuk membuat perbandingan kadar faedah dan anggaran bayaran pembiayaan.</p>
-    </div>
+<div class="page-heading">
+<h1 data-ms="Institusi Kewangan" data-en="Financial Institutions">Institusi Kewangan</h1>
+<p data-ms="Pilih institusi kewangan untuk membuat perbandingan pembiayaan kenderaan." data-en="Select financial institutions to compare vehicle financing.">Pilih institusi kewangan untuk membuat perbandingan pembiayaan kenderaan.</p>
+</div>
 
-    <div class="card">
-        <h2 data-ms="Pilihan Institusi Kewangan" data-en="Financial Institution Selection">Pilihan Institusi Kewangan</h2>
-        <p class="hint" data-ms="Kadar faedah rujukan yang digunakan dalam simulasi ini adalah kadar anggaran tetap bagi tujuan perbandingan." data-en="The reference interest rates used in this simulation are estimated fixed rates for comparison purposes.">Kadar faedah rujukan yang digunakan dalam simulasi ini adalah kadar anggaran tetap bagi tujuan perbandingan.</p>
+<div class="card">
+<h2 data-ms="Senarai Institusi Kewangan" data-en="Financial Institution List">Senarai Institusi Kewangan</h2>
+<p class="hint" data-ms="Kadar di bawah ialah kadar rujukan simulasi untuk tujuan perbandingan. Kadar sebenar tertakluk kepada tawaran, kelayakan pelanggan, jenis kenderaan dan keputusan institusi kewangan." data-en="The rates below are simulation reference rates for comparison purposes. Actual rates depend on the offer, customer eligibility, vehicle type and financial institution decision.">Kadar di bawah ialah kadar rujukan simulasi untuk tujuan perbandingan. Kadar sebenar tertakluk kepada tawaran, kelayakan pelanggan, jenis kenderaan dan keputusan institusi kewangan.</p>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th data-ms="Institusi Kewangan" data-en="Financial Institution">Institusi Kewangan</th>
+<th data-ms="Kadar Rujukan Tahunan" data-en="Annual Reference Rate">Kadar Rujukan Tahunan</th>
+</tr>
+</thead>
+<tbody id="bankRateTable"></tbody>
+</table>
+</div>
 
-        <div class="table-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th data-ms="Pilih" data-en="Select">Pilih</th>
-                        <th data-ms="Institusi Kewangan" data-en="Financial Institution">Institusi Kewangan</th>
-                        <th data-ms="Kadar Faedah (%)" data-en="Interest Rate (%)">Kadar Faedah (%)</th>
-                    </tr>
-                </thead>
-                <tbody id="bankList">
-                    <tr>
-                        <td><input type="checkbox" class="bank-checkbox" value="Maybank"></td>
-                        <td>Maybank</td>
-                        <td class="rate-good">3.30%</td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" class="bank-checkbox" value="CIMB Bank"></td>
-                        <td>CIMB Bank</td>
-                        <td class="rate-mid">3.50%</td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" class="bank-checkbox" value="Public Bank"></td>
-                        <td>Public Bank</td>
-                        <td class="rate-good">3.20%</td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" class="bank-checkbox" value="RHB Bank"></td>
-                        <td>RHB Bank</td>
-                        <td class="rate-mid">3.40%</td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" class="bank-checkbox" value="Hong Leong Bank"></td>
-                        <td>Hong Leong Bank</td>
-                        <td class="rate-mid">3.40%</td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" class="bank-checkbox" value="Bank Islam"></td>
-                        <td>Bank Islam</td>
-                        <td class="rate-mid">3.50%</td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" class="bank-checkbox" value="BSN"></td>
-                        <td>BSN</td>
-                        <td class="rate-high">3.55%</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+<div class="field" style="margin-top:20px">
+<label data-ms="Pilih Institusi Kewangan untuk Perbandingan *" data-en="Select Financial Institution for Comparison *">Pilih Institusi Kewangan untuk Perbandingan <span class="required">*</span></label>
+<div id="bankCheckboxes"></div>
+<small data-ms="Pilih sekurang-kurangnya satu institusi kewangan." data-en="Select at least one financial institution.">Pilih sekurang-kurangnya satu institusi kewangan.</small>
+</div>
+</div>
 
-        <div class="notice" style="margin-top:17px" data-ms="Perhatian: Kadar faedah yang dipaparkan merupakan kadar rujukan simulasi dan bukan tawaran rasmi institusi kewangan. Kadar sebenar tertakluk kepada kelayakan pemohon dan terma pihak bank." data-en="Attention: The displayed interest rates are simulation reference rates and are not official offers from financial institutions. Actual rates are subject to applicant eligibility and bank terms.">Perhatian: Kadar faedah yang dipaparkan merupakan kadar rujukan simulasi dan bukan tawaran rasmi institusi kewangan. Kadar sebenar tertakluk kepada kelayakan pemohon dan terma pihak bank.</div>
-
-        <div class="actions">
-            <button type="button" class="btn btn-secondary" onclick="goTo('vehicle')" data-ms="← Kembali" data-en="← Back">← Kembali</button>
-            <button type="button" class="btn btn-primary" onclick="saveBanksAndNext()" data-ms="Seterusnya →" data-en="Next →">Seterusnya →</button>
-        </div>
-    </div>
+<div class="actions">
+<button type="button" class="btn btn-secondary" onclick="goTo('vehicle')" data-ms="← Kembali" data-en="← Back">← Kembali</button>
+<button type="button" class="btn btn-primary" onclick="nextFromBanks()" data-ms="Seterusnya →" data-en="Next →">Seterusnya →</button>
+</div>
 </section>
 
 <!-- COMPARISON -->
 <section class="page" id="page-comparison">
-    <div class="page-heading">
-        <h1 data-ms="Perbandingan Pembiayaan" data-en="Financing Comparison">Perbandingan Pembiayaan</h1>
-        <p data-ms="Lihat perbandingan kadar faedah, ansuran bulanan dan jumlah bayaran bagi institusi kewangan yang dipilih." data-en="View the comparison of interest rates, monthly instalments and total payments for the selected financial institutions.">Lihat perbandingan kadar faedah, ansuran bulanan dan jumlah bayaran bagi institusi kewangan yang dipilih.</p>
-    </div>
+<div class="page-heading">
+<h1 data-ms="Perbandingan Pembiayaan" data-en="Financing Comparison">Perbandingan Pembiayaan</h1>
+<p data-ms="Lihat perbezaan kadar faedah, ansuran bulanan dan jumlah bayaran berdasarkan maklumat yang dimasukkan." data-en="View differences in interest rates, monthly instalments and total payments based on the information entered.">Lihat perbezaan kadar faedah, ansuran bulanan dan jumlah bayaran berdasarkan maklumat yang dimasukkan.</p>
+</div>
 
-    <div class="card">
-        <h2 data-ms="Keputusan Perbandingan" data-en="Comparison Results">Keputusan Perbandingan</h2>
-        <div class="table-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th data-ms="Institusi Kewangan" data-en="Financial Institution">Institusi Kewangan</th>
-                        <th data-ms="Kadar Faedah" data-en="Interest Rate">Kadar Faedah</th>
-                        <th data-ms="Ansuran Bulanan" data-en="Monthly Instalment">Ansuran Bulanan</th>
-                        <th data-ms="Jumlah Faedah" data-en="Total Interest">Jumlah Faedah</th>
-                        <th data-ms="Jumlah Bayaran" data-en="Total Payment">Jumlah Bayaran</th>
-                    </tr>
-                </thead>
-                <tbody id="comparisonBody">
-                    <tr><td colspan="5" style="text-align:center">Sila lengkapkan maklumat terlebih dahulu.</td></tr>
-                </tbody>
-            </table>
-        </div>
+<div class="card">
+<h2 data-ms="Keputusan Perbandingan" data-en="Comparison Results">Keputusan Perbandingan</h2>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th data-ms="Institusi Kewangan" data-en="Financial Institution">Institusi Kewangan</th>
+<th data-ms="Kadar Faedah" data-en="Interest Rate">Kadar Faedah</th>
+<th data-ms="Ansuran Bulanan" data-en="Monthly Instalment">Ansuran Bulanan</th>
+<th data-ms="Jumlah Bayaran" data-en="Total Payment">Jumlah Bayaran</th>
+<th data-ms="Jumlah Faedah" data-en="Total Interest">Jumlah Faedah</th>
+</tr>
+</thead>
+<tbody id="comparisonBody"></tbody>
+</table>
+</div>
+<div class="notice" style="margin-top:18px" id="bestResult">Keputusan perbandingan akan dipaparkan di sini.</div>
+</div>
 
-        <p class="hint" data-ms="Institusi kewangan dengan jumlah bayaran terendah akan ditandakan sebagai pilihan paling menjimatkan berdasarkan simulasi." data-en="The financial institution with the lowest total payment will be highlighted as the most economical option based on the simulation.">Institusi kewangan dengan jumlah bayaran terendah akan ditandakan sebagai pilihan paling menjimatkan berdasarkan simulasi.</p>
-
-        <div class="actions">
-            <button type="button" class="btn btn-secondary" onclick="goTo('banks')" data-ms="← Kembali" data-en="← Back">← Kembali</button>
-            <button type="button" class="btn btn-primary" onclick="goToSummary()" data-ms="Seterusnya →" data-en="Next →">Seterusnya →</button>
-        </div>
-    </div>
+<div class="actions">
+<button type="button" class="btn btn-secondary" onclick="goTo('banks')" data-ms="← Kembali" data-en="← Back">← Kembali</button>
+<button type="button" class="btn btn-primary" onclick="goTo('summary')" data-ms="Seterusnya →" data-en="Next →">Seterusnya →</button>
+</div>
 </section>
+
 <!-- SUMMARY -->
 <section class="page" id="page-summary">
-    <div class="page-heading">
-        <h1 data-ms="Rumusan Pembiayaan" data-en="Financing Summary">Rumusan Pembiayaan</h1>
-        <p data-ms="Semak ringkasan maklumat pengguna dan cadangan pembiayaan berdasarkan maklumat yang telah dimasukkan." data-en="Review the user information summary and financing recommendation based on the details entered.">Semak ringkasan maklumat pengguna dan cadangan pembiayaan berdasarkan maklumat yang telah dimasukkan.</p>
-    </div>
+<div class="page-heading">
+<h1 data-ms="Rumusan Pembiayaan" data-en="Financing Summary">Rumusan Pembiayaan</h1>
+<p data-ms="Semak semula maklumat kewangan dan kenderaan serta keputusan simulasi pembiayaan." data-en="Review your financial and vehicle information and financing simulation results.">Semak semula maklumat kewangan dan kenderaan serta keputusan simulasi pembiayaan.</p>
+</div>
 
-    <div class="card">
-        <h2 data-ms="Ringkasan Maklumat Pengguna" data-en="User Information Summary">Ringkasan Maklumat Pengguna</h2>
-        <div class="summary-grid">
-            <div class="summary-item"><span data-ms="Gaji Kasar Bulanan" data-en="Monthly Gross Salary">Gaji Kasar Bulanan</span><strong id="summaryGross">RM0.00</strong></div>
-            <div class="summary-item"><span data-ms="Gaji Bersih Bulanan" data-en="Monthly Net Salary">Gaji Bersih Bulanan</span><strong id="summaryNet">RM0.00</strong></div>
-            <div class="summary-item"><span data-ms="Komitmen Bulanan Sedia Ada" data-en="Existing Monthly Commitments">Komitmen Bulanan Sedia Ada</span><strong id="summaryCommitments">RM0.00</strong></div>
-            <div class="summary-item"><span data-ms="Nisbah Komitmen Hutang" data-en="Debt Service Ratio">Nisbah Komitmen Hutang</span><strong id="summaryDSR">0%</strong></div>
-            <div class="summary-item"><span data-ms="Kategori Kenderaan" data-en="Vehicle Category">Kategori Kenderaan</span><strong id="summaryCategory">-</strong></div>
-            <div class="summary-item"><span data-ms="Model Kenderaan" data-en="Vehicle Model">Model Kenderaan</span><strong id="summaryModel">-</strong></div>
-            <div class="summary-item"><span data-ms="Tujuan Pembelian" data-en="Purchase Purpose">Tujuan Pembelian</span><strong id="summaryPurpose">-</strong></div>
-            <div class="summary-item"><span data-ms="Harga Kenderaan" data-en="Vehicle Price">Harga Kenderaan</span><strong id="summaryPrice">RM0.00</strong></div>
-            <div class="summary-item"><span data-ms="Bayaran Pendahuluan" data-en="Down Payment">Bayaran Pendahuluan</span><strong id="summaryDownPayment">RM0.00</strong></div>
-            <div class="summary-item"><span data-ms="Jumlah Pembiayaan" data-en="Financing Amount">Jumlah Pembiayaan</span><strong id="summaryLoan">RM0.00</strong></div>
-            <div class="summary-item"><span data-ms="Tempoh Pembiayaan" data-en="Financing Period">Tempoh Pembiayaan</span><strong id="summaryYears">-</strong></div>
-            <div class="summary-item"><span data-ms="Institusi Kewangan Dipilih" data-en="Selected Financial Institutions">Institusi Kewangan Dipilih</span><strong id="summaryBanks">-</strong></div>
-        </div>
-    </div>
+<div class="card">
+<h2 data-ms="Ringkasan Maklumat Pengguna" data-en="User Information Summary">Ringkasan Maklumat Pengguna</h2>
+<div class="summary-grid">
+<div class="summary-item"><span data-ms="Gaji Bersih Bulanan" data-en="Monthly Net Salary">Gaji Bersih Bulanan</span><strong id="sumNet">-</strong></div>
+<div class="summary-item"><span data-ms="Komitmen Sedia Ada" data-en="Existing Commitments">Komitmen Sedia Ada</span><strong id="sumCommit">-</strong></div>
+<div class="summary-item"><span>DSR</span><strong id="sumDSR">-</strong></div>
+<div class="summary-item"><span data-ms="Kategori Kenderaan" data-en="Vehicle Category">Kategori Kenderaan</span><strong id="sumCategory">-</strong></div>
+<div class="summary-item"><span data-ms="Model Kenderaan" data-en="Vehicle Model">Model Kenderaan</span><strong id="sumModel">-</strong></div>
+<div class="summary-item"><span data-ms="Tujuan Pembelian" data-en="Purchase Purpose">Tujuan Pembelian</span><strong id="sumPurpose">-</strong></div>
+<div class="summary-item"><span data-ms="Harga Kenderaan" data-en="Vehicle Price">Harga Kenderaan</span><strong id="sumPrice">-</strong></div>
+<div class="summary-item"><span data-ms="Bayaran Pendahuluan" data-en="Down Payment">Bayaran Pendahuluan</span><strong id="sumDeposit">-</strong></div>
+<div class="summary-item"><span data-ms="Jumlah Pembiayaan" data-en="Financing Amount">Jumlah Pembiayaan</span><strong id="sumLoan">-</strong></div>
+<div class="summary-item"><span data-ms="Tempoh Pembiayaan" data-en="Financing Period">Tempoh Pembiayaan</span><strong id="sumYears">-</strong></div>
+</div>
+</div>
 
-    <div class="card">
-        <h2 data-ms="Cadangan Pembiayaan" data-en="Financing Recommendation">Cadangan Pembiayaan</h2>
-        <div id="recommendationBox">
-            <p class="hint" data-ms="Cadangan pembiayaan akan dipaparkan berdasarkan keputusan perbandingan." data-en="The financing recommendation will be displayed based on the comparison results.">Cadangan pembiayaan akan dipaparkan berdasarkan keputusan perbandingan.</p>
-        </div>
-    </div>
+<div class="card">
+<h2 data-ms="Cadangan Pembiayaan" data-en="Financing Recommendation">Cadangan Pembiayaan</h2>
+<div id="summaryRecommendation"></div>
+</div>
 
-    <div class="card">
-        <h2 data-ms="Ringkasan Jadual Bayaran" data-en="Payment Schedule Summary">Ringkasan Jadual Bayaran</h2>
-        <p class="hint" data-ms="Ringkasan ini menunjukkan anggaran jumlah bayaran balik berdasarkan institusi kewangan yang dicadangkan." data-en="This summary shows the estimated total repayment based on the recommended financial institution.">Ringkasan ini menunjukkan anggaran jumlah bayaran balik berdasarkan institusi kewangan yang dicadangkan.</p>
-        <div class="repayment-summary">
-            <div class="summary-item"><span data-ms="Institusi Kewangan" data-en="Financial Institution">Institusi Kewangan</span><strong id="scheduleBank">-</strong></div>
-            <div class="summary-item"><span data-ms="Kadar Faedah" data-en="Interest Rate">Kadar Faedah</span><strong id="scheduleRate">-</strong></div>
-            <div class="summary-item"><span data-ms="Ansuran Bulanan" data-en="Monthly Instalment">Ansuran Bulanan</span><strong id="scheduleMonthly">RM0.00</strong></div>
-            <div class="summary-item"><span data-ms="Tempoh Pembiayaan" data-en="Financing Period">Tempoh Pembiayaan</span><strong id="schedulePeriod">-</strong></div>
-        </div>
-        <div class="repayment-total">
-            <div class="summary-item"><span data-ms="Jumlah Faedah Keseluruhan" data-en="Total Interest">Jumlah Faedah Keseluruhan</span><strong id="scheduleInterest">RM0.00</strong></div>
-            <div class="summary-item"><span data-ms="Jumlah Keseluruhan Bayaran Balik" data-en="Total Repayment Amount">Jumlah Keseluruhan Bayaran Balik</span><strong id="scheduleTotal">RM0.00</strong></div>
-        </div>
-        <div class="repayment-note" data-ms="Nota: Jadual bayaran balik merupakan anggaran berdasarkan kaedah pengiraan kadar faedah tetap (flat rate). Jumlah sebenar mungkin berbeza mengikut terma dan kelulusan institusi kewangan." data-en="Note: The repayment schedule is an estimate based on the flat-rate interest calculation method. Actual amounts may differ according to the terms and approval of the financial institution.">Nota: Jadual bayaran balik merupakan anggaran berdasarkan kaedah pengiraan kadar faedah tetap (flat rate). Jumlah sebenar mungkin berbeza mengikut terma dan kelulusan institusi kewangan.</div>
-    </div>
+<div class="card">
+<h2 data-ms="Ringkasan Jadual Bayaran" data-en="Payment Schedule Summary">Ringkasan Jadual Bayaran</h2>
+<p class="hint" data-ms="Ringkasan anggaran bayaran berdasarkan institusi kewangan yang menawarkan ansuran bulanan terendah." data-en="Estimated payment summary based on the financial institution offering the lowest monthly instalment.">Ringkasan anggaran bayaran berdasarkan institusi kewangan yang menawarkan ansuran bulanan terendah.</p>
+<div class="summary-grid">
+<div class="summary-item"><span data-ms="Institusi Kewangan" data-en="Financial Institution">Institusi Kewangan</span><strong id="summaryScheduleBank">-</strong></div>
+<div class="summary-item"><span data-ms="Kadar Faedah" data-en="Interest Rate">Kadar Faedah</span><strong id="summaryScheduleRate">-</strong></div>
+<div class="summary-item"><span data-ms="Ansuran Bulanan" data-en="Monthly Instalment">Ansuran Bulanan</span><strong id="summaryScheduleMonthly">-</strong></div>
+<div class="summary-item"><span data-ms="Jumlah Faedah" data-en="Total Interest">Jumlah Faedah</span><strong id="summaryScheduleInterest">-</strong></div>
+<div class="summary-item"><span data-ms="Jumlah Keseluruhan Bayaran" data-en="Total Repayment">Jumlah Keseluruhan Bayaran</span><strong id="summaryScheduleTotal">-</strong></div>
+<div class="summary-item"><span data-ms="Tempoh Pembiayaan" data-en="Financing Period">Tempoh Pembiayaan</span><strong id="summaryScheduleYears">-</strong></div>
+</div>
+</div>
 
-    <div class="actions">
-        <button type="button" class="btn btn-secondary" onclick="goTo('comparison')" data-ms="← Kembali" data-en="← Back">← Kembali</button>
-        <button type="button" class="btn btn-primary" onclick="goToSchedule()" data-ms="Lihat Jadual Bayaran Balik →" data-en="View Repayment Schedule →">Lihat Jadual Bayaran Balik →</button>
-    </div>
+<div class="actions">
+<button type="button" class="btn btn-secondary" onclick="goTo('comparison')" data-ms="← Kembali" data-en="← Back">← Kembali</button>
+<button type="button" class="btn btn-primary" onclick="goTo('schedule')" data-ms="Lihat Jadual Bayaran →" data-en="View Payment Schedule →">Lihat Jadual Bayaran →</button>
+</div>
 </section>
 
-<!-- REPAYMENT SCHEDULE -->
+<!-- PAYMENT SCHEDULE -->
 <section class="page" id="page-schedule">
-    <div class="page-heading">
-        <h1 data-ms="Jadual Bayaran Balik" data-en="Repayment Schedule">Jadual Bayaran Balik</h1>
-        <p data-ms="Jadual terperinci anggaran bayaran balik pembiayaan kenderaan mengikut bulan." data-en="Detailed monthly estimated vehicle financing repayment schedule.">Jadual terperinci anggaran bayaran balik pembiayaan kenderaan mengikut bulan.</p>
-    </div>
+<div class="page-heading">
+<h1 data-ms="Jadual Bayaran" data-en="Payment Schedule">Jadual Bayaran</h1>
+<p data-ms="Anggaran jadual pembayaran pembiayaan kenderaan berdasarkan institusi kewangan yang menawarkan ansuran bulanan terendah." data-en="Estimated vehicle financing payment schedule based on the institution offering the lowest monthly instalment.">Anggaran jadual pembayaran pembiayaan kenderaan berdasarkan institusi kewangan yang menawarkan ansuran bulanan terendah.</p>
+</div>
 
-    <div class="card">
-        <h2 data-ms="Maklumat Pembiayaan" data-en="Financing Information">Maklumat Pembiayaan</h2>
-        <div class="repayment-summary">
-            <div class="summary-item"><span data-ms="Model Kenderaan" data-en="Vehicle Model">Model Kenderaan</span><strong id="detailModel">-</strong></div>
-            <div class="summary-item"><span data-ms="Institusi Kewangan" data-en="Financial Institution">Institusi Kewangan</span><strong id="detailBank">-</strong></div>
-            <div class="summary-item"><span data-ms="Kadar Faedah" data-en="Interest Rate">Kadar Faedah</span><strong id="detailRate">-</strong></div>
-            <div class="summary-item"><span data-ms="Tempoh Pembiayaan" data-en="Financing Period">Tempoh Pembiayaan</span><strong id="detailPeriod">-</strong></div>
-        </div>
-        <div class="repayment-total">
-            <div class="summary-item"><span data-ms="Jumlah Pembiayaan" data-en="Financing Amount">Jumlah Pembiayaan</span><strong id="detailLoan">RM0.00</strong></div>
-            <div class="summary-item"><span data-ms="Ansuran Bulanan" data-en="Monthly Instalment">Ansuran Bulanan</span><strong id="detailMonthly">RM0.00</strong></div>
-            <div class="summary-item"><span data-ms="Jumlah Faedah" data-en="Total Interest">Jumlah Faedah</span><strong id="detailInterest">RM0.00</strong></div>
-            <div class="summary-item"><span data-ms="Jumlah Bayaran Balik" data-en="Total Repayment">Jumlah Bayaran Balik</span><strong id="detailTotal">RM0.00</strong></div>
-        </div>
-    </div>
+<div class="card">
+<h2 data-ms="Maklumat Pembayaran" data-en="Payment Information">Maklumat Pembayaran</h2>
+<div class="metric">
+<div class="metric-box"><span data-ms="Institusi Terpilih" data-en="Selected Institution">Institusi Terpilih</span><strong id="scheduleBank">-</strong></div>
+<div class="metric-box"><span data-ms="Ansuran Bulanan" data-en="Monthly Instalment">Ansuran Bulanan</span><strong id="scheduleMonthly">RM0.00</strong></div>
+<div class="metric-box"><span data-ms="Jumlah Pembiayaan" data-en="Financing Amount">Jumlah Pembiayaan</span><strong id="scheduleLoan">RM0.00</strong></div>
+</div>
 
-    <div class="card">
-        <h2 data-ms="Jadual Ansuran Bulanan" data-en="Monthly Instalment Schedule">Jadual Ansuran Bulanan</h2>
-        <div class="table-wrap">
-            <table class="repayment-table">
-                <thead>
-                    <tr>
-                        <th data-ms="Bulan" data-en="Month">Bulan</th>
-                        <th data-ms="Ansuran (RM)" data-en="Instalment (RM)">Ansuran (RM)</th>
-                        <th data-ms="Faedah (RM)" data-en="Interest (RM)">Faedah (RM)</th>
-                        <th data-ms="Prinsipal (RM)" data-en="Principal (RM)">Prinsipal (RM)</th>
-                        <th data-ms="Baki Pembiayaan (RM)" data-en="Outstanding Balance (RM)">Baki Pembiayaan (RM)</th>
-                    </tr>
-                </thead>
-                <tbody id="repaymentBody">
-                    <tr><td colspan="5" style="text-align:center">Sila lengkapkan maklumat pembiayaan terlebih dahulu.</td></tr>
-                </tbody>
-            </table>
-        </div>
-        <div class="repayment-note" data-ms="Nota: Jadual ini menggunakan kaedah kadar faedah tetap (flat rate). Amaun ansuran bulanan adalah anggaran dan tertakluk kepada terma sebenar institusi kewangan." data-en="Note: This schedule uses the flat-rate interest method. Monthly instalments are estimates and are subject to the actual terms of the financial institution.">Nota: Jadual ini menggunakan kaedah kadar faedah tetap (flat rate). Amaun ansuran bulanan adalah anggaran dan tertakluk kepada terma sebenar institusi kewangan.</div>
+<div class="summary-grid" style="margin-top:14px">
+<div class="summary-item"><span data-ms="Kadar Faedah Tahunan" data-en="Annual Interest Rate">Kadar Faedah Tahunan</span><strong id="scheduleRate">-</strong></div>
+<div class="summary-item"><span data-ms="Jumlah Faedah" data-en="Total Interest">Jumlah Faedah</span><strong id="scheduleInterest">-</strong></div>
+<div class="summary-item"><span data-ms="Jumlah Keseluruhan Bayaran" data-en="Total Repayment">Jumlah Keseluruhan Bayaran</span><strong id="scheduleTotal">-</strong></div>
+<div class="summary-item"><span data-ms="Tempoh Pembiayaan" data-en="Financing Period">Tempoh Pembiayaan</span><strong id="scheduleYears">-</strong></div>
+<div class="summary-item"><span data-ms="Kaedah Pengiraan" data-en="Calculation Method">Kaedah Pengiraan</span><strong id="scheduleMethod">-</strong></div>
+</div>
+</div>
 
-        <div class="actions repayment-actions">
-            <button type="button" class="btn btn-secondary" onclick="goTo('summary')" data-ms="← Kembali ke Rumusan" data-en="← Back to Summary">← Kembali ke Rumusan</button>
-            <button type="button" class="btn btn-primary" onclick="window.print()" data-ms="Cetak / Simpan PDF" data-en="Print / Save PDF">Cetak / Simpan PDF</button>
-        </div>
-    </div>
+<div class="card">
+<h2 data-ms="Perincian Jadual Bayaran Balik" data-en="Detailed Repayment Schedule">Perincian Jadual Bayaran Balik</h2>
+<p class="hint" data-ms="Jadual menunjukkan pecahan ansuran kepada faedah dan prinsipal serta baki pembiayaan selepas setiap bayaran dibuat." data-en="The schedule shows the interest and principal portions of each instalment and the outstanding balance after each payment.">Jadual menunjukkan pecahan ansuran kepada faedah dan prinsipal serta baki pembiayaan selepas setiap bayaran dibuat.</p>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th data-ms="Bulan" data-en="Month">Bulan</th>
+<th data-ms="Ansuran (RM)" data-en="Instalment (RM)">Ansuran (RM)</th>
+<th data-ms="Faedah (RM)" data-en="Interest (RM)">Faedah (RM)</th>
+<th data-ms="Prinsipal (RM)" data-en="Principal (RM)">Prinsipal (RM)</th>
+<th data-ms="Baki Pembiayaan (RM)" data-en="Outstanding Balance (RM)">Baki Pembiayaan (RM)</th>
+</tr>
+</thead>
+<tbody id="scheduleBody"></tbody>
+</table>
+</div>
+<div class="notice" style="margin-top:16px" id="scheduleNote">Pengiraan berdasarkan kaedah pembiayaan yang dipilih.</div>
+</div>
+
+<div class="actions">
+<button type="button" class="btn btn-secondary" onclick="goTo('summary')" data-ms="← Kembali" data-en="← Back">← Kembali</button>
+<button type="button" class="btn btn-cyan" onclick="window.print()" data-ms="Cetak / Simpan PDF" data-en="Print / Save PDF">Cetak / Simpan PDF</button>
+</div>
 </section>
 
 </main>
 </div>
 
-<footer>
-    BizHire Smart+ | <span data-ms="Simulasi Pembiayaan Kenderaan" data-en="Vehicle Financing Simulation">Simulasi Pembiayaan Kenderaan</span>
-</footer>
+<footer>BizHire Smart+ | Vehicle Financing Simulation</footer>
 
 <script>
-const bankRates = {
-    "Maybank": 3.30,
-    "CIMB Bank": 3.50,
-    "Public Bank": 3.20,
-    "RHB Bank": 3.40,
-    "Hong Leong Bank": 3.40,
-    "Bank Islam": 3.50,
-    "BSN": 3.55
-};
+"use strict";
 
-let currentLanguage = "ms";
-let selectedBanks = [];
+/* DATA INSTITUSI KEWANGAN
+Kadar ini ialah kadar rujukan simulasi, bukan tawaran rasmi bank.
+*/
+const banks = [
+{name:"Maybank",rate:3.30},
+{name:"CIMB Bank",rate:3.50},
+{name:"Public Bank",rate:3.20},
+{name:"RHB Bank",rate:3.40},
+{name:"Hong Leong Bank",rate:3.40},
+{name:"Bank Islam",rate:3.50},
+{name:"BSN",rate:3.55}
+];
+
+let currentLang = "ms";
 let comparisonResults = [];
-let recommendedResult = null;
+let selectedBest = null;
 
 const $ = id => document.getElementById(id);
 
 function money(value) {
-    return Number(value || 0).toLocaleString("en-MY", {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
-    });
+return "RM" + Number(value || 0).toLocaleString("en-MY",{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+});
 }
 
-function formatRM(value) {
-    return "RM" + money(value);
+function showMessage(message) {
+alert(message);
 }
 
-function getFinanceData() {
-    return {
-        gross: Number($("grossSalary").value || 0),
-        net: Number($("netSalary").value || 0),
-        commitments: Number($("commitments").value || 0)
-    };
-}
-
-function getVehicleData() {
-    return {
-        category: $("vehicleCategory").value,
-        model: $("vehicleModel").value.trim(),
-        purpose: $("purchasePurpose").value,
-        price: Number($("vehiclePrice").value || 0),
-        downPayment: Number($("downPayment").value || 0),
-        years: Number($("loanYears").value || 0)
-    };
-}
-
-function getLoanAmount() {
-    const vehicle = getVehicleData();
-    return vehicle.price - vehicle.downPayment;
-}
-
-function getDSR() {
-    const finance = getFinanceData();
-    if (finance.net <= 0) return 0;
-    return (finance.commitments / finance.net) * 100;
-}
-
-function updateFinanceDisplay() {
-    const finance = getFinanceData();
-    const dsr = getDSR();
-
-    $("displayNetSalary").textContent = formatRM(finance.net);
-    $("displayCommitments").textContent = formatRM(finance.commitments);
-    $("displayDSR").textContent = dsr.toFixed(2) + "%";
-
-    const status = $("dsrStatus");
-    const description = $("dsrDescription");
-
-    status.className = "dsr-status";
-
-    if (finance.net <= 0) {
-        status.classList.add("yellow");
-        status.textContent = currentLanguage === "ms" ? "Belum Dinilai" : "Not Assessed";
-        description.textContent = currentLanguage === "ms"
-            ? "Sila masukkan gaji bersih untuk penilaian."
-            : "Please enter your net salary for assessment.";
-    } else if (dsr <= 30) {
-        status.classList.add("green");
-        status.textContent = currentLanguage === "ms" ? "Hijau - Mampu" : "Green - Affordable";
-        description.textContent = currentLanguage === "ms"
-            ? "Komitmen bulanan berada pada tahap yang rendah."
-            : "Monthly commitments are at a low level.";
-    } else if (dsr <= 60) {
-        status.classList.add("yellow");
-        status.textContent = currentLanguage === "ms" ? "Kuning - Sederhana" : "Yellow - Moderate";
-        description.textContent = currentLanguage === "ms"
-            ? "Komitmen bulanan berada pada tahap sederhana."
-            : "Monthly commitments are at a moderate level.";
-    } else {
-        status.classList.add("red");
-        status.textContent = currentLanguage === "ms" ? "Merah - Tinggi" : "Red - High";
-        description.textContent = currentLanguage === "ms"
-            ? "Komitmen bulanan adalah tinggi berbanding pendapatan bersih."
-            : "Monthly commitments are high compared to net income.";
-    }
-}
+/* NAVIGASI HALAMAN */
+const pageNames = [
+"dashboard","finance","vehicle",
+"banks","comparison","summary","schedule"
+];
 
 function goTo(page) {
-    document.querySelectorAll(".page").forEach(section => {
-        section.classList.remove("active");
-    });
+if (!pageNames.includes(page)) return;
 
-    const target = $("page-" + page);
-    if (target) target.classList.add("active");
-
-    document.querySelectorAll(".nav-btn").forEach(button => {
-        button.classList.toggle("active", button.dataset.page === page);
-    });
-
-    const progress = {
-        dashboard: 0,
-        finance: 16,
-        vehicle: 33,
-        banks: 50,
-        comparison: 66,
-        summary: 83,
-        schedule: 100
-    };
-
-    $("progressBar").style.width = (progress[page] || 0) + "%";
-    window.scrollTo({top:0, behavior:"smooth"});
-}
-
-document.querySelectorAll(".nav-btn").forEach(button => {
-    button.addEventListener("click", () => {
-        goTo(button.dataset.page);
-    });
+document.querySelectorAll(".page").forEach(section => {
+section.classList.remove("active");
 });
 
-function saveFinanceAndNext() {
-    const finance = getFinanceData();
+const target = $("page-" + page);
+if (!target) return;
 
-    if (finance.gross <= 0 || finance.net <= 0 || finance.commitments < 0) {
-        alert(currentLanguage === "ms"
-            ? "Sila lengkapkan semua maklumat kewangan dengan betul."
-            : "Please complete all financial information correctly.");
-        return;
-    }
+target.classList.add("active");
 
-    if (finance.net > finance.gross) {
-        alert(currentLanguage === "ms"
-            ? "Gaji bersih tidak boleh melebihi gaji kasar."
-            : "Net salary cannot exceed gross salary.");
-        return;
-    }
+document.querySelectorAll(".nav-btn").forEach(button => {
+button.classList.toggle("active",button.dataset.page === page);
+});
 
-    updateFinanceDisplay();
-    goTo("vehicle");
+const index = pageNames.indexOf(page);
+$("progressBar").style.width =
+(index / (pageNames.length - 1) * 100) + "%";
+
+if (page === "comparison") calculateComparison();
+if (page === "summary") renderSummary();
+if (page === "schedule") renderSchedule();
+
+window.scrollTo({top:0,behavior:"smooth"});
 }
 
-function saveVehicleAndNext() {
-    const vehicle = getVehicleData();
+/* SIDEBAR NAVIGATION */
+document.querySelectorAll(".nav-btn").forEach(button => {
+button.addEventListener("click",function() {
+const page = this.dataset.page;
 
-    if (!vehicle.category || !vehicle.model || !vehicle.purpose ||
-        vehicle.price <= 0 || vehicle.downPayment < 0 || vehicle.years <= 0) {
-        alert(currentLanguage === "ms"
-            ? "Sila lengkapkan semua maklumat kenderaan."
-            : "Please complete all vehicle information.");
-        return;
-    }
-
-    if (vehicle.downPayment >= vehicle.price) {
-        alert(currentLanguage === "ms"
-            ? "Bayaran pendahuluan mestilah lebih rendah daripada harga kenderaan."
-            : "The down payment must be lower than the vehicle price.");
-        return;
-    }
-
-    goTo("banks");
+if (page === "dashboard") {
+goTo("dashboard");
+return;
 }
 
-function saveBanksAndNext() {
-    selectedBanks = Array.from(document.querySelectorAll(".bank-checkbox:checked"))
-        .map(input => input.value);
+const order = pageNames.indexOf(page);
+const current = pageNames.findIndex(name =>
+$("page-" + name).classList.contains("active")
+);
 
-    if (selectedBanks.length === 0) {
-        alert(currentLanguage === "ms"
-            ? "Sila pilih sekurang-kurangnya satu institusi kewangan."
-            : "Please select at least one financial institution.");
-        return;
-    }
+if (order <= current) {
+goTo(page);
+} else {
+showMessage("Sila lengkapkan langkah sebelumnya terlebih dahulu menggunakan butang Set seterusnya.");
+}
+});
+});
 
-    calculateComparison();
-    goTo("comparison");
+/* BAHASA */
+function toggleLanguage() {
+currentLang = currentLang === "ms" ? "en" : "ms";
+document.documentElement.lang = currentLang;
+
+document.querySelectorAll("[data-ms][data-en]").forEach(element => {
+if (element.tagName === "OPTION") {
+element.textContent = element.dataset[currentLang];
+} else {
+element.textContent = element.dataset[currentLang];
+}
+});
+
+$("languageBtn").textContent =
+currentLang === "ms" ? "English" : "Bahasa Melayu";
+
+$("languageLabel").textContent =
+currentLang === "ms" ? "Bahasa" : "Language";
+
+updateDSR();
 }
 
-function calculateBank(rate) {
-    const vehicle = getVehicleData();
-    const principal = getLoanAmount();
-    const months = vehicle.years * 12;
-    const totalInterest = principal * (rate / 100) * vehicle.years;
-    const totalPayment = principal + totalInterest;
-    const monthly = totalPayment / months;
+/* KIRA GAJI BERSIH */
+function calculateNetSalary() {
+const gross = Number($("grossSalary").value) || 0;
+const deductions = Number($("deductions").value) || 0;
+const net = Math.max(0,gross - deductions);
 
-    return {
-        rate,
-        principal,
-        months,
-        totalInterest,
-        totalPayment,
-        monthly
-    };
+$("netSalary").value = money(net);
+updateDSR();
+
+return net;
+}
+
+function updateDSR() {
+const net = calculateNetWithoutLoop();
+const commitments = Number($("commitments").value) || 0;
+
+$("dsrNet").textContent = money(net);
+$("dsrCommit").textContent = money(commitments);
+
+let dsr = net > 0 ? commitments / net * 100 : 0;
+
+$("dsrValue").textContent =
+net > 0 ? dsr.toFixed(1) + "%" : "0%";
+
+const status = $("dsrStatus");
+status.className = "dsr-status";
+
+if (net <= 0) {
+status.classList.add("yellow");
+status.textContent = currentLang === "ms"
+? "Masukkan maklumat kewangan"
+: "Enter financial information";
+
+$("dsrTitle").textContent = currentLang === "ms"
+? "Belum dinilai"
+: "Not assessed";
+
+} else if (dsr <= 30) {
+status.classList.add("green");
+status.textContent = currentLang === "ms"
+? "Hijau – Komitmen Rendah"
+: "Green – Low Commitments";
+
+$("dsrTitle").textContent = currentLang === "ms"
+? "Tahap kemampuan kewangan baik"
+: "Good financial affordability";
+
+} else if (dsr <= 60) {
+status.classList.add("yellow");
+status.textContent = currentLang === "ms"
+? "Kuning – Komitmen Sederhana"
+: "Yellow – Moderate Commitments";
+
+$("dsrTitle").textContent = currentLang === "ms"
+? "Tahap kemampuan kewangan sederhana"
+: "Moderate financial affordability";
+
+} else {
+status.classList.add("red");
+status.textContent = currentLang === "ms"
+? "Merah – Komitmen Tinggi"
+: "Red – High Commitments";
+
+$("dsrTitle").textContent = currentLang === "ms"
+? "Tahap komitmen kewangan tinggi"
+: "High financial commitments";
+}
+
+$("dsrDescription").textContent = currentLang === "ms"
+? "DSR ini dikira berdasarkan komitmen sedia ada sahaja. Ansuran kenderaan baharu belum dimasukkan. Penilaian ini bukan keputusan kelulusan bank."
+: "This DSR is based on existing commitments only. The new vehicle instalment is not included. This assessment is not a bank approval decision.";
+}
+
+function calculateNetWithoutLoop() {
+const gross = Number($("grossSalary").value) || 0;
+const deductions = Number($("deductions").value) || 0;
+return Math.max(0,gross - deductions);
+}
+
+["grossSalary","deductions","commitments"].forEach(id => {
+$(id).addEventListener("input",function() {
+if (id !== "commitments") calculateNetSalary();
+else updateDSR();
+});
+});
+
+/* VALIDASI MAKLUMAT KEWANGAN */
+function nextFromFinance() {
+const gross = $("grossSalary").value;
+const deductions = $("deductions").value;
+const commitments = $("commitments").value;
+
+if (gross === "" || deductions === "" || commitments === "") {
+showMessage("Sila lengkapkan semua maklumat kewangan yang diperlukan.");
+return;
+}
+
+if (Number(gross) <= 0) {
+showMessage("Gaji kasar bulanan mestilah lebih daripada RM0.");
+$("grossSalary").focus();
+return;
+}
+
+if (Number(deductions) < 0 ||
+Number(deductions) > Number(gross)) {
+showMessage("Jumlah potongan tidak boleh negatif atau melebihi gaji kasar.");
+$("deductions").focus();
+return;
+}
+
+if (Number(commitments) < 0) {
+showMessage("Komitmen sedia ada tidak boleh bernilai negatif.");
+$("commitments").focus();
+return;
+}
+
+calculateNetSalary();
+goTo("vehicle");
+}
+
+/* VALIDASI MAKLUMAT KENDERAAN */
+function nextFromVehicle() {
+const category = $("category").value;
+const model = $("model").value.trim();
+const purpose = $("purpose").value;
+const priceText = $("price").value;
+const depositText = $("deposit").value;
+const years = $("years").value;
+const method = $("method").value;
+
+if (!category) {
+showMessage("Sila pilih kategori kenderaan.");
+$("category").focus();
+return;
+}
+
+if (!model) {
+showMessage("Sila masukkan model atau jenis kenderaan.");
+$("model").focus();
+return;
+}
+
+if (!purpose) {
+showMessage("Sila pilih tujuan pembelian kenderaan: Kegunaan Peribadi atau Kegunaan Perniagaan.");
+$("purpose").focus();
+return;
+}
+
+if (priceText === "" || Number(priceText) <= 0) {
+showMessage("Sila masukkan harga kenderaan yang sah.");
+$("price").focus();
+return;
+}
+
+if (depositText === "" || Number(depositText) < 0) {
+showMessage("Sila masukkan bayaran pendahuluan yang sah.");
+$("deposit").focus();
+return;
+}
+
+if (Number(depositText) >= Number(priceText)) {
+showMessage("Bayaran pendahuluan mestilah lebih rendah daripada harga kenderaan.");
+$("deposit").focus();
+return;
+}
+
+if (!years) {
+showMessage("Sila pilih tempoh pembiayaan.");
+$("years").focus();
+return;
+}
+
+if (!method) {
+showMessage("Sila pilih kaedah pengiraan pembiayaan.");
+$("method").focus();
+return;
+}
+
+goTo("banks");
+}
+
+/* PAPARAN BANK */
+function renderBanks() {
+$("bankRateTable").innerHTML = "";
+$("bankCheckboxes").innerHTML = "";
+
+banks.forEach((bank,index) => {
+let rateClass = bank.rate <= 3.30
+? "rate-good"
+: bank.rate <= 3.45
+? "rate-mid"
+: "rate-high";
+
+$("bankRateTable").innerHTML += `
+<tr>
+<td>${bank.name}</td>
+<td class="${rateClass}">${bank.rate.toFixed(2)}%</td>
+</tr>`;
+
+$("bankCheckboxes").innerHTML += `
+<label style="display:flex;align-items:center;gap:10px;
+padding:10px;border-bottom:1px solid #edf1f6;
+font-weight:normal">
+<input type="checkbox" class="bank-check"
+value="${index}" checked
+style="width:auto">
+${bank.name} – ${bank.rate.toFixed(2)}%
+</label>`;
+});
+}
+
+renderBanks();
+
+function nextFromBanks() {
+const selected = getSelectedBanks();
+
+if (selected.length === 0) {
+showMessage("Sila pilih sekurang-kurangnya satu institusi kewangan.");
+return;
+}
+
+goTo("comparison");
+}
+
+function getSelectedBanks() {
+return Array.from(document.querySelectorAll(".bank-check:checked"))
+.map(input => banks[Number(input.value)]);
+}
+
+/* PENGIRAAN PEMBIAYAAN */
+function getFinancingAmount() {
+return Number($("price").value) - Number($("deposit").value);
+}
+
+function calculateInstalment(rate) {
+const principal = getFinancingAmount();
+const years = Number($("years").value);
+const months = years * 12;
+const annualRate = rate / 100;
+
+if (principal <= 0 || months <= 0) {
+return {monthly:0,total:0,interest:0};
+}
+
+let monthly = 0;
+let total = 0;
+let interest = 0;
+
+if ($("method").value === "flat") {
+interest = principal * annualRate * years;
+total = principal + interest;
+monthly = total / months;
+
+} else {
+const monthlyRate = annualRate / 12;
+
+if (monthlyRate === 0) {
+monthly = principal / months;
+} else {
+monthly = principal * monthlyRate /
+(1 - Math.pow(1 + monthlyRate,-months));
+}
+
+total = monthly * months;
+interest = total - principal;
+}
+
+return {monthly,total,interest};
 }
 
 function calculateComparison() {
-    comparisonResults = selectedBanks.map(bank => {
-        const result = calculateBank(bankRates[bank]);
-        return {
-            bank,
-            ...result
-        };
-    });
+const selected = getSelectedBanks();
+const body = $("comparisonBody");
 
-    comparisonResults.sort((a, b) => a.totalPayment - b.totalPayment);
-    recommendedResult = comparisonResults[0] || null;
+body.innerHTML = "";
+comparisonResults = [];
 
-    const body = $("comparisonBody");
-
-    if (!comparisonResults.length) {
-        body.innerHTML = '<tr><td colspan="5" style="text-align:center">Tiada maklumat untuk dipaparkan.</td></tr>';
-        return;
-    }
-
-    body.innerHTML = comparisonResults.map((result, index) => `
-        <tr class="${index === 0 ? "best" : ""}">
-            <td>${result.bank}${index === 0 ? " ★" : ""}</td>
-            <td>${result.rate.toFixed(2)}%</td>
-            <td>${formatRM(result.monthly)}</td>
-            <td>${formatRM(result.totalInterest)}</td>
-            <td>${formatRM(result.totalPayment)}</td>
-        </tr>
-    `).join("");
+if (selected.length === 0) {
+body.innerHTML = `<tr><td colspan="5">Tiada institusi kewangan dipilih.</td></tr>`;
+$("bestResult").textContent = "Sila kembali dan pilih institusi kewangan.";
+return;
 }
 
-function goToSummary() {
-    if (!recommendedResult) {
-        alert(currentLanguage === "ms"
-            ? "Sila buat perbandingan pembiayaan terlebih dahulu."
-            : "Please complete the financing comparison first.");
-        return;
-    }
+selected.forEach(bank => {
+const result = calculateInstalment(bank.rate);
 
-    updateSummary();
-    goTo("summary");
-}
-
-function updateSummary() {
-    const finance = getFinanceData();
-    const vehicle = getVehicleData();
-    const dsr = getDSR();
-    const loan = getLoanAmount();
-
-    $("summaryGross").textContent = formatRM(finance.gross);
-    $("summaryNet").textContent = formatRM(finance.net);
-    $("summaryCommitments").textContent = formatRM(finance.commitments);
-    $("summaryDSR").textContent = dsr.toFixed(2) + "%";
-    $("summaryCategory").textContent = vehicle.category || "-";
-    $("summaryModel").textContent = vehicle.model || "-";
-    $("summaryPurpose").textContent = vehicle.purpose || "-";
-    $("summaryPrice").textContent = formatRM(vehicle.price);
-    $("summaryDownPayment").textContent = formatRM(vehicle.downPayment);
-    $("summaryLoan").textContent = formatRM(loan);
-    $("summaryYears").textContent = vehicle.years ? vehicle.years + " Tahun" : "-";
-    $("summaryBanks").textContent = selectedBanks.join(", ") || "-";
-
-    if (!recommendedResult) return;
-
-    const result = recommendedResult;
-
-    $("recommendationBox").innerHTML = `
-        <div class="summary-grid">
-            <div class="summary-item">
-                <span>Institusi Kewangan Dicadangkan</span>
-                <strong>${result.bank}</strong>
-            </div>
-            <div class="summary-item">
-                <span>Kadar Faedah</span>
-                <strong>${result.rate.toFixed(2)}%</strong>
-            </div>
-            <div class="summary-item">
-                <span>Anggaran Ansuran Bulanan</span>
-                <strong>${formatRM(result.monthly)}</strong>
-            </div>
-            <div class="summary-item">
-                <span>Jumlah Keseluruhan Bayaran</span>
-                <strong>${formatRM(result.totalPayment)}</strong>
-            </div>
-        </div>
-        <div class="notice" style="margin-top:15px">
-            ${result.bank} menawarkan jumlah bayaran keseluruhan paling rendah
-            berdasarkan institusi kewangan yang dipilih dalam simulasi ini.
-        </div>
-    `;
-
-    $("scheduleBank").textContent = result.bank;
-    $("scheduleRate").textContent = result.rate.toFixed(2) + "%";
-    $("scheduleMonthly").textContent = formatRM(result.monthly);
-    $("schedulePeriod").textContent = vehicle.years + " Tahun";
-    $("scheduleInterest").textContent = formatRM(result.totalInterest);
-    $("scheduleTotal").textContent = formatRM(result.totalPayment);
-}
-
-function goToSchedule() {
-    if (!recommendedResult) {
-        alert(currentLanguage === "ms"
-            ? "Sila lengkapkan maklumat pembiayaan terlebih dahulu."
-            : "Please complete the financing information first.");
-        return;
-    }
-
-    generateRepaymentSchedule();
-    goTo("schedule");
-}
-
-function generateRepaymentSchedule() {
-    const vehicle = getVehicleData();
-    const result = recommendedResult;
-
-    if (!result) return;
-
-    $("detailModel").textContent = vehicle.model || "-";
-    $("detailBank").textContent = result.bank;
-    $("detailRate").textContent = result.rate.toFixed(2) + "%";
-    $("detailPeriod").textContent = vehicle.years + " Tahun";
-    $("detailLoan").textContent = formatRM(result.principal);
-    $("detailMonthly").textContent = formatRM(result.monthly);
-    $("detailInterest").textContent = formatRM(result.totalInterest);
-    $("detailTotal").textContent = formatRM(result.totalPayment);
-
-    const body = $("repaymentBody");
-    const monthlyPrincipal = result.principal / result.months;
-    const monthlyInterest = result.totalInterest / result.months;
-    let balance = result.principal;
-    let rows = "";
-
-    for (let month = 1; month <= result.months; month++) {
-        const principalPaid = month === result.months
-            ? balance
-            : monthlyPrincipal;
-
-        balance = Math.max(0, balance - principalPaid);
-
-        rows += `
-            <tr>
-                <td>${month}</td>
-                <td>${formatRM(result.monthly)}</td>
-                <td>${formatRM(monthlyInterest)}</td>
-                <td>${formatRM(principalPaid)}</td>
-                <td>${formatRM(balance)}</td>
-            </tr>
-        `;
-    }
-
-    body.innerHTML = rows;
-}
-
-function toggleLanguage() {
-    currentLanguage = currentLanguage === "ms" ? "en" : "ms";
-
-    document.querySelectorAll("[data-ms][data-en]").forEach(element => {
-        element.textContent = element.dataset[currentLanguage];
-    });
-
-    $("languageLabel").textContent = currentLanguage === "ms" ? "Bahasa" : "Language";
-    $("languageBtn").textContent = currentLanguage === "ms" ? "English" : "Bahasa Melayu";
-
-    updateFinanceDisplay();
-
-    if (recommendedResult) {
-        updateSummary();
-        generateRepaymentSchedule();
-    }
-}
-
-["grossSalary", "netSalary", "commitments"].forEach(id => {
-    $(id).addEventListener("input", updateFinanceDisplay);
+comparisonResults.push({
+name:bank.name,
+rate:bank.rate,
+monthly:result.monthly,
+total:result.total,
+interest:result.interest
 });
+});
+
+comparisonResults.sort((a,b) => a.monthly - b.monthly);
+selectedBest = comparisonResults[0];
+
+comparisonResults.forEach((item,index) => {
+const rateClass = item.rate <= 3.30
+? "rate-good"
+: item.rate <= 3.45
+? "rate-mid"
+: "rate-high";
+
+body.innerHTML += `
+<tr class="${index === 0 ? "best" : ""}">
+<td>${item.name}${index === 0 ? " ★" : ""}</td>
+<td class="${rateClass}">${item.rate.toFixed(2)}%</td>
+<td><strong>${money(item.monthly)}</strong></td>
+<td>${money(item.total)}</td>
+<td>${money(item.interest)}</td>
+</tr>`;
+});
+
+$("bestResult").innerHTML =
+`<strong>Cadangan berdasarkan ansuran bulanan terendah: ${selectedBest.name}</strong><br>
+Anggaran ansuran bulanan ialah ${money(selectedBest.monthly)}.
+Jumlah bayaran sepanjang tempoh pembiayaan ialah ${money(selectedBest.total)}.
+<br><small>Pemilihan ini berdasarkan pengiraan simulasi dan bukan jaminan kelulusan pembiayaan.</small>`;
+}
+
+/* RUMUSAN */
+function renderSummary() {
+const net = calculateNetWithoutLoop();
+const commitments = Number($("commitments").value) || 0;
+const dsr = net > 0 ? commitments / net * 100 : 0;
+
+$("sumNet").textContent = money(net);
+$("sumCommit").textContent = money(commitments);
+$("sumDSR").textContent = dsr.toFixed(1) + "%";
+$("sumCategory").textContent = $("category").value;
+$("sumModel").textContent = $("model").value;
+
+$("sumPurpose").textContent =
+$("purpose").value === "business"
+? (currentLang === "ms" ? "Kegunaan Perniagaan" : "Business Use")
+: (currentLang === "ms" ? "Kegunaan Peribadi" : "Personal Use");
+
+$("sumPrice").textContent = money($("price").value);
+$("sumDeposit").textContent = money($("deposit").value);
+$("sumLoan").textContent = money(getFinancingAmount());
+
+$("sumYears").textContent = $("years").value +
+(currentLang === "ms" ? " Tahun" : " Years");
+
+if (selectedBest) {
+const newDSR = net > 0
+? ((commitments + selectedBest.monthly) / net * 100)
+: 0;
+
+let advice = "";
+
+if (newDSR <= 30) {
+advice = currentLang === "ms"
+? "Anggaran komitmen termasuk ansuran baharu berada pada tahap rendah."
+: "Estimated commitments including the new instalment are at a low level.";
+
+} else if (newDSR <= 60) {
+advice = currentLang === "ms"
+? "Anggaran komitmen termasuk ansuran baharu berada pada tahap sederhana. Pertimbangkan perbelanjaan bulanan lain."
+: "Estimated commitments including the new instalment are moderate. Consider other monthly expenses.";
+
+} else {
+advice = currentLang === "ms"
+? "Anggaran komitmen termasuk ansuran baharu adalah tinggi. Pertimbangkan kenderaan lebih rendah harga atau bayaran pendahuluan lebih besar."
+: "Estimated commitments including the new instalment are high. Consider a lower-priced vehicle or a larger down payment.";
+}
+
+$("summaryRecommendation").innerHTML = `
+<div class="summary-item">
+<span>Institusi kewangan dengan ansuran terendah</span>
+<strong>${selectedBest.name}</strong>
+</div>
+<div class="summary-item" style="margin-top:10px">
+<span>Anggaran ansuran bulanan</span>
+<strong>${money(selectedBest.monthly)}</strong>
+</div>
+<div class="summary-item" style="margin-top:10px">
+<span>Anggaran DSR selepas pembiayaan baharu</span>
+<strong>${newDSR.toFixed(1)}%</strong>
+</div>
+<p class="hint">${advice}</p>`;
+
+$("summaryScheduleBank").textContent = selectedBest.name;
+$("summaryScheduleRate").textContent = selectedBest.rate.toFixed(2) + "%";
+$("summaryScheduleMonthly").textContent = money(selectedBest.monthly);
+$("summaryScheduleInterest").textContent = money(selectedBest.interest);
+$("summaryScheduleTotal").textContent = money(selectedBest.total);
+
+$("summaryScheduleYears").textContent = $("years").value +
+(currentLang === "ms" ? " Tahun" : " Years");
+
+} else {
+$("summaryRecommendation").textContent =
+"Tiada keputusan perbandingan tersedia.";
+
+[
+"summaryScheduleBank",
+"summaryScheduleRate",
+"summaryScheduleMonthly",
+"summaryScheduleInterest",
+"summaryScheduleTotal",
+"summaryScheduleYears"
+].forEach(id => {
+$(id).textContent = "-";
+});
+}
+}
+
+/* JADUAL BAYARAN BALIK */
+function renderSchedule() {
+if (!selectedBest) {
+$("scheduleBank").textContent = "-";
+$("scheduleMonthly").textContent = "RM0.00";
+$("scheduleLoan").textContent = "RM0.00";
+$("scheduleRate").textContent = "-";
+$("scheduleInterest").textContent = "-";
+$("scheduleTotal").textContent = "-";
+$("scheduleYears").textContent = "-";
+$("scheduleMethod").textContent = "-";
+$("scheduleBody").innerHTML = "";
+return;
+}
+
+const principal = getFinancingAmount();
+const years = Number($("years").value);
+const months = years * 12;
+const annualRate = selectedBest.rate / 100;
+const monthlyRate = annualRate / 12;
+const isFlat = $("method").value === "flat";
+
+$("scheduleBank").textContent = selectedBest.name;
+$("scheduleMonthly").textContent = money(selectedBest.monthly);
+$("scheduleLoan").textContent = money(principal);
+$("scheduleRate").textContent = selectedBest.rate.toFixed(2) + "%";
+$("scheduleInterest").textContent = money(selectedBest.interest);
+$("scheduleTotal").textContent = money(selectedBest.total);
+
+$("scheduleYears").textContent = years +
+(currentLang === "ms" ? " Tahun" : " Years");
+
+$("scheduleMethod").textContent = isFlat
+? (currentLang === "ms" ? "Faedah Rata (Flat Rate)" : "Flat Rate")
+: (currentLang === "ms" ? "Baki Berkurangan (Reducing Balance)" : "Reducing Balance");
+
+$("scheduleNote").textContent = isFlat
+? (currentLang === "ms"
+? "Nota: Kaedah faedah rata digunakan. Faedah bulanan adalah tetap sepanjang tempoh pembiayaan dan prinsipal dibayar secara sama rata."
+: "Note: The flat-rate method is used. Monthly interest remains constant throughout the financing period and principal is repaid in equal portions.")
+: (currentLang === "ms"
+? "Nota: Kaedah baki berkurangan digunakan. Faedah bulanan dikira berdasarkan baki prinsipal semasa dan akan berkurang apabila baki pembiayaan menurun."
+: "Note: The reducing-balance method is used. Monthly interest is calculated on the outstanding principal and decreases as the balance falls.");
+
+const body = $("scheduleBody");
+body.innerHTML = "";
+
+let balance = principal;
+
+const flatMonthlyInterest = selectedBest.interest / months;
+const flatMonthlyPrincipal = principal / months;
+
+for (let month = 1; month <= months; month++) {
+let interestPart;
+let principalPart;
+let instalment;
+
+if (isFlat) {
+interestPart = flatMonthlyInterest;
+principalPart = month === months ? balance : flatMonthlyPrincipal;
+instalment = interestPart + principalPart;
+
+} else {
+interestPart = balance * monthlyRate;
+principalPart = Math.min(balance, selectedBest.monthly - interestPart);
+instalment = selectedBest.monthly;
+
+if (month === months) {
+principalPart = balance;
+instalment = principalPart + interestPart;
+}
+}
+
+balance = Math.max(0, balance - principalPart);
+
+if (month === months) balance = 0;
+
+const row = document.createElement("tr");
+
+row.innerHTML = `
+<td>${month}</td>
+<td>${money(instalment)}</td>
+<td>${money(interestPart)}</td>
+<td>${money(principalPart)}</td>
+<td>${money(balance)}</td>
+`;
+
+body.appendChild(row);
+}
+}
 
 </script>
 
 </body>
-</html>s
+</html>
