@@ -1,0 +1,280 @@
+```html
+            <div class="field">
+                <label data-ms="Gaji Bersih Bulanan (RM)" data-en="Monthly Net Salary (RM)">Gaji Bersih Bulanan (RM)</label>
+                <input type="number" id="netSalary" readonly placeholder="Dikira secara automatik">
+            </div>
+            <div class="field">
+                <label data-ms="Komitmen Sedia Ada (RM) *" data-en="Existing Commitments (RM) *">Komitmen Sedia Ada (RM) <span class="required">*</span></label>
+                <input type="number" id="commitments" min="0" step="0.01" placeholder="Contoh: 500">
+            </div>
+        </div>
+
+        <div class="dsr-panel">
+            <strong data-ms="Petunjuk Kemampuan Kewangan" data-en="Financial Affordability Indicator">Petunjuk Kemampuan Kewangan</strong>
+            <p class="hint" data-ms="Nisbah khidmat hutang (DSR) digunakan sebagai panduan untuk menilai kemampuan kewangan." data-en="Debt Service Ratio (DSR) is used as a guide to assess financial affordability.">Nisbah khidmat hutang (DSR) digunakan sebagai panduan untuk menilai kemampuan kewangan.</p>
+            <div class="metric">
+                <div class="metric-box"><span data-ms="Gaji Bersih" data-en="Net Salary">Gaji Bersih</span><strong id="displayNet">RM0.00</strong></div>
+                <div class="metric-box"><span data-ms="Komitmen Sedia Ada" data-en="Existing Commitments">Komitmen Sedia Ada</span><strong id="displayCommit">RM0.00</strong></div>
+                <div class="metric-box"><span data-ms="DSR Semasa" data-en="Current DSR">DSR Semasa</span><strong id="displayDSR">0%</strong></div>
+            </div>
+            <div id="dsrStatus" class="dsr-status yellow" data-ms="Belum dinilai" data-en="Not assessed">Belum dinilai</div>
+        </div>
+    </div>
+
+    <div class="actions">
+        <button type="button" class="btn btn-secondary" onclick="goTo('dashboard')" data-ms="← Kembali" data-en="← Back">← Kembali</button>
+        <button type="button" class="btn btn-primary" onclick="goTo('vehicle')" data-ms="Seterusnya →" data-en="Next →">Seterusnya →</button>
+    </div>
+</section>
+
+<!-- VEHICLE INFORMATION -->
+<section class="page" id="page-vehicle">
+    <div class="page-heading">
+        <h1 data-ms="Maklumat Kenderaan" data-en="Vehicle Information">Maklumat Kenderaan</h1>
+        <p data-ms="Masukkan maklumat kenderaan yang ingin dibeli bagi membuat pengiraan pembiayaan." data-en="Enter the vehicle details to calculate the financing.">Masukkan maklumat kenderaan yang ingin dibeli bagi membuat pengiraan pembiayaan.</p>
+    </div>
+
+    <div class="card">
+        <h2 data-ms="Butiran Kenderaan" data-en="Vehicle Details">Butiran Kenderaan</h2>
+        <div class="grid">
+            <div class="field">
+                <label data-ms="Tujuan Pembelian *" data-en="Purchase Purpose *">Tujuan Pembelian <span class="required">*</span></label>
+                <select id="purpose">
+                    <option value="">-- Pilih Tujuan --</option>
+                    <option value="Peribadi" data-ms="Kegunaan Peribadi" data-en="Personal Use">Kegunaan Peribadi</option>
+                    <option value="Perniagaan" data-ms="Kegunaan Perniagaan" data-en="Business Use">Kegunaan Perniagaan</option>
+                </select>
+            </div>
+            <div class="field">
+                <label data-ms="Jenis Kenderaan *" data-en="Vehicle Type *">Jenis Kenderaan <span class="required">*</span></label>
+                <select id="vehicleType">
+                    <option value="">-- Pilih Jenis --</option>
+                    <option>Sedan</option>
+                    <option>Hatchback</option>
+                    <option>SUV</option>
+                    <option>MPV</option>
+                    <option>Pickup Truck</option>
+                    <option>Van</option>
+                    <option>EV</option>
+                </select>
+            </div>
+            <div class="field">
+                <label data-ms="Model Kenderaan *" data-en="Vehicle Model *">Model Kenderaan <span class="required">*</span></label>
+                <input type="text" id="vehicleModel" placeholder="Contoh: Perodua Ativa">
+            </div>
+            <div class="field">
+                <label data-ms="Harga Kenderaan (RM) *" data-en="Vehicle Price (RM) *">Harga Kenderaan (RM) <span class="required">*</span></label>
+                <input type="number" id="vehiclePrice" min="1" step="0.01" placeholder="Contoh: 75000">
+                <small data-ms="Masukkan harga kenderaan berdasarkan rujukan semasa." data-en="Enter the vehicle price based on current references.">Masukkan harga kenderaan berdasarkan rujukan semasa.</small>
+            </div>
+            <div class="field">
+                <label data-ms="Bayaran Pendahuluan (RM) *" data-en="Down Payment (RM) *">Bayaran Pendahuluan (RM) <span class="required">*</span></label>
+                <input type="number" id="downPayment" min="0" step="0.01" placeholder="Contoh: 7500">
+            </div>
+            <div class="field">
+                <label data-ms="Tempoh Pembiayaan (Tahun) *" data-en="Financing Period (Years) *">Tempoh Pembiayaan (Tahun) <span class="required">*</span></label>
+                <select id="years">
+                    <option value="">-- Pilih Tempoh --</option>
+                    <option value="5">5 Tahun</option>
+                    <option value="7">7 Tahun</option>
+                    <option value="9">9 Tahun</option>
+                </select>
+            </div>
+            <div class="field">
+                <label data-ms="Kaedah Pengiraan Faedah *" data-en="Interest Calculation Method *">Kaedah Pengiraan Faedah <span class="required">*</span></label>
+                <select id="method">
+                    <option value="flat" data-ms="Faedah Rata" data-en="Flat Rate">Faedah Rata</option>
+                    <option value="reducing" data-ms="Baki Berkurangan" data-en="Reducing Balance">Baki Berkurangan</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="notice" style="margin-top:17px">
+            <strong data-ms="Rujukan Harga Kenderaan:" data-en="Vehicle Price Reference:">Rujukan Harga Kenderaan:</strong>
+            <div class="links">
+                <a href="https://www.perodua.com.my/" target="_blank" rel="noopener">Perodua</a>
+                <a href="https://www.proton.com/" target="_blank" rel="noopener">Proton</a>
+                <a href="https://www.toyota.com.my/" target="_blank" rel="noopener">Toyota</a>
+                <a href="https://www.honda.com.my/" target="_blank" rel="noopener">Honda</a>
+                <a href="https://www.carlist.my/" target="_blank" rel="noopener">Carlist.my</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="actions">
+        <button type="button" class="btn btn-secondary" onclick="goTo('finance')" data-ms="← Kembali" data-en="← Back">← Kembali</button>
+        <button type="button" class="btn btn-primary" onclick="goTo('banks')" data-ms="Seterusnya →" data-en="Next →">Seterusnya →</button>
+    </div>
+</section>
+
+<!-- FINANCIAL INSTITUTIONS -->
+<section class="page" id="page-banks">
+    <div class="page-heading">
+        <h1 data-ms="Institusi Kewangan" data-en="Financial Institutions">Institusi Kewangan</h1>
+        <p data-ms="Pilih institusi kewangan untuk membuat perbandingan kadar faedah dan pembiayaan." data-en="Select financial institutions to compare interest rates and financing.">Pilih institusi kewangan untuk membuat perbandingan kadar faedah dan pembiayaan.</p>
+    </div>
+
+    <div class="card">
+        <h2 data-ms="Pilihan Institusi Kewangan" data-en="Financial Institution Selection">Pilihan Institusi Kewangan</h2>
+        <p class="hint" data-ms="Pilih sekurang-kurangnya dua institusi kewangan untuk membuat perbandingan." data-en="Select at least two financial institutions for comparison.">Pilih sekurang-kurangnya dua institusi kewangan untuk membuat perbandingan.</p>
+        <div class="grid">
+            <div class="field"><label><input type="checkbox" class="bank-check" value="Maybank" checked> Maybank</label></div>
+            <div class="field"><label><input type="checkbox" class="bank-check" value="CIMB" checked> CIMB Bank</label></div>
+            <div class="field"><label><input type="checkbox" class="bank-check" value="Public Bank" checked> Public Bank</label></div>
+            <div class="field"><label><input type="checkbox" class="bank-check" value="RHB"> RHB Bank</label></div>
+            <div class="field"><label><input type="checkbox" class="bank-check" value="Hong Leong"> Hong Leong Bank</label></div>
+            <div class="field"><label><input type="checkbox" class="bank-check" value="AmBank"> AmBank</label></div>
+            <div class="field"><label><input type="checkbox" class="bank-check" value="Bank Islam"> Bank Islam</label></div>
+        </div>
+        <p class="hint" data-ms="Kadar faedah yang dipaparkan merupakan kadar rujukan simulasi dan tertakluk kepada perubahan serta kelulusan institusi kewangan." data-en="Displayed interest rates are simulation reference rates and are subject to change and financial institution approval.">Kadar faedah yang dipaparkan merupakan kadar rujukan simulasi dan tertakluk kepada perubahan serta kelulusan institusi kewangan.</p>
+    </div>
+
+    <div class="actions">
+        <button type="button" class="btn btn-secondary" onclick="goTo('vehicle')" data-ms="← Kembali" data-en="← Back">← Kembali</button>
+        <button type="button" class="btn btn-primary" onclick="calculateComparison()" data-ms="Bandingkan Pembiayaan →" data-en="Compare Financing →">Bandingkan Pembiayaan →</button>
+    </div>
+</section>
+
+<!-- COMPARISON -->
+<section class="page" id="page-comparison">
+    <div class="page-heading">
+        <h1 data-ms="Perbandingan Pembiayaan" data-en="Financing Comparison">Perbandingan Pembiayaan</h1>
+        <p data-ms="Perbandingan kadar faedah, ansuran bulanan dan jumlah bayaran bagi institusi kewangan yang dipilih." data-en="Comparison of interest rates, monthly instalments and total payments for selected financial institutions.">Perbandingan kadar faedah, ansuran bulanan dan jumlah bayaran bagi institusi kewangan yang dipilih.</p>
+    </div>
+
+    <div class="card">
+        <h2 data-ms="Keputusan Perbandingan" data-en="Comparison Results">Keputusan Perbandingan</h2>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th data-ms="Institusi Kewangan" data-en="Financial Institution">Institusi Kewangan</th>
+                        <th data-ms="Kadar Faedah (%)" data-en="Interest Rate (%)">Kadar Faedah (%)</th>
+                        <th data-ms="Ansuran Bulanan (RM)" data-en="Monthly Instalment (RM)">Ansuran Bulanan (RM)</th>
+                        <th data-ms="Jumlah Faedah (RM)" data-en="Total Interest (RM)">Jumlah Faedah (RM)</th>
+                        <th data-ms="Jumlah Bayaran (RM)" data-en="Total Payment (RM)">Jumlah Bayaran (RM)</th>
+                    </tr>
+                </thead>
+                <tbody id="comparisonBody">
+                    <tr><td colspan="5" class="hint">Lengkapkan maklumat dan klik Bandingkan Pembiayaan.</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="comparisonRecommendation" class="notice" style="margin-top:18px">
+            Keputusan perbandingan akan dipaparkan di sini.
+        </div>
+    </div>
+
+    <div class="actions">
+        <button type="button" class="btn btn-secondary" onclick="goTo('banks')" data-ms="← Kembali" data-en="← Back">← Kembali</button>
+        <button type="button" class="btn btn-primary" onclick="renderSummary();goTo('summary')" data-ms="Lihat Rumusan →" data-en="View Summary →">Lihat Rumusan →</button>
+    </div>
+</section>
+
+<!-- SUMMARY -->
+<section class="page" id="page-summary">
+    <div class="page-heading">
+        <h1 data-ms="Rumusan Pembiayaan" data-en="Financing Summary">Rumusan Pembiayaan</h1>
+        <p data-ms="Ringkasan maklumat pengguna dan cadangan pembiayaan berdasarkan keputusan perbandingan." data-en="Summary of user information and financing recommendation based on comparison results.">Ringkasan maklumat pengguna dan cadangan pembiayaan berdasarkan keputusan perbandingan.</p>
+    </div>
+
+    <div class="card">
+        <h2 data-ms="Ringkasan Maklumat Pengguna" data-en="User Information Summary">Ringkasan Maklumat Pengguna</h2>
+        <div class="summary-grid">
+            <div class="summary-item"><span data-ms="Gaji Kasar" data-en="Gross Salary">Gaji Kasar</span><strong id="sumGross">-</strong></div>
+            <div class="summary-item"><span data-ms="Gaji Bersih" data-en="Net Salary">Gaji Bersih</span><strong id="sumNet">-</strong></div>
+            <div class="summary-item"><span data-ms="Komitmen Sedia Ada" data-en="Existing Commitments">Komitmen Sedia Ada</span><strong id="sumCommit">-</strong></div>
+            <div class="summary-item"><span data-ms="Tujuan Pembelian" data-en="Purchase Purpose">Tujuan Pembelian</span><strong id="sumPurpose">-</strong></div>
+            <div class="summary-item"><span data-ms="Jenis Kenderaan" data-en="Vehicle Type">Jenis Kenderaan</span><strong id="sumType">-</strong></div>
+            <div class="summary-item"><span data-ms="Model Kenderaan" data-en="Vehicle Model">Model Kenderaan</span><strong id="sumModel">-</strong></div>
+            <div class="summary-item"><span data-ms="Harga Kenderaan" data-en="Vehicle Price">Harga Kenderaan</span><strong id="sumPrice">-</strong></div>
+            <div class="summary-item"><span data-ms="Bayaran Pendahuluan" data-en="Down Payment">Bayaran Pendahuluan</span><strong id="sumDown">-</strong></div>
+            <div class="summary-item"><span data-ms="Jumlah Pembiayaan" data-en="Financing Amount">Jumlah Pembiayaan</span><strong id="sumFinance">-</strong></div>
+            <div class="summary-item"><span data-ms="Tempoh Pembiayaan" data-en="Financing Period">Tempoh Pembiayaan</span><strong id="sumYears">-</strong></div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 data-ms="Cadangan Pembiayaan" data-en="Financing Recommendation">Cadangan Pembiayaan</h2>
+        <div class="summary-grid">
+            <div class="summary-item"><span data-ms="Institusi Kewangan Terpilih" data-en="Selected Financial Institution">Institusi Kewangan Terpilih</span><strong id="summaryBank">-</strong></div>
+            <div class="summary-item"><span data-ms="Kadar Faedah" data-en="Interest Rate">Kadar Faedah</span><strong id="summaryRate">-</strong></div>
+            <div class="summary-item"><span data-ms="Ansuran Bulanan" data-en="Monthly Instalment">Ansuran Bulanan</span><strong id="summaryMonthly">-</strong></div>
+            <div class="summary-item"><span data-ms="Jumlah Faedah" data-en="Total Interest">Jumlah Faedah</span><strong id="summaryInterest">-</strong></div>
+            <div class="summary-item"><span data-ms="Jumlah Keseluruhan Bayaran" data-en="Total Repayment">Jumlah Keseluruhan Bayaran</span><strong id="summaryTotal">-</strong></div>
+            <div class="summary-item"><span data-ms="Anggaran DSR Selepas Pembiayaan" data-en="Estimated DSR After Financing">Anggaran DSR Selepas Pembiayaan</span><strong id="summaryDSR">-</strong></div>
+        </div>
+        <div id="summaryRecommendation" class="notice" style="margin-top:16px">
+            Cadangan pembiayaan akan dipaparkan di sini.
+        </div>
+    </div>
+
+    <div class="card">
+        <h2 data-ms="Ringkasan Jadual Bayaran" data-en="Payment Schedule Summary">Ringkasan Jadual Bayaran</h2>
+        <p class="hint" data-ms="Berikut ialah gambaran keseluruhan bayaran berdasarkan cadangan pembiayaan yang dipilih."
+           data-en="The following is an overview of payments based on the selected financing recommendation.">Berikut ialah gambaran keseluruhan bayaran berdasarkan cadangan pembiayaan yang dipilih.</p>
+        <div class="repayment-summary">
+            <div class="summary-item"><span data-ms="Institusi Kewangan" data-en="Financial Institution">Institusi Kewangan</span><strong id="summaryPayBank">-</strong></div>
+            <div class="summary-item"><span data-ms="Ansuran Bulanan" data-en="Monthly Instalment">Ansuran Bulanan</span><strong id="summaryPayMonthly">-</strong></div>
+            <div class="summary-item"><span data-ms="Jumlah Faedah" data-en="Total Interest">Jumlah Faedah</span><strong id="summaryPayInterest">-</strong></div>
+            <div class="summary-item"><span data-ms="Jumlah Keseluruhan Bayaran" data-en="Total Repayment">Jumlah Keseluruhan Bayaran</span><strong id="summaryPayTotal">-</strong></div>
+            <div class="summary-item"><span data-ms="Tempoh Pembiayaan" data-en="Financing Period">Tempoh Pembiayaan</span><strong id="summaryPayYears">-</strong></div>
+            <div class="summary-item"><span data-ms="Kaedah Pengiraan" data-en="Calculation Method">Kaedah Pengiraan</span><strong id="summaryPayMethod">-</strong></div>
+        </div>
+    </div>
+
+    <div class="actions">
+        <button type="button" class="btn btn-secondary" onclick="goTo('comparison')" data-ms="← Kembali" data-en="← Back">← Kembali</button>
+        <button type="button" class="btn btn-primary" onclick="goTo('schedule')" data-ms="Lihat Jadual Bayaran Terperinci →" data-en="View Detailed Payment Schedule →">Lihat Jadual Bayaran Terperinci →</button>
+    </div>
+</section>
+
+<!-- PAYMENT SCHEDULE -->
+<section class="page" id="page-schedule">
+    <div class="page-heading">
+        <h1 data-ms="Jadual Bayaran Balik" data-en="Repayment Schedule">Jadual Bayaran Balik</h1>
+        <p data-ms="Perincian ansuran bulanan, pecahan faedah, prinsipal dan baki pembiayaan sepanjang tempoh pembiayaan."
+           data-en="Detailed monthly instalments, interest, principal and outstanding financing balance throughout the financing period.">Perincian ansuran bulanan, pecahan faedah, prinsipal dan baki pembiayaan sepanjang tempoh pembiayaan.</p>
+    </div>
+
+    <div class="card">
+        <h2 data-ms="Perincian Jadual Bayaran Balik" data-en="Detailed Repayment Schedule">Perincian Jadual Bayaran Balik</h2>
+        <div class="table-wrap">
+            <table class="repayment-table">
+                <thead>
+                    <tr>
+                        <th data-ms="Bulan" data-en="Month">Bulan</th>
+                        <th data-ms="Ansuran (RM)" data-en="Instalment (RM)">Ansuran (RM)</th>
+                        <th data-ms="Faedah (RM)" data-en="Interest (RM)">Faedah (RM)</th>
+                        <th data-ms="Prinsipal (RM)" data-en="Principal (RM)">Prinsipal (RM)</th>
+                        <th data-ms="Baki Pembiayaan (RM)" data-en="Outstanding Balance (RM)">Baki Pembiayaan (RM)</th>
+                    </tr>
+                </thead>
+                <tbody id="repaymentBody">
+                    <tr><td colspan="5" class="hint">Jadual bayaran akan dipaparkan selepas perbandingan dibuat.</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="repayment-total">
+            <div class="summary-item"><span data-ms="Jumlah Faedah Keseluruhan" data-en="Total Interest">Jumlah Faedah Keseluruhan</span><strong id="repaymentTotalInterest">-</strong></div>
+            <div class="summary-item"><span data-ms="Jumlah Bayaran Keseluruhan" data-en="Total Repayment">Jumlah Bayaran Keseluruhan</span><strong id="repaymentTotalPayment">-</strong></div>
+        </div>
+        <div id="repaymentNote" class="repayment-note">
+            Jadual ini merupakan anggaran berdasarkan maklumat dan kaedah pengiraan yang dipilih.
+        </div>
+    </div>
+
+    <div class="actions repayment-actions">
+        <button type="button" class="btn btn-secondary" onclick="goTo('summary')" data-ms="← Kembali ke Rumusan" data-en="← Back to Summary">← Kembali ke Rumusan</button>
+        <button type="button" class="btn btn-primary" onclick="window.print()" data-ms="Cetak / Simpan PDF" data-en="Print / Save PDF">Cetak / Simpan PDF</button>
+    </div>
+</section>
+
+</main>
+</div>
+
+<footer>
+    BizHire Smart+ | <span data-ms="Simulasi Pembiayaan Kenderaan" data-en="Vehicle Financing Simulation">Simulasi Pembiayaan Kenderaan</span>
+</footer>
+
+<script>
