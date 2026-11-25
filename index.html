@@ -1178,48 +1178,287 @@ function renderSummary() {
 }
 
 /* JADUAL BAYARAN */
-function renderSchedule() {
-    if (!selectedBest) {
-        calculateComparison();
-    }
 
-    if (!selectedBest) return;
+<section class="repayment-section">
+  <div class="repayment-header">
+    <h2>Jadual Bayaran Balik</h2>
+    <p>Perincian ansuran bulanan, faedah dan baki pembiayaan kenderaan.</p>
+  </div>
 
-    const years = Number($("years").value);
-    const monthly = selectedBest.monthly;
-    let cumulative = 0;
+  <div class="repayment-summary">
+    <div class="summary-card">
+      <span>Jumlah Pembiayaan</span>
+      <strong id="totalFinancing">RM90,000.00</strong>
+    </div>
+    <div class="summary-card">
+      <span>Kadar Faedah</span>
+      <strong id="interestRate">3.00% setahun</strong>
+    </div>
+    <div class="summary-card">
+      <span>Jumlah Faedah</span>
+      <strong id="totalInterest">RM24,300.00</strong>
+    </div>
+    <div class="summary-card">
+      <span>Ansuran Bulanan</span>
+      <strong id="monthlyInstallment">RM1,058.33</strong>
+    </div>
+  </div>
 
-    $("scheduleBank").textContent = selectedBest.name;
-    $("scheduleMonthly").textContent = money(monthly);
-    $("scheduleLoan").textContent = money(getFinancingAmount());
+  <div class="repayment-total">
+    <div>
+      <span>Jumlah Keseluruhan Bayaran</span>
+      <h3 id="grandTotal">RM114,300.00</h3>
+    </div>
+    <div>
+      <span>Tempoh Pembiayaan</span>
+      <h3 id="loanDuration">9 Tahun</h3>
+    </div>
+  </div>
 
-    $("scheduleBody").innerHTML = "";
+  <div class="table-heading">
+    <h3>Perincian Jadual Pembayaran</h3>
+    <p>Jadual menunjukkan pecahan bayaran bagi setiap bulan.</p>
+  </div>
 
-    for (let year = 1; year <= years; year++) {
-        const annual = monthly * 12;
-        cumulative += annual;
+  <div class="table-container">
+    <table class="repayment-table">
+      <thead>
+        <tr>
+          <th>Bulan</th>
+          <th>Ansuran (RM)</th>
+          <th>Faedah (RM)</th>
+          <th>Prinsipal (RM)</th>
+          <th>Baki Pembiayaan (RM)</th>
+        </tr>
+      </thead>
+      <tbody id="repaymentBody"></tbody>
+    </table>
+  </div>
 
-        $("scheduleBody").innerHTML += `
-            <tr>
-                <td>${year}</td>
-                <td>${money(annual)}</td>
-                <td>${money(cumulative)}</td>
-            </tr>`;
-    }
+  <div class="repayment-note">
+    <strong>Nota:</strong>
+    Pengiraan menggunakan kaedah faedah rata (Flat Rate).
+    Amaun faedah bulanan adalah tetap sepanjang tempoh
+    pembiayaan. Jumlah prinsipal dan baki pembiayaan
+    ditunjukkan secara berperingkat.
+  </div>
+
+  <div class="repayment-actions">
+    <button onclick="window.print()" class="print-btn">
+      Cetak / Simpan PDF
+    </button>
+  </div>
+</section>
+
+<style>
+.repayment-section {
+  font-family: Arial, sans-serif;
+  color: #303746;
+  padding: 20px;
+  background: #fff;
 }
 
-/* KEMAS KINI PAPARAN APABILA INPUT BERUBAH */
-["category","model","purpose","price","deposit","years","method"]
-.forEach(id => {
-    $(id).addEventListener("change",function() {
-        selectedBest = null;
+.repayment-header h2 {
+  font-size: 25px;
+  margin-bottom: 8px;
+}
+
+.repayment-header p,
+.table-heading p {
+  color: #77808e;
+  font-size: 14px;
+}
+
+.repayment-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin: 25px 0;
+}
+
+.summary-card {
+  background: #f5f6f8;
+  padding: 18px;
+  border-radius: 10px;
+}
+
+.summary-card span,
+.repayment-total span {
+  display: block;
+  color: #727b89;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.summary-card strong {
+  font-size: 18px;
+}
+
+.repayment-total {
+  background: #eef2f7;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.repayment-total h3 {
+  margin: 0;
+  font-size: 21px;
+}
+
+.table-heading {
+  margin-bottom: 15px;
+}
+
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.repayment-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+  font-size: 13px;
+}
+
+.repayment-table th {
+  background: #35465e;
+  color: white;
+  padding: 14px 10px;
+  text-align: center;
+}
+
+.repayment-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #e8ebef;
+  text-align: center;
+}
+
+.repayment-table tbody tr:nth-child(even) {
+  background: #f7f8fa;
+}
+
+.repayment-note {
+  margin-top: 20px;
+  padding: 15px;
+  background: #f5f6f8;
+  border-radius: 8px;
+  color: #606b7b;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.repayment-actions {
+  margin-top: 25px;
+  text-align: right;
+}
+
+.print-btn {
+  background: #35465e;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  padding: 13px 22px;
+  cursor: pointer;
+}
+
+@media(max-width: 700px) {
+  .repayment-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .repayment-total {
+    flex-direction: column;
+  }
+}
+
+@media print {
+  .repayment-actions {
+    display: none;
+  }
+
+  .table-container {
+    overflow: visible;
+  }
+
+  .repayment-table {
+    min-width: 100%;
+    font-size: 10px;
+  }
+
+  .repayment-table th,
+  .repayment-table td {
+    padding: 7px 4px;
+  }
+}
+</style>
+
+<script>
+function generateRepaymentSchedule() {
+  // Nilai contoh - boleh disambungkan
+  // kepada maklumat pembiayaan pengguna.
+  const principal = 90000;
+  const annualRate = 3;
+  const years = 9;
+
+  const months = years * 12;
+  const totalInterest = principal * (annualRate / 100) * years;
+  const totalPayment = principal + totalInterest;
+
+  const monthlyPrincipal = principal / months;
+  const monthlyInterest = totalInterest / months;
+  const monthlyInstallment = totalPayment / months;
+
+  const money = value =>
+    "RM" + value.toLocaleString("en-MY", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
     });
-});
 
-/* MULAKAN SISTEM */
-calculateNetSalary();
-goTo("dashboard");
+  document.getElementById("totalFinancing").textContent =
+    money(principal);
 
+  document.getElementById("interestRate").textContent =
+    annualRate.toFixed(2) + "% setahun";
+
+  document.getElementById("totalInterest").textContent =
+    money(totalInterest);
+
+  document.getElementById("monthlyInstallment").textContent =
+    money(monthlyInstallment);
+
+  document.getElementById("grandTotal").textContent =
+    money(totalPayment);
+
+  document.getElementById("loanDuration").textContent =
+    years + " Tahun";
+
+  const tbody = document.getElementById("repaymentBody");
+  tbody.innerHTML = "";
+
+  for (let month = 1; month <= months; month++) {
+    const remaining = Math.max(
+      0,
+      principal - monthlyPrincipal * month
+    );
+
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+      <td>${month}</td>
+      <td>${money(monthlyInstallment)}</td>
+      <td>${money(monthlyInterest)}</td>
+      <td>${money(monthlyPrincipal)}</td>
+      <td>${money(remaining)}</td>
+    `;
+
+    tbody.appendChild(row);
+  }
+}
+
+generateRepaymentSchedule();
 </script>
-</body>
-</html>
